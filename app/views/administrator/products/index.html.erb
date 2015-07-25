@@ -1,0 +1,62 @@
+<div id="content">
+				<section>
+					<div class="section-header">
+						<ol class="breadcrumb">
+							<li ><a href="/administrator">Панель управления</a></li>
+							<li class="active">Товары</li>
+						</ol>
+					</div>
+					<div class="section-body contain-lg">
+
+						<!-- BEGIN INTRO -->
+						<div class="row">
+							<div class="col-lg-12">
+								<h1 class="text-primary">Все товары</h1>
+							</div><!--end .col -->
+						</div><!--end .row -->
+						<!-- END INTRO -->
+
+						<!-- BEGIN RESPONSIVE TABLE 1 -->
+						<div class="row">
+							
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="table-responsive">
+											<table class="table no-margin">
+												<thead>
+													<tr>
+														<th>id</th>
+														<th>Название</th>
+														<th>Категория</th>
+														<th>Цена</th>
+														<th>Пользователь</th>
+														<th>Создано / обновлено</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<% @products.each do |product| %>
+													<tr>
+														<td><%= product.id %></td>
+														<td><%= link_to product.name, edit_administrator_product_path(product)
+														 %></td>
+														<td><%= product.product_category.name %></td>
+														<td><%= product.price %> $</td>
+														<td><%= product.seller.name %></td>
+														<td><%= product.created_at.to_date %> / <%= product.updated_at.to_date %></td>
+														<td><%= link_to 'Удалить', administrator_product_path(product), method: :delete, data: { confirm: 'Удалить проект ?' } %></td>
+													</tr>
+													<% end %>
+												</tbody>
+											</table>
+										</div><!--end .table-responsive -->
+									</div><!--end .card-body -->
+								</div><!--end .card -->
+							</div><!--end .col -->
+						</div><!--end .row -->
+						<!-- END RESPONSIVE TABLE 1 -->
+
+					</div>
+				</section>
+			</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725203022) do
+ActiveRecord::Schema.define(version: 20150725223420) do
 
   create_table "product_categories", force: :cascade do |t|
     t.string   "name"
@@ -27,33 +27,8 @@ ActiveRecord::Schema.define(version: 20150725203022) do
   add_index "product_categories", ["name"], name: "index_product_categories_on_name"
   add_index "product_categories", ["to_main_page"], name: "index_product_categories_on_to_main_page"
 
-  create_table "products", force: :cascade do |t|
-    t.integer  "product_category_id"
-    t.integer  "seller_id"
-    t.string   "name"
-    t.text     "description"
-    t.text     "short_description"
-    t.decimal  "price"
-    t.decimal  "old_price"
-    t.string   "sku"
-    t.string   "avability"
-    t.integer  "qty"
-    t.boolean  "best_seller_prouduct", default: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-  end
-
-  add_index "products", ["avability"], name: "index_products_on_avability"
-  add_index "products", ["best_seller_prouduct"], name: "index_products_on_best_seller_prouduct"
-  add_index "products", ["description"], name: "index_products_on_description"
-  add_index "products", ["name"], name: "index_products_on_name"
-  add_index "products", ["old_price"], name: "index_products_on_old_price"
-  add_index "products", ["price"], name: "index_products_on_price"
-  add_index "products", ["product_category_id"], name: "index_products_on_product_category_id"
-  add_index "products", ["qty"], name: "index_products_on_qty"
-  add_index "products", ["seller_id"], name: "index_products_on_seller_id"
-  add_index "products", ["short_description"], name: "index_products_on_short_description"
-  add_index "products", ["sku"], name: "index_products_on_sku"
+# Could not dump table "products" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "sellers", force: :cascade do |t|
     t.string   "name"

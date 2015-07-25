@@ -15,8 +15,6 @@ class Administrator::ProductsController < AdministratorController
   # GET /products/new
   def new
     @product = Product.new
-    @distance_list = [10, 100, 200, 400, 500, 800, 1000, 1500]
-    @types_elect =  { "Отображать" => true, "Не отображать" => false }
     #@product_attachment = @product.product_attachments.build
   end
 
