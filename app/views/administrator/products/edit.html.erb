@@ -1,0 +1,216 @@
+<div id="content">
+	<section>
+		<div class="section-header">
+			<ol class="breadcrumb">
+				<li class="active">Form basic</li>
+			</ol>
+		</div>
+		<div class="section-body contain-lg">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="text-primary"><%= @product.name %></h2>
+					</div><!--end .col -->
+					
+					</div><!--end .row -->
+					<!-- END INTRO -->
+					<!--<form class="form-horizontal" role="form"> -->
+					<%= form_for([:administrator, @product], :multipart => true, :html => {class: "form-horizontal"}  )do |f| %>
+					<div class="card">
+						<div class="card-head">
+							<div class="tools admin_item_actions">
+								<div class="btn-group">
+									<a href="/administrator/products" class="btn ink-reaction btn-raised btn-xs btn-primary">Назад</a>
+									<%= f.submit(class: "btn ink-reaction btn-raised btn-xs btn-primary", value: "Обновить") %>
+									<button type="button" class="btn ink-reaction btn-raised btn-xs btn-primary">Обновить и закрыть</button>
+									<a href="/administrator/products/new" class="btn ink-reaction btn-raised btn-xs btn-primary">Назад</a>
+
+								</div>
+							</div>
+							<ul class="nav nav-tabs" data-toggle="tabs">
+								<li class="active"><a href="#main">Главная</a></li>
+								<li class=""><a href="#desc">Описание</a></li>
+								<li class=""><a href="#images">Изображения</a></li>
+								<li class=""><a href="#seo">Seo</a></li>
+							</ul>
+							
+							</div><!--end .card-head -->
+							<div class="card-body tab-content">
+								<div class="tab-pane active" id="main"><p>
+									
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="regular13" class="col-md-3 control-label">Название</label>
+													<div class="col-md-9">
+													<%= f.text_field :name, class: "form-control" %>
+													<!--	<input type="text" class="form-control" id="regular13"> -->
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="regular13" class="col-md-3 control-label">Категория</label>
+													<div class="col-md-9">
+														<%= f.text_field :product_category_id, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="regular13" class="col-md-3 control-label">Артикул</label>
+													<div class="col-md-9">
+														<%= f.text_field :sku, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="regular13" class="col-md-3 control-label">На главной</label>
+													<div class="col-md-9">
+														<%= f.select(:best_seller_prouduct, options_for_select([['Да', true],['Нет', false]], selected: @product.best_seller_prouduct), {include_blank: 'Не выбрано'},{class: "btn"}) %>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="regular13" class="col-md-3 control-label">Старая цена</label>
+													<div class="col-md-9">
+														<%= f.text_field :old_price, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="regular13" class="col-md-3 control-label">Новая цена</label>
+													<div class="col-md-9">
+														<%= f.text_field :price, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="regular13" class="col-md-3 control-label">Наличие</label>
+													<div class="col-md-9">
+														<%= f.select(:avability, options_for_select([['В наличии', 'in_stock'],['Под заказ', 'custom']], selected: @product.avability), {include_blank: 'Не выбрано'},{class: "btn"}) %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="regular13" class="col-md-3 control-label">Статус</label>
+													<div class="col-md-9">
+														<%= f.select(:status, options_for_select([['Опубликовано', 'published'],['Черновик', 'draft']], selected: @product.status), {include_blank: 'Не выбрано'},{class: "btn"}) %>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+									<div class="tab-pane" id="desc"><p>
+										<div class="row">
+											<div class="form-group">
+												<label for="regular13" class="col-sm-2 control-label">Описание</label>
+												<div class="col-sm-10">
+												<%= f.text_area :description, {class: "form-control", id: "textarea13", rows: "3"} %>
+													
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="regular13" class="col-sm-2 control-label">Краткое описание</label>
+												<div class="col-sm-10">
+												<%= f.text_area :short_description, {class: "form-control", id: "textarea13", rows: "3"} %>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane" id="images"><p>
+										
+										<ul class="list divider-full-bleed">
+											<li class="tile">
+												<a class="tile-content ink-reaction" href="#2">
+													<div class="tile-icon">
+														<img src="/assets/img/avatar2.jpg?1404026449" alt="">
+													</div>
+													<div class="tile-text">Abbey Johnson</div>
+												</a>
+												<a class="btn btn-flat ink-reaction">
+													<i class="fa fa-trash"></i>
+												</a>
+											</li>
+											
+										</ul>
+									</div>
+									<div class="tab-pane" id="seo">
+										<div class="row">
+											<div class="form-group">
+												<label for="regular13" class="col-sm-3 control-label">Title</label>
+												<div class="col-sm-9">
+													<textarea name="textarea13" id="textarea13" class="form-control" rows="3" placeholder=""></textarea>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="regular13" class="col-sm-3 control-label">Description</label>
+												<div class="col-sm-9">
+													<textarea name="textarea13" id="textarea13" class="form-control" rows="3" placeholder=""></textarea>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="regular13" class="col-sm-3 control-label">Keywords</label>
+												<div class="col-sm-9">
+													<textarea name="textarea13" id="textarea13" class="form-control" rows="3" placeholder=""></textarea>
+												</div>
+											</div>
+										</div>
+										
+									
+								</div>
+							</div>
+							
+							</div><!--end .card-body -->
+							</div><!--end .card -->
+							<% end %>
+								
+							
+					<h2 class="text-primary">Продавец</h2>
+					
+							
+							<!-- BEGIN HORIZONTAL FORM - BASIC ELEMENTS-->
+							<div class="card">
+								<div class="card-body">
+									<form class="form-horizontal" role="form">
+										<div class="form-group">
+											<label for="regular13" class="col-sm-2 control-label">Имя и фамилия</label>
+											<div class="col-sm-10">
+												<p class="text-lg">Text large</p>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="password13" class="col-sm-2 control-label">Status</label>
+											<div class="col-sm-10">
+												<p class="text-lg">Text large</p>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="password13" class="col-sm-2 control-label">Email</label>
+											<div class="col-sm-10">
+												<p class="text-lg">Text large</p>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="password13" class="col-sm-2 control-label">Phone</label>
+											<div class="col-sm-10">
+												<p class="text-lg">Text large</p>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="password13" class="col-sm-2 control-label">Skype</label>
+											<div class="col-sm-10">
+												<p class="text-lg">Text large</p>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="password13" class="col-sm-2 control-label">Город</label>
+											<div class="col-sm-10">
+												<p class="text-lg">Text large</p>
+											</div>
+										</div>
+									</form>
+									</div><!--end .card-body -->
+									</div><!--end .card -->
+									
+
+													
+																									</div><!--end .section-body -->
+																								</section>
+																							</div>
