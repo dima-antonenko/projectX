@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+
+
   resources :sellers
 
   resources :products
 
   resources :product_categories
+  resources :product_attacments
+
 
   root 'static#home'
 
