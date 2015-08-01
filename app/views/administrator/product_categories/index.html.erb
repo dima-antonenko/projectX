@@ -1,0 +1,51 @@
+<div id="content">
+				<section>
+					
+					<div class="section-body contain-lg">
+
+						<!-- BEGIN INTRO -->
+						<div class="row">
+							<div class="col-lg-12">
+								<h1 class="text-primary">Все категории</h1>
+							</div><!--end .col -->
+						</div><!--end .row -->
+						<!-- END INTRO -->
+
+						<!-- BEGIN RESPONSIVE TABLE 1 -->
+						<div class="row">
+							
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="table-responsive">
+											<table class="table no-margin">
+												<thead>
+													<tr>
+														<th>id</th>
+														<th>Название</th>
+														
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<% @product_categories.each do |category| %>
+													<tr>
+														<td><%= category.id %></td>
+														<td><%= link_to category.name, edit_administrator_product_category_path(category)
+														 %></td>
+														
+														<td><%= link_to 'Удалить', administrator_product_category_path(category), method: :delete, data: { confirm: 'Удалить проект ?' } %></td>
+													</tr>
+													<% end %>
+												</tbody>
+											</table>
+										</div><!--end .table-responsive -->
+									</div><!--end .card-body -->
+								</div><!--end .card -->
+							</div><!--end .col -->
+						</div><!--end .row -->
+						<!-- END RESPONSIVE TABLE 1 -->
+
+					</div>
+				</section>
+			</div>

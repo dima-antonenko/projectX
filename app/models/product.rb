@@ -6,5 +6,5 @@ class Product < ActiveRecord::Base
 	accepts_nested_attributes_for :product_attachments, allow_destroy: true
 
 
-	mount_uploader :avatar, TestUploader
+	mount_uploader :avatar, ProductAvatarUploader
 end

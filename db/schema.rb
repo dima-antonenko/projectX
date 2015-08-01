@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731222148) do
+ActiveRecord::Schema.define(version: 20150801131108) do
 
   create_table "product_attacments", force: :cascade do |t|
     t.integer  "product_id"
@@ -28,14 +28,28 @@ ActiveRecord::Schema.define(version: 20150731222148) do
     t.text     "description"
     t.string   "avatar"
     t.string   "to_main_page"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "product_category_id"
+    t.string   "seo_title"
+    t.string   "seo_description"
+    t.string   "seo_keywords"
   end
 
   add_index "product_categories", ["avatar"], name: "index_product_categories_on_avatar"
   add_index "product_categories", ["description"], name: "index_product_categories_on_description"
   add_index "product_categories", ["name"], name: "index_product_categories_on_name"
   add_index "product_categories", ["to_main_page"], name: "index_product_categories_on_to_main_page"
+
+  create_table "product_category_attacments", force: :cascade do |t|
+    t.integer  "product_category_id"
+    t.string   "image"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "product_category_attacments", ["image"], name: "index_product_category_attacments_on_image"
+  add_index "product_category_attacments", ["product_category_id"], name: "index_product_category_attacments_on_product_category_id"
 
 # Could not dump table "products" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass

@@ -1,0 +1,2 @@
+module ProductCategoryAttacmentsHelper
+end

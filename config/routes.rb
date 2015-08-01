@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :product_category_attacments
+
   resources :sellers
 
   resources :products
