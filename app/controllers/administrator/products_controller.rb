@@ -5,7 +5,7 @@ class Administrator::ProductsController < AdministratorController
 
   def index
     @products = Product.paginate(:page => params[:page], :per_page => 10)
-    render 'administrator/products/index'
+    
   end
 
   def edit
@@ -17,9 +17,8 @@ class Administrator::ProductsController < AdministratorController
   # GET /products/new
   def new
     @product = Product.new
-    @distance_list = [10, 100, 200, 400, 500, 800, 1000, 1500]
-    @types_elect =  { "Отображать" => true, "Не отображать" => false }
-    #@product_attachment = @product.product_attachments.build
+    
+    @product_attachment = @product.product_attachments.build
   end
 
 
@@ -30,10 +29,6 @@ class Administrator::ProductsController < AdministratorController
     @product = Product.new(product_params)
 
     @product.assign_attributes(product_params)
-
-    if params[:product][:some_manager]
-      ManagersProduct.create!(product_id: @product.id, manager_id: @product.some_manager )
-    end
 
     respond_to do |format|
       if @product.save
@@ -90,7 +85,9 @@ class Administrator::ProductsController < AdministratorController
   private
 
   def product_params
-    params.require(:product).permit(:avatar)
+    params.require(:product).permit(:avatar, :product_category_id, :name, :description, :short_description, :price, :old_price,
+      :sku, :avability, :qty, :best_seller_product, :status, :seo_title, :seo_description, :seo_keywords)
+
   end
 
   def set_product

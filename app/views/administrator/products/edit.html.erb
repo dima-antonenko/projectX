@@ -1,10 +1,6 @@
 <div id="content">
 	<section>
-		<div class="section-header">
-			<ol class="breadcrumb">
-				<li class="active">Form basic</li>
-			</ol>
-		</div>
+		
 		<div class="section-body contain-lg">
 			<div class="row">
 				<div class="col-lg-12">
@@ -21,8 +17,8 @@
 								<div class="btn-group">
 									<a href="/administrator/products" class="btn ink-reaction btn-raised btn-xs btn-primary">Назад</a>
 									<%= f.submit(class: "btn ink-reaction btn-raised btn-xs btn-primary", value: "Обновить") %>
-									<button type="button" class="btn ink-reaction btn-raised btn-xs btn-primary">Обновить и закрыть</button>
-									<a href="/administrator/products/new" class="btn ink-reaction btn-raised btn-xs btn-primary">Назад</a>
+									
+									<a href="/administrator/products/new" class="btn ink-reaction btn-raised btn-xs btn-primary">Новый товар</a>
 
 								</div>
 							</div>
@@ -112,7 +108,28 @@
 											</div>
 										</div>
 									</div>
-									<div class="tab-pane" id="images"><p>
+									<div class="tab-pane" id="images">
+										
+										<p class="text-lg">Аватар</p>
+
+										<%= f.file_field :avatar %>
+
+										<ul class="list divider-full-bleed">
+										
+											<li class="tile">
+												<a class="tile-content ink-reaction" href="#2">
+													<div class="tile-icon">
+														<img src="<%= @product.avatar_url %>" alt="">
+													</div>
+													<div class="tile-text"><%= @product.avatar %></div>
+												</a>
+												<a class="btn btn-flat ink-reaction" href="#">Удалить</a>												
+											</li>
+										
+										</ul>
+
+										<p class="text-lg">Другие изображения</p>
+
 										<%= file_field_tag  "images[]", type: :file, multiple: true, class: "btn blue-madison", id: "tab_images_uploader_pickfiles" %>
 
 										<ul class="list divider-full-bleed">
@@ -124,38 +141,34 @@
 													</div>
 													<div class="tile-text"><%= product_attachment.image.thumb %></div>
 												</a>
-												<%# link_to 'Удалить', product_attachment, method: :delete, data: { confirm: 'Вы уверены ?' }, class: "btn btn-flat ink-reaction" %>
+												<%= link_to 'Удалить', product_attachment, method: :delete, data: { confirm: 'Вы уверены ?' }, class: "btn btn-flat ink-reaction" %>
 												
 											</li>
 										<% end %>	
 										</ul>
 
-										-----
-
-										<%= f.file_field :avatar %>
-
-										  <%= image_tag(@product.avatar_url) if @product.avatar? %>
+										
 									</div>
 									<div class="tab-pane" id="seo">
 										<div class="row">
 											<div class="form-group">
 												<label for="regular13" class="col-sm-3 control-label">Title</label>
 												<div class="col-sm-9">
-													<textarea name="textarea13" id="textarea13" class="form-control" rows="3" placeholder=""></textarea>
+													<%= f.text_area :seo_title, class: "form-control" %>
 												</div>
 											</div>
 
 											<div class="form-group">
 												<label for="regular13" class="col-sm-3 control-label">Description</label>
 												<div class="col-sm-9">
-													<textarea name="textarea13" id="textarea13" class="form-control" rows="3" placeholder=""></textarea>
+													<%= f.text_area :seo_description, class: "form-control" %>
 												</div>
 											</div>
 
 											<div class="form-group">
 												<label for="regular13" class="col-sm-3 control-label">Keywords</label>
 												<div class="col-sm-9">
-													<textarea name="textarea13" id="textarea13" class="form-control" rows="3" placeholder=""></textarea>
+													<%= f.text_area :seo_keywords, class: "form-control" %>
 												</div>
 											</div>
 										</div>
@@ -179,37 +192,37 @@
 										<div class="form-group">
 											<label for="regular13" class="col-sm-2 control-label">Имя и фамилия</label>
 											<div class="col-sm-10">
-												<p class="text-lg">Text large</p>
+												<p class="text-lg"><%= @product.seller.name %> <%= @product.seller.surname %></p>
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="password13" class="col-sm-2 control-label">Status</label>
+											<label for="password13" class="col-sm-2 control-label">Статус</label>
 											<div class="col-sm-10">
-												<p class="text-lg">Text large</p>
+												<p class="text-lg"><%= @product.seller.status %></p>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="password13" class="col-sm-2 control-label">Email</label>
 											<div class="col-sm-10">
-												<p class="text-lg">Text large</p>
+												<p class="text-lg"><%= @product.seller.email %></p>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="password13" class="col-sm-2 control-label">Phone</label>
 											<div class="col-sm-10">
-												<p class="text-lg">Text large</p>
+												<p class="text-lg"><%= @product.seller.phone %></p>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="password13" class="col-sm-2 control-label">Skype</label>
 											<div class="col-sm-10">
-												<p class="text-lg">Text large</p>
+												<p class="text-lg"><%= @product.seller.skype %></p>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="password13" class="col-sm-2 control-label">Город</label>
 											<div class="col-sm-10">
-												<p class="text-lg">Text large</p>
+												<p class="text-lg"><%= @product.seller.sity %></p>
 											</div>
 										</div>
 									</form>
