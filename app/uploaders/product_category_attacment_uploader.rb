@@ -33,7 +33,11 @@ class ProductCategoryAttacmentUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :admin do
-    process :resize_to_fit => [50, 50]
+    process :resize_to_fill => [50, 50]
+  end
+
+  version :normal do
+    process :resize_to_fill => [871, 288]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

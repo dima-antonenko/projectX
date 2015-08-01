@@ -10,6 +10,8 @@ class ProductCategoriesController < ApplicationController
   # GET /product_categories/1
   # GET /product_categories/1.json
   def show
+    @products = @product_category.products
+    @product_category_attacments =  ProductCategoryAttacment.where(product_category_id: @product_category.id)
   end
 
   # GET /product_categories/new

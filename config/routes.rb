@@ -5,9 +5,12 @@ Rails.application.routes.draw do
 
   resources :sellers
 
-  resources :products
+  
 
-  resources :product_categories
+  resources :product_categories do
+    resources :products
+  end 
+  
   resources :product_attacments
 
 
