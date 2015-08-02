@@ -19,7 +19,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="category-page">
+<body class="<%= yield(:class) %>">
 <%= render '/layouts/main/header' %>
 
 
