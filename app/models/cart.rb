@@ -10,4 +10,20 @@ class Cart < ActiveRecord::Base
     end
     current_item
   end
+
+  def add_line_items_from_cart(cart)
+    cart.line_items.each do |item|
+      item.cart_id = nil
+      line_items << item
+    end
+  end
+
+  def insert_params_data(order)
+    @order = Order.find(id)
+  end
+
+  def total_price
+    line_items.to_a.sum { |item| item.total_price }
+  end
+
 end

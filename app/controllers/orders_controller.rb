@@ -3,30 +3,22 @@ class OrdersController < ApplicationController
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
-  # GET /orders
-  # GET /orders.json
-  def index
-    @orders = Order.all
-  end
-
-  # GET /orders/1
-  # GET /orders/1.json
+  
   def show
   end
 
   # GET /orders/new
   def new
+
     if @cart.line_items.empty?
-      redirect_to '/', notice: "Your cart is empty"
-      return
+      redirect_to '/', notice: "Корзина пустая"
+     return
     end
 
     @order = Order.new
+  
   end
 
-  # GET /orders/1/edit
-  def edit
-  end
 
   # POST /orders
   # POST /orders.json
@@ -34,14 +26,26 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
 
+    @total_price = 0
+
+    @order.line_items.each do |item|
+      @total_price += item.product.price
+      
+    end
+
+    #@order.products = @products_in_order
+    # @order.total_price = @total_price
+
+
+
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to '/', notice:
-        'Thank you for your order.' }
+        format.html { redirect_to @order, notice: 'Спасибо за Ваш заказ' }
+        format.json { render :show, status: :created, location: @order }
       else
-        @cart = current_cart
+
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -80,6 +84,8 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
+      params.require(:order).permit(:name, :adress, :surname, :skype, :phone, :additional_info )
     end
+
+    
 end

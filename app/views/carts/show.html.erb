@@ -1,4 +1,4 @@
-<% provide(:class, 'category-page') %>
+<% provide(:class, 'category-page,  cart_page') %>
 
 <div class="columns-container">
     <div class="container" id="columns">
@@ -16,7 +16,7 @@
         <!-- ../page heading-->
         <div class="page-content page-order">
             <div class="heading-counter warning">Количество товаров:
-                <span>5</span>
+                <span><%= @cart.line_items.count %></span>
             </div>
             <div class="order-detail-content">
                 <table class="table table-bordered table-responsive cart_summary">
@@ -24,7 +24,7 @@
                         <tr>
                             <th class="cart_product">Фото</th>
                             <th>Описание</th>
-                            <th>Наличие</th>
+                            <th>Статус</th>
                             <th>Цена</th>
                             <th>Количество</th>
                             <th>Стоимось</th>
@@ -32,67 +32,44 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <% @cart.line_items.each do |item| %>
                         <tr>
                             <td class="cart_product">
-                                <a href="#"><img src="/main/assets/data/product-100x122.jpg" alt="Product"></a>
+                                <a href="#"><img src="<%= item.product.avatar.cart_thumb %>" alt="Product"></a>
                             </td>
                             <td class="cart_description">
-                                <p class="product-name"><a href="#">Frederique Constant </a></p>
-                                <small class="cart_ref">SKU : #123654999</small><br>
-                                <small><a href="#">Color : Beige</a></small><br>   
-                                <small><a href="#">Size : S</a></small>
+                                <p class="product-name"><%= link_to item.product.name, product_category_product_path(item.product.product_category.id, item.product.id) %></p>
+                                <small class="cart_ref">Артикул : <%= item.product.sku %></small><br>
+                                <small><a href="#">Атрибут : значение</a></small><br>   
+                                <small><a href="#">Атрибут 2 : значение</a></small>
                             </td>
-                            <td class="cart_avail"><span class="label label-success">In stock</span></td>
-                            <td class="price"><span>61,19 €</span></td>
+                            <td class="cart_avail"><span class="label label-success">В наличии</span></td>
+                            <td class="price"><span><%= item.product.price %>$</span></td>
                             <td class="qty">
-                                <input class="form-control input-sm" type="text" value="1">
+                                <input class="form-control input-sm" type="text" value="<%= item.quantity %>">
                                 <a href="#"><i class="fa fa-caret-up"></i></a>
                                 <a href="#"><i class="fa fa-caret-down"></i></a>
                             </td>
                             <td class="price">
-                                <span>61,19 €</span>
+                                <span><%= item.quantity * item.product.price  %></span>
                             </td>
                             <td class="action">
-                                <a href="#">Delete item</a>
+                                <%= link_to 'Удалить', line_item_path(item), method: :delete, data: { confirm: 'Удалить товар из корзины ?' } %>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="cart_product">
-                                <a href="#"><img src="/main/assets/data/product-100x122.jpg" alt="Product"></a>
-                            </td>
-                            <td class="cart_description">
-                                <p class="product-name"><a href="#">Frederique Constant </a></p>
-                                <small class="cart_ref">SKU : #123654999</small><br>
-                                <small><a href="#">Color : Beige</a></small><br>   
-                                <small><a href="#">Size : S</a></small>
-                            </td>
-                            <td class="cart_avail"><span class="label label-success">In stock</span></td>
-                            <td class="price"><span>61,19 €</span></td>
-                            <td class="qty">
-                                <input class="form-control input-sm" type="text" value="1">
-                                <a href="#"><i class="fa fa-caret-up"></i></a>
-                                <a href="#"><i class="fa fa-caret-down"></i></a>
-                            </td>
-                            <td class="price">
-                                <span>61,19 €</span>
-                            </td>
-                            <td class="action">
-                                <a href="#">Delete item</a>
-                            </td>
-                        </tr>
+                    <% end %>    
                     </tbody>
                     <tfoot>
                        
                         <tr>
-                            <td colspan="3"><strong>Всего</strong></td>
-                            <td colspan="2"><strong>122.38 €</strong></td>
+                            <td colspan="5"><strong>Всего</strong></td>
+                            <td colspan="2"><strong><%= @cart.total_price %> $</strong></td>
                         </tr>
                     </tfoot>    
                 </table>
                
             </div>
-
-            <h3 class="checkout-sep">3. Shipping Information</h3>
+            <%= form_for(@order) do |f| %>
             <div class="box-border">
                 <ul>
                                     
@@ -101,14 +78,13 @@
                         <div class="col-sm-6">
                             
                             <label for="first_name_1" class="required">Имя</label>
-                            <input class="input form-control" type="text" name="" id="first_name_1">
-
+                             <%= f.text_field :name, size: 40, class: "input form-control", id: "first_name_1" %>
                         </div><!--/ [col] -->
 
                         <div class="col-sm-6">
                             
                             <label for="last_name_1" class="required">Фамилия</label>
-                            <input class="input form-control" type="text" name="" id="last_name_1">
+                             <%= f.text_field :surname, size: 40, class: "input form-control" %>
 
                         </div><!--/ [col] -->
 
@@ -119,14 +95,13 @@
                         <div class="col-sm-6">
                             
                             <label for="company_name_1">Телефон</label>
-                            <input class="input form-control" type="text" name="" id="company_name_1">
-
+                            <%= f.text_field :phone, size: 40, class: "input form-control" %>
                         </div><!--/ [col] -->
 
                         <div class="col-sm-6">
                             
                             <label for="email_address_1" class="required">Skype</label>
-                            <input class="input form-control" type="text" name="" id="email_address_1">
+                             <%= f.text_field :skype, size: 40, class: "input form-control" %>
 
                         </div><!--/ [col] -->
 
@@ -137,11 +112,19 @@
                         <div class="col-xs-12">
 
                             <label for="address_1" class="required">Адрес</label>
-                            <input class="input form-control" type="text" name="" id="address_1">
+                             <%= f.text_area :adress, size: 40, class: "input form-control" %>
+
+                        </div><!--/ [col] -->
+                        <div class="col-xs-12">
+
+                            <label for="address_1" class="required">Примечание и особые просьбы</label>
+                             <%= f.text_area :additional_info, size: 40, class: "input form-control" %>
 
                         </div><!--/ [col] -->
 
                     </li><!--/ .row -->
+
+
 
                   
 
@@ -150,10 +133,11 @@
             </div>
 			
 			 <div class="cart_navigation">
-                    <a class="prev-btn" href="#">Продолжить покупки</a>
-                    <a class="next-btn" href="#">Оформить заказ</a>
-                </div>
-
+                   <%= f.submit('Оформить заказ', class: "next-btn")  %> 
+                    <a class="prev-btn" href="/product_categories/">Продолжить покупки</a>
+                    
+             </div>
+            <% end %>
         </div>
     </div>
 </div>
