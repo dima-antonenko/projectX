@@ -1,25 +1,94 @@
-<p id="notice"><%= notice %></p>
+<% provide(:class, 'category-page,  cart_page') %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+<div class="columns-container">
+    <div class="container" id="columns">
+        <!-- breadcrumb -->
+        <div class="breadcrumb clearfix">
+            <a class="home" href="/" title="Return to Home">Главная</a>
+            <span class="navigation-pipe">&nbsp;</span>
+            <span class="navigation_page">Просмотр заказа</span>
+        </div>
+        <!-- ./breadcrumb -->
+        <!-- page heading-->
+        <h2 class="page-heading no-line">
+            <span class="page-heading-title2">Заказ #<%= @order.id %></span>
+        </h2>
+        <!-- ../page heading-->
+        <div class="page-content page-order">
+            <div class="order-detail-content">
+                <table class="table table-bordered table-responsive cart_summary">
+                    <thead>
+                        <tr>
+                            <th class="cart_product">Фото</th>
+                            <th>Описание</th>
+                            <th>Статус</th>
+                            <th>Цена</th>
+                            <th>Количество</th>
+                            <th>Стоимось</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% @order.line_items.each do |item| %>
+                        <tr>
+                            <td class="cart_product">
+                                <a href="#"><img src="<%= item.product.avatar.cart_thumb %>" alt="Product"></a>
+                            </td>
+                            <td class="cart_description">
+                                <p class="product-name"><%= link_to item.product.name, product_category_product_path(item.product.product_category.id, item.product.id) %></p>
+                                <small class="cart_ref">Артикул : <%= item.product.sku %></small><br>
+                                <small><a href="#">Атрибут : значение</a></small><br>   
+                                <small><a href="#">Атрибут 2 : значение</a></small>
+                            </td>
+                            <td class="cart_avail"><span class="label label-success">В наличии</span></td>
+                            <td class="price"><span><%= item.product.price %>$</span></td>
+                            <td class="qty">
+                                <input class="form-control input-sm" type="text" value="<%= item.quantity %>">
+                                <a href="#"><i class="fa fa-caret-up"></i></a>
+                                <a href="#"><i class="fa fa-caret-down"></i></a>
+                            </td>
+                            <td class="price">
+                                <span><%= item.quantity * item.product.price  %> $</span>
+                            </td>
+                        </tr>
+                    <% end %>    
+                    </tbody>
+                    <tfoot>
+                       
+                        <tr>
+                            <td colspan="5"><strong>Всего</strong></td>
+                            <td colspan="2"><strong>1 000 $</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><strong>Имя</strong></td>
+                            <td colspan="2"><strong><%= @order.name %></strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><strong>Фамилия</strong></td>
+                            <td colspan="2"><strong><%= @order.surname %></strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><strong>Телефон</strong></td>
+                            <td colspan="2"><strong><%= @order.phone %></strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><strong>Адрес</strong></td>
+                            <td colspan="2"><strong><%= @order.adress %></strong></td>
+                        </tr>
+                         <tr>
+                            <td colspan="5"><strong>Статус</strong></td>
+                            <td colspan="2"><strong>В обработке</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><strong>Просмотрено продавцом</strong></td>
+                            <td colspan="2"><strong>Да</strong></td>
+                        </tr>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
-
-<p>
-  <strong>Pay type:</strong>
-  <%= @order.pay_type %>
-</p>
-
-<% @order.line_items.each do  |item| %>
-	<%= item.product.name %>
-<% end %>
+                    </tfoot>    
+                </table>
+               
+            </div>
+           
+        </div>
+    </div>
+</div>
