@@ -39,7 +39,7 @@ class ProductAttacmentUploader < CarrierWave::Uploader::Base
   end
 
   version :admin do
-    process resize_to_fill: [200,200]
+    process resize_to_fill: [66,66]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

@@ -1,57 +1,99 @@
-<div id="content">
-				<section>
-					
-					<div class="section-body contain-lg">
+<div id="page_content">
+        <div id="page_content_inner">
 
-						<!-- BEGIN INTRO -->
-						<div class="row">
-							<div class="col-lg-12">
-								<h1 class="text-primary">Все товары</h1>
-							</div><!--end .col -->
-						</div><!--end .row -->
-						<!-- END INTRO -->
+            <div class="md-card">
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin="">
+                        <div class="uk-width-medium-3-10">
+                            <label for="product_search_name">Название</label>
+                            <input type="text" class="md-input" id="product_search_name">
+                        </div>
+                        <div class="uk-width-medium-1-10">
+                            <label for="product_search_price">Цена</label>
+                            <input type="text" class="md-input" id="product_search_price">
+                        </div>
+                        <div class="uk-width-medium-3-10">
+                            <div class="uk-margin-small-top">
+                                <select id="product_search_status" data-md-selectize multiple data-md-selectize-bottom>
+                                    <option value="">Статус</option>
+                                    <option value="1">В наличии</option>
+                                    <option value="2">Под заказ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-1-10">
+                            <div class="uk-margin-top uk-text-nowrap">
+                                <input type="checkbox" name="product_search_active" id="product_search_active" data-md-icheck/>
+                                <label for="product_search_active" class="inline-label">Опубликован</label>
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-2-10 uk-text-center">
+                            <a href="#" class="md-btn md-btn-primary uk-margin-small-top">Искать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-						<!-- BEGIN RESPONSIVE TABLE 1 -->
-						<div class="row">
-							
-							<div class="col-lg-12">
-								<div class="card">
-									<div class="card-body">
-										<div class="table-responsive">
-											<table class="table no-margin">
-												<thead>
-													<tr>
-														<th>id</th>
-														<th>Название</th>
-														<th>Категория</th>
-														<th>Цена</th>
-														<th>Пользователь</th>
-														<th>Создано / обновлено</th>
-														<th></th>
-													</tr>
-												</thead>
-												<tbody>
-													<% @products.each do |product| %>
-													<tr>
-														<td><%= product.id %></td>
-														<td><%= link_to product.name, edit_administrator_product_path(product)
-														 %></td>
-														<td><%= product.product_category.name %></td>
-														<td><%= product.price %> $</td>
-														<td><%= product.seller.name %></td>
-														<td><%= product.created_at.to_date %> / <%= product.updated_at.to_date %></td>
-														<td><%= link_to 'Удалить', administrator_product_path(product), method: :delete, data: { confirm: 'Удалить проект ?' } %></td>
-													</tr>
-													<% end %>
-												</tbody>
-											</table>
-										</div><!--end .table-responsive -->
-									</div><!--end .card-body -->
-								</div><!--end .card -->
-							</div><!--end .col -->
-						</div><!--end .row -->
-						<!-- END RESPONSIVE TABLE 1 -->
+            <div class="md-card">
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1">
+                            <div class="uk-overflow-container">
+                                <table class="uk-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Изображение</th>
+                                            <th>Название</th>
+                                            <th>Цена</th>
+                                            <th>Статус</th>
+                                            <th>Публикация</th>
+                                            <th>Действие</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <% @products.each do |product| %>
+                                        <tr>
+                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_2.jpg" alt=""></td>
+                                            <td class="uk-text-large uk-text-nowrap"><a href="<%= edit_administrator_product_path(product.id) %>"><%= product.name %></a></td>
+                                            <td class="uk-text-nowrap">$ <%= product.price %></td>
+                                            <td class="uk-text-nowrap">
+                                            <% if product.avability == 'in_stock' %>
+                                                <span class="uk-badge uk-badge-success">В наличии</span>
+                                            <% elsif product.avability == 'pre_order' %>
+                                                <span class="uk-badge uk-badge-danger">Под заказ</span>             
+                                            <% end %>
+                                            </td>
+                                            <td>
+                                           
+                                            <% if product.status == 'published' %>
+                                                 <i class="material-icons uk-text-success md-24"></i>
+                                            <% elsif product.status == 'no_published' %>
+                                                 <i class="material-icons uk-text-muted md-24">&#xE835;</i>            
+                                            <% end %>            
+                                            </td>
+                                            <td class="uk-text-nowrap">
+                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
+                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
+                                            </td>
+                                        </tr>
+                                        <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <ul class="uk-pagination uk-margin-medium-top uk-margin-medium-bottom">
+                                <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
+                                <li class="uk-active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><span>&hellip;</span></li>
+                                <li><a href="#">20</a></li>
+                                <li><a href="#"><i class="uk-icon-angle-double-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-					</div>
-				</section>
-			</div>
+        </div>
+    </div>

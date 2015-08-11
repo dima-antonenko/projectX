@@ -1,48 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Панель управления</title>
-		<%= stylesheet_link_tag    'administrator', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= javascript_include_tag 'administrator', 'data-turbolinks-track' => true %>
-		  <%= csrf_meta_tags %>
+<!doctype html>
+<!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="keywords" content="your,keywords">
-		<meta name="description" content="Short explanation about this website">
-		<link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
-		<link type="text/css" rel="stylesheet" href="/assets/css/theme-default/bootstrap.css?1422792965" />
-		<link type="text/css" rel="stylesheet" href="/assets/css/theme-default/materialadmin.css?1425466319" />
-		<link type="text/css" rel="stylesheet" href="/assets/css/theme-default/font-awesome.min.css?1422529194" />
-		<link type="text/css" rel="stylesheet" href="/assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
-		
-	</head>
-	<body class="menubar-hoverable header-fixed menubar-pin">
+    <link rel="icon" type="image/png" href="/altair/assets/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/altair/assets/img/favicon-32x32.png" sizes="32x32">
 
-		<%= render '/layouts/administrator/header' %>
+    <title>Project X  -- панель админстратора</title>
 
-		<div id="base">
 
-			<%= yield %>
-			<%= render '/layouts/administrator/menubar' %>
+    <!-- uikit -->
+    <link rel="stylesheet" href="/altair/bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
 
-		</div>
+    <!-- flag icons -->
+    <link rel="stylesheet"href="/altair/assets/icons/flags/flags.min.css" media="all">
 
-		<script src="/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
-		<script src="/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
-		<script src="/assets/js/libs/bootstrap/bootstrap.min.js"></script>
-		<script src="/assets/js/libs/spin.js/spin.min.js"></script>
-		<script src="/assets/js/libs/autosize/jquery.autosize.min.js"></script>
-		<script src="/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
-		<script src="/assets/js/core/source/App.js"></script>
-		<script src="/assets/js/core/source/AppNavigation.js"></script>
-		<script src="/assets/js/core/source/AppOffcanvas.js"></script>
-		<script src="/assets/js/core/source/AppCard.js"></script>
-		<script src="/assets/js/core/source/AppForm.js"></script>
-		<script src="/assets/js/core/source/AppNavSearch.js"></script>
-		<script src="/assets/js/core/source/AppVendor.js"></script>
-		<script src="/assets/js/core/demo/Demo.js"></script>
-		<!-- END JAVASCRIPT -->
+    <!-- altair admin -->
+    <link rel="stylesheet" href="/altair/assets/css/main.min.css" media="all">
 
-	</body>
+    <%= stylesheet_link_tag    'administrator', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'administrator', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+</head>
+<body class="sidebar_main_open">
+   
+    
+    <%= render '/layouts/administrator/header' %>
+    <%= render '/layouts/administrator/sidebar' %>
+    <%= yield %>
+
+    <script>
+        WebFontConfig = {
+            google: {
+                families: [
+                    'Source+Code+Pro:400,700:latin',
+                    'Roboto:400,300,500,700,400italic:latin'
+                ]
+            }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+    <!-- momentJS date library -->
+    <script src="/altair/bower_components/moment/min/moment.min.js"></script>
+
+    <!-- common functions -->
+    <script src="/altair/assets/js/common.min.js"></script>
+    <!-- uikit functions -->
+    <script src="/altair/assets/js/uikit_custom.min.js"></script>
+    <!-- altair common functions/helpers -->
+    <script src="/altair/assets/js/altair_admin_common.min.js"></script>
+
+
+    <!-- enable hires images -->
+    <script>
+        $(function() {
+            altair_helpers.retina_images();
+        });
+    </script>
+
+</body>
 </html>

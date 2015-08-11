@@ -1,236 +1,191 @@
-<div id="content">
-	<section>
-		
-		<div class="section-body contain-lg">
-			<div class="row">
-				<div class="col-lg-12">
-					<h2 class="text-primary"><%= @product.name %></h2>
-					</div><!--end .col -->
-					<%= flash[:notice] %>
-					</div><!--end .row -->
-					<!-- END INTRO -->
-					<!--<form class="form-horizontal" role="form"> -->
-					<%= form_for([:administrator, @product], :multipart => true, :html => {class: "form-horizontal"}  )do |f| %>
-					<div class="card">
-						<div class="card-head">
-							<div class="tools admin_item_actions">
-								<div class="btn-group">
-									<a href="/administrator/products" class="btn ink-reaction btn-raised btn-xs btn-primary">Назад</a>
-									<%= f.submit(class: "btn ink-reaction btn-raised btn-xs btn-primary", value: "Обновить") %>
-									
-									<a href="/administrator/products/new" class="btn ink-reaction btn-raised btn-xs btn-primary">Новый товар</a>
+<div id="page_content">
+    <div id="page_heading">
+        <h1 id="product_edit_name"><%= @product.name %></h1>
+        <span class="uk-text-muted uk-text-upper uk-text-small" id="product_edit_sn">ID: <%= @product.id %></span>
+    </div>
+    <div id="page_content_inner">
+        <%= form_for([:administrator, @product], class: "uk-form-stacked", id: "product_edit_form", :multipart => true ) do |f| %>
+        <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
+            <div class="uk-width-xLarge-2-10 uk-width-large-3-10">
+                <div class="md-card">
+                    <div class="md-card-content">
+                        <div class="uk-float-right">
+                            <input type="checkbox" data-switchery checked name="product_edit_active_control" id="product_edit_active_control" />
+                        </div>
+                        <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Одобрено администратором</label>
+                    </div>
+                    <div class="md-card-content">
+                        <div class="uk-float-right">
+                            <input type="checkbox" data-switchery checked name="product_edit_active_control" id="product_edit_active_control" />
+                        </div>
+                        <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Отображать главной странице</label>
+                    </div>
+                    <div class="md-card-content">
+                        <div class="uk-float-right">
+                            <input type="checkbox" data-switchery checked name="product_edit_active_control" id="product_edit_active_control" />
+                        </div>
+                        <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Отображать саитбаре</label>
+                    </div>
+                </div>
+                <div class="md-card">
+                    <div class="md-card-toolbar">
+                        <div class="md-card-toolbar-actions">
+                            <%= f.file_field :avatar, class: "product_file_upload" %>
+                        </div>
+                    </div>
+                    <div class="md-card-content">
+                        <div class="uk-margin-bottom uk-text-center uk-position-relative">
+                            <img src="<%= @product.avatar.url(:thumb) %>" alt="" class="img_medium"/>
+                        </div>
+                    </div>
+                </div>
 
-								</div>
-							</div>
-							<ul class="nav nav-tabs" data-toggle="tabs">
-								<li class="active"><a href="#main">Главная</a></li>
-								<li class=""><a href="#desc">Описание</a></li>
-								<li class=""><a href="#images">Изображения</a></li>
-								<li class=""><a href="#seo">Seo</a></li>
-							</ul>
-							
-							</div><!--end .card-head -->
-							<div class="card-body tab-content">
-								<div class="tab-pane active" id="main"><p>
-									
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="regular13" class="col-md-3 control-label">Название</label>
-													<div class="col-md-9">
-													<%= f.text_field :name, class: "form-control" %>
-													<!--	<input type="text" class="form-control" id="regular13"> -->
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="regular13" class="col-md-3 control-label">Категория</label>
-													<div class="col-md-9">
-														<%= f.text_field :product_category_id, class: "form-control" %>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="regular13" class="col-md-3 control-label">Артикул</label>
-													<div class="col-md-9">
-														<%= f.text_field :sku, class: "form-control" %>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="regular13" class="col-md-3 control-label">На главной</label>
-													<div class="col-md-9">
-														<%= f.select(:best_seller_prouduct, options_for_select([['Да', true],['Нет', false]], selected: @product.best_seller_prouduct), {include_blank: 'Не выбрано'},{class: "btn"}) %>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="regular13" class="col-md-3 control-label">Старая цена</label>
-													<div class="col-md-9">
-														<%= f.text_field :old_price, class: "form-control" %>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="regular13" class="col-md-3 control-label">Новая цена</label>
-													<div class="col-md-9">
-														<%= f.text_field :price, class: "form-control" %>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="regular13" class="col-md-3 control-label">Наличие</label>
-													<div class="col-md-9">
-														<%= f.select(:avability, options_for_select([['В наличии', 'in_stock'],['Под заказ', 'custom']], selected: @product.avability), {include_blank: 'Не выбрано'},{class: "btn"}) %>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="regular13" class="col-md-3 control-label">Статус</label>
-													<div class="col-md-9">
-														<%= f.select(:status, options_for_select([['Опубликовано', 'published'],['Черновик', 'draft']], selected: @product.status), {include_blank: 'Не выбрано'},{class: "btn"}) %>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-									</div>
-									<div class="tab-pane" id="desc"><p>
-										<div class="row">
-											<div class="form-group">
-												<label for="regular13" class="col-sm-2 control-label">Описание</label>
-												<div class="col-sm-10">
-												<%= f.text_area :description, {class: "form-control", id: "textarea13", rows: "3"} %>
-													
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="regular13" class="col-sm-2 control-label">Краткое описание</label>
-												<div class="col-sm-10">
-												<%= f.text_area :short_description, {class: "form-control", id: "textarea13", rows: "3"} %>
-													
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="tab-pane" id="images">
-										
-										<p class="text-lg">Аватар</p>
+                <div class="md-card">
+                    <div class="md-card-toolbar">
+                        <div class="md-card-toolbar-actions">
+                            <%= file_field_tag  "images[]", type: :file, multiple: true, class: "product_file_upload" %>
+                        </div>
+                   </div>
+                    <div class="md-card-content">
+                        <ul class="uk-grid uk-grid-width-small-1-3 uk-text-center" data-uk-grid-margin>
+                          <% @product_attachments.each do |attacment| %>    
+                            <li class="uk-position-relative">
+                                <!-- <button type="button" class="uk-modal-close uk-close uk-close-alt uk-position-absolute"></button> -->
+                                <%= link_to '', attacment, method: :delete, data: { confirm: 'Вы уверены ?' }, class: "uk-modal-close uk-close uk-close-alt uk-position-absolute" %>
+                                <% # button_to , attacment, method: :delete, data: { confirm: 'Вы уверены ?' }, class: "uk-modal-close uk-close uk-close-alt uk-position-absolute" %>
+                                <img src="<%= attacment.image.thumb %>" alt="" class="img_small"/>
+                            </li>
+                          <% end %>  
+                        </ul>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="uk-width-xLarge-8-10  uk-width-large-7-10">
+                <div class="md-card">
+                    <div class="md-card-toolbar">
+                        <h3 class="md-card-toolbar-heading-text">
+                        Основная информация
+                        </h3>
+                    </div>
+                    <div class="md-card-content large-padding">
+                        <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
+                            <div class="uk-width-large-1-2">
+                                <div class="uk-form-row">
+                                    <label for="product_edit_control">Название</label>
+                                    <%= f.text_field :name, class: "md-input" %>
+                                    
+                                </div>
+                                <div class="uk-form-row">
+                                    <label for="product_edit_control">Категория</label>
+                                    <%= f.select :product_category_id , ProductCategory.all.collect {|category| [category.name, category.id ]},{include_blank: 'Не выбрано'}, {"data-md-selectize ": true } %>
+                                </div>
+                                
+                                <div class="uk-form-row">
+                                    <label for="product_edit_control">Артикул</label>
+                                    <%= f.text_field :sku, class: "md-input" %>
+                                    
+                                </div>
 
-										<%= f.file_field :avatar %>
+                                
+                                    <div class="uk-form-row">
+                                        <label for="product_edit_control">Наличие</label>
+                                        <%= f.select(:avability, options_for_select([['В наличии', 'in_stock'], ['Под заказ', 'pre_order']], selected: @product.avability), {include_blank: 'Не выбрано'},{"data-md-selectize": true }) %>
+                                    </div>
+                                
+                                
+                                    <div class="uk-form-row">
+                                        <label for="product_edit_control">Статус</label>
+                                        <%= f.select(:avability, options_for_select([['Опубликовано', 'in_stock'], ['Не опубликовано', 'no_published']], selected: @product.avability), {include_blank: 'Не выбрано'},{"data-md-selectize": true }) %>
+                                    </div>
+                                
+                                
+                            </div>
+                            <div class="uk-width-large-1-2">
+                                <div class="uk-form-row">
+                                    <div class="uk-input-group">
+                                        <label for="product_edit_control">Цена</label>
+                                        <%= f.text_field :price, class: "md-input" %>
+                                    </div>
+                                </div>
+                                <div class="uk-form-row">
+                                    <div class="uk-input-group">
+                                        <label for="product_edit_control">Старая цена</label>
+                                        <%= f.text_field :old_price, class: "md-input" %>
+                                    </div>
+                                </div>
+                                <div class="uk-form-row">
+                                    <div class="uk-input-group">
+                                        <label for="product_edit_control">Старая цена</label>
+                                        <%= f.text_field :old_price, class: "md-input" %>
+                                    </div>
+                                </div>
+                                <div class="uk-form-row">
+                                    <div class="uk-input-group">
+                                        <label for="product_edit_control">Количество</label>
+                                        <%= f.text_field :qty, class: "md-input" %>
+                                    </div>
+                                </div>
+                                <div class="uk-form-row">
+                                    <div class="uk-input-group">
+                                        <label for="product_edit_control">Скидка</label>
+                                        <%= f.text_field :qty, class: "md-input" %>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="md-card">
+                <div class="md-card-content">
+                    <h3 class="heading_a">Тексты</h3>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <div class="uk-form-row">
+                                <label>Описание</label>
+                                <%= f.text_area :description, class: "md-input", cols: 30, rows: 4 %>
+                            </div>
+                            <div class="uk-form-row">
+                                <label>Краткое описание</label>
+                                <%= f.text_area :description, class: "md-input", cols: 20, rows: 4 %>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
 
-										<ul class="list divider-full-bleed">
-										
-											<li class="tile">
-												<a class="tile-content ink-reaction" href="#2">
-													<div class="tile-icon">
-														<img src="<%= @product.avatar_url %>" alt="">
-													</div>
-													<div class="tile-text"><%= @product.avatar %></div>
-												</a>
-												<a class="btn btn-flat ink-reaction" href="#">Удалить</a>												
-											</li>
-										
-										</ul>
-
-										<p class="text-lg">Другие изображения</p>
-
-										<%= file_field_tag  "images[]", type: :file, multiple: true, class: "btn blue-madison", id: "tab_images_uploader_pickfiles" %>
-
-										<ul class="list divider-full-bleed">
-										<% @product_attachments.each do |product_attachment| %>
-											<li class="tile">
-												<a class="tile-content ink-reaction" href="#2">
-													<div class="tile-icon">
-														<img src="<%= product_attachment.image.thumb %>" alt="">
-													</div>
-													<div class="tile-text"><%= product_attachment.image.thumb %></div>
-												</a>
-												<%= link_to 'Удалить', product_attachment, method: :delete, data: { confirm: 'Вы уверены ?' }, class: "btn btn-flat ink-reaction" %>
-												
-											</li>
-										<% end %>	
-										</ul>
-
-										
-									</div>
-									<div class="tab-pane" id="seo">
-										<div class="row">
-											<div class="form-group">
-												<label for="regular13" class="col-sm-3 control-label">Title</label>
-												<div class="col-sm-9">
-													<%= f.text_area :seo_title, class: "form-control" %>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="regular13" class="col-sm-3 control-label">Description</label>
-												<div class="col-sm-9">
-													<%= f.text_area :seo_description, class: "form-control" %>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label for="regular13" class="col-sm-3 control-label">Keywords</label>
-												<div class="col-sm-9">
-													<%= f.text_area :seo_keywords, class: "form-control" %>
-												</div>
-											</div>
-										</div>
-										
-									
-								</div>
-							</div>
-							
-							</div><!--end .card-body -->
-							</div><!--end .card -->
-							<% end %>
-								
-							
-					<h2 class="text-primary">Продавец</h2>
-					
-							
-							<!-- BEGIN HORIZONTAL FORM - BASIC ELEMENTS-->
-							<div class="card">
-								<div class="card-body">
-									<form class="form-horizontal" role="form">
-										<div class="form-group">
-											<label for="regular13" class="col-sm-2 control-label">Имя и фамилия</label>
-											<div class="col-sm-10">
-												<p class="text-lg"><%= @product.seller.name %> <%= @product.seller.surname %></p>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="password13" class="col-sm-2 control-label">Статус</label>
-											<div class="col-sm-10">
-												<p class="text-lg"><%= @product.seller.status %></p>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="password13" class="col-sm-2 control-label">Email</label>
-											<div class="col-sm-10">
-												<p class="text-lg"><%= @product.seller.email %></p>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="password13" class="col-sm-2 control-label">Phone</label>
-											<div class="col-sm-10">
-												<p class="text-lg"><%= @product.seller.phone %></p>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="password13" class="col-sm-2 control-label">Skype</label>
-											<div class="col-sm-10">
-												<p class="text-lg"><%= @product.seller.skype %></p>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="password13" class="col-sm-2 control-label">Город</label>
-											<div class="col-sm-10">
-												<p class="text-lg"><%= @product.seller.sity %></p>
-											</div>
-										</div>
-									</form>
-									</div><!--end .card-body -->
-									</div><!--end .card -->
-									
-
-													
-																									</div><!--end .section-body -->
-																								</section>
-																							</div>
+            <div class="md-card">
+                <div class="md-card-content">
+                    <h3 class="heading_a">SEO</h3>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <div class="uk-form-row">
+                                <label>Title</label>
+                                <%= f.text_area :seo_title, class: "md-input", cols: 30, rows: 4 %>
+                            </div>
+                            <div class="uk-form-row">
+                                <label>Description</label>
+                                <%= f.text_area :seo_description, class: "md-input", cols: 20, rows: 4 %>
+                            </div>
+                            <div class="uk-form-row">
+                                <label>Keywords</label>
+                                <%= f.text_area :seo_keywords, class: "md-input", cols: 20, rows: 4 %>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+             <div class="md-fab-wrapper">
+                <a class="md-btn" href="/administrator/products/">Назад</a>
+                <%= f.submit(class: "md-btn md-btn-success", value: "Обновить") %>
+            </div>
+        <% end %>
+    </div>
+</div>

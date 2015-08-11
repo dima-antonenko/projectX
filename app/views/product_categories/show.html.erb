@@ -27,13 +27,60 @@
                 </div>
                 <!-- ./category-slider -->
                 <!-- subcategories -->
-                <div class="subcategories">
-                    <ul>
-                     
-                        <% @product_category.product_categories.each do |product_category| %>
-                            <li><%= link_to product_category.name, product_category_path(product_category) %></li>
-                        <% end %>
-                    </ul>
+                <div class="cat-short-desc">
+                    <div class="desc-text text-left">
+                        <p>
+                            Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula. Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Vestibulum sed ante. Donec sagittis euismod purus. Sed ut perspiciatis sit voluptatem accusantim doloremque laudantim.
+                        </p>
+                    </div>
+                    <div class="cat-short-desc-products">
+                        <ul class="row">
+                            <li class="col-sm-3">
+                                <div class="product-container">
+                                    <div class="product-thumb">
+                                    <a href="#"><img src="/main/assets/data/sub-cat1.jpg" alt="Product"></a>
+                                    </div>
+                                    <h5 class="product-name">
+                                        <a href="#">Sub category 1</a>
+                                        
+                                    </h5>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="product-container">
+                                    <div class="product-thumb">
+                                    <a href="#"><img src="/main/assets/data/sub-cat2.jpg" alt="Product"></a>
+                                    </div>
+                                    <h5 class="product-name">
+                                        <a href="#">Sub category 2</a>
+                                       
+                                    </h5>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="product-container">
+                                    <div class="product-thumb">
+                                    <a href="#"><img src="/main/assets/data/sub-cat3.jpg" alt="Product"></a>
+                                    </div>
+                                    <h5 class="product-name">
+                                        <a href="#">Sub category 3</a>
+                                        
+                                    </h5>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="product-container">
+                                    <div class="product-thumb">
+                                    <a href="#"><img src="/main/assets/data/sub-cat4.jpg" alt="Product"></a>
+                                    </div>
+                                    <h5 class="product-name">
+                                        <a href="#">Sub category 4</a>
+                                        
+                                    </h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- ./subcategories -->
                 <!-- view-product-list-->
