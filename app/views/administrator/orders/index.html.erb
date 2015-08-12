@@ -1,0 +1,141 @@
+ <div id="page_content">
+        <div id="page_content_inner">
+
+            <div class="uk-width-medium-8-10 uk-container-center reset-print">
+                <div class="uk-grid uk-grid-collapse" data-uk-grid-margin>
+                    <div class="uk-width-large-7-10">
+                        <div class="md-card md-card-single main-print" id="invoice">
+                            <div id="invoice_preview"></div>
+                            <div id="invoice_form"></div>
+                        </div>
+                    </div>
+                    <div class="uk-width-large-3-10 hidden-print uk-visible-large">
+                        <div class="md-list-outside-wrapper">
+                            <ul class="md-list md-list-outside invoices_list" id="invoices_list">
+                                <% @orders.each do |order| %>
+                                    <li>
+                                        <a href="#" class="md-list-content" data-invoice-id="1">
+                                            <span class="md-list-heading uk-text-truncate">Заказ <%= order.id %> <span class="uk-text-small uk-text-muted"><%= order.created_at.to_date %></span></span>
+                                            <span class="uk-text-small uk-text-muted"><%= "#{order.name} #{order.surname}" %></span>
+                                        </a>
+                                    </li>
+                                <% end %>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+ <script id="invoice_template" type="text/x-handlebars-template">
+        <div class="md-card-toolbar">
+            <div class="md-card-toolbar-actions hidden-print">
+                <i class="md-icon material-icons" id="invoice_print">&#xE8ad;</i>
+                <div class="md-card-dropdown" data-uk-dropdown>
+                    <i class="md-icon material-icons">&#xE5D4;</i>
+                    <div class="uk-dropdown uk-dropdown-flip uk-dropdown-small">
+                        <ul class="uk-nav">
+                            <li><a href="#">Отметить</a></li>
+                            <li><a href="#" class="uk-text-danger">Удалить</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <h3 class="md-card-toolbar-heading-text large" id="invoice_name">
+                Заказ # 1
+            </h3>
+        </div>
+        <div class="md-card-content">
+            <div class="uk-margin-medium-bottom">
+                <span class="uk-text-muted uk-text-small uk-text-italic">Дата:</span> 01.08.2015 15:45
+                <br/>
+                <span class="uk-text-muted uk-text-small uk-text-italic">Статус:</span> обрабатывается продавцом
+            </div>
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-small-3-5">
+                    <div class="uk-margin-bottom">
+                        <span class="uk-text-muted uk-text-small uk-text-italic">Контакты продавца:</span>
+                        <address>
+                            <p>Иван Иванов</p>
+                            <p>г. Москва, ул. Красноармейская, д. 1</p>
+                            <p>Телефон: +7 123 456 78</p>
+                            <p>Skype: +7 123 456 78</p>
+                        </address>
+                    </div>
+                    <div class="uk-margin-medium-bottom">
+                        <span class="uk-text-muted uk-text-small uk-text-italic">Контакты покупателя:</span>
+                        <address>
+                            <p>Иван Иванов</p>
+                            <p>г. Москва, ул. Красноармейская, д. 1</p>
+                            <p>Телефон: +7 123 456 78</p>
+                            <p>Skype: +7 123 456 78</p>
+                        </address>
+                    </div>
+                </div>
+                <div class="uk-width-small-2-5">
+                    <span class="uk-text-muted uk-text-small uk-text-italic">Сумма заказа:</span>
+                    <p class="heading_b uk-text-success">2500.0 $</p>
+                    <p class="uk-text-small uk-text-muted uk-margin-top-remove">Способ доставки: самовывоз</p>
+                </div>
+            </div>
+            <div class="uk-grid uk-margin-large-bottom">
+                <div class="uk-width-1-1">
+                    <table class="uk-table">
+                        <thead>
+                        <tr class="uk-text-upper">
+                            <th>Название</th>
+                            <th>Цена</th>
+                            <th class="uk-text-center">Количество</th>
+                            <th class="uk-text-center">Стоимость</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="uk-table-middle">
+                                <td>
+                                    <span class="uk-text-large">Тестовый образец 1</span><br/>
+                                    <span class="uk-text-muted uk-text-small">краткое описание здесь</span>
+                                </td>
+                                <td>
+                                    1000 $
+                                </td>
+                                <td class="uk-text-center">
+                                    2
+                                </td>
+                                <td class="uk-text-center">
+                                    2000 $
+                                </td>
+                            </tr>
+                            <tr class="uk-table-middle">
+                                <td>
+                                    <span class="uk-text-large">Тестовый образец 2</span><br/>
+                                    <span class="uk-text-muted uk-text-small">краткое описание здесь</span>
+                                </td>
+                                <td>
+                                    500 $
+                                </td>
+                                <td class="uk-text-center">
+                                    1
+                                </td>
+                                <td class="uk-text-center">
+                                    500 $
+                                </td>
+                            </tr>                      
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+                    <span class="uk-text-muted uk-text-small uk-text-italic">Продавец</span>
+                    <p class="uk-margin-top-remove">
+                        Состояние счета: 4500 $
+                    </p>
+                    <p class="uk-text-small">до выплаты не хватает 1500$</p>
+                </div>
+            </div>
+        </div>
+ </script>

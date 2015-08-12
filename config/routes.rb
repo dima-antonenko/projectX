@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   namespace :administrator do
     resources :products
     resources :product_categories
+    resources :orders
   end
   get '/administrator', to: 'administrator#dashboard'
 
