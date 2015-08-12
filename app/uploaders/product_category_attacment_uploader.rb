@@ -33,7 +33,7 @@ class ProductCategoryAttacmentUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :admin do
-    process :resize_to_fill => [50, 50]
+    process resize_to_fill: [240,240]
   end
 
   version :normal do

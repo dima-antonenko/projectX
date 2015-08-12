@@ -12,19 +12,7 @@
                         <div class="uk-float-right">
                             <input type="checkbox" data-switchery checked name="product_edit_active_control" id="product_edit_active_control" />
                         </div>
-                        <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Одобрено администратором</label>
-                    </div>
-                    <div class="md-card-content">
-                        <div class="uk-float-right">
-                            <input type="checkbox" data-switchery checked name="product_edit_active_control" id="product_edit_active_control" />
-                        </div>
                         <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Отображать главной странице</label>
-                    </div>
-                    <div class="md-card-content">
-                        <div class="uk-float-right">
-                            <input type="checkbox" data-switchery checked name="product_edit_active_control" id="product_edit_active_control" />
-                        </div>
-                        <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Отображать саитбаре</label>
                     </div>
                 </div>
                 <div class="md-card">
@@ -35,7 +23,7 @@
                     </div>
                     <div class="md-card-content">
                         <div class="uk-margin-bottom uk-text-center uk-position-relative">
-                            <img src="<%# @product_category.avatar.url(:thumb) %>" alt="" class="img_medium"/>
+                            <img src="<%= @product_category.avatar.url(:admin) %>" alt="" class="img_medium"/>
                         </div>
                     </div>
                 </div>
@@ -53,7 +41,7 @@
                                 <!-- <button type="button" class="uk-modal-close uk-close uk-close-alt uk-position-absolute"></button> -->
                                 <%= link_to '', attacment, method: :delete, data: { confirm: 'Вы уверены ?' }, class: "uk-modal-close uk-close uk-close-alt uk-position-absolute" %>
                                 <% # button_to , attacment, method: :delete, data: { confirm: 'Вы уверены ?' }, class: "uk-modal-close uk-close uk-close-alt uk-position-absolute" %>
-                                <img src="<%# attacment.image.thumb %>" alt="" class="img_small"/>
+                                <img src="<%= attacment.image.admin %>" alt="" class="img_small"/>
                             </li>
                           <% end %>  
                         </ul>
@@ -131,7 +119,7 @@
             </div>
         </div>
              <div class="md-fab-wrapper">
-                <a class="md-btn" href="/administrator/products/">Назад</a>
+                <a class="md-btn" href="/administrator/product_categories/">Назад</a>
                 <%= f.submit(class: "md-btn md-btn-success", value: "Обновить") %>
             </div>
         <% end %>
