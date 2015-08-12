@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   resources :orders
 
   resources :line_items
@@ -12,6 +11,10 @@ Rails.application.routes.draw do
   resources :sellers
 
   
+
+  resources :post_categories do
+    resources :posts
+  end 
 
   resources :product_categories do
     resources :products
@@ -27,6 +30,8 @@ Rails.application.routes.draw do
     resources :products
     resources :product_categories
     resources :orders
+    resources :posts
+    resources :post_categories
   end
   get '/administrator', to: 'administrator#dashboard'
 

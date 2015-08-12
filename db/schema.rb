@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808075436) do
+ActiveRecord::Schema.define(version: 20150812052953) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -46,6 +46,46 @@ ActiveRecord::Schema.define(version: 20150808075436) do
     t.string   "responcse_status", default: "data_processing"
     t.boolean  "viewed_seller",    default: false
   end
+
+  create_table "post_categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "seo_title"
+    t.string   "seo_description"
+    t.string   "seo_keywords"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "post_categories", ["description"], name: "index_post_categories_on_description"
+  add_index "post_categories", ["name"], name: "index_post_categories_on_name"
+  add_index "post_categories", ["seo_description"], name: "index_post_categories_on_seo_description"
+  add_index "post_categories", ["seo_keywords"], name: "index_post_categories_on_seo_keywords"
+  add_index "post_categories", ["seo_title"], name: "index_post_categories_on_seo_title"
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "post_category_id"
+    t.string   "name"
+    t.text     "content"
+    t.text     "lead"
+    t.boolean  "to_main_page",     default: false
+    t.string   "avatar"
+    t.string   "seo_title"
+    t.string   "seo_description"
+    t.string   "seo_keywords"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "posts", ["avatar"], name: "index_posts_on_avatar"
+  add_index "posts", ["content"], name: "index_posts_on_content"
+  add_index "posts", ["lead"], name: "index_posts_on_lead"
+  add_index "posts", ["name"], name: "index_posts_on_name"
+  add_index "posts", ["post_category_id"], name: "index_posts_on_post_category_id"
+  add_index "posts", ["seo_description"], name: "index_posts_on_seo_description"
+  add_index "posts", ["seo_keywords"], name: "index_posts_on_seo_keywords"
+  add_index "posts", ["seo_title"], name: "index_posts_on_seo_title"
+  add_index "posts", ["to_main_page"], name: "index_posts_on_to_main_page"
 
   create_table "product_attacments", force: :cascade do |t|
     t.integer  "product_id"
