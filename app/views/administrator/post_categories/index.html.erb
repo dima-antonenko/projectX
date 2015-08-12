@@ -1,0 +1,40 @@
+<div id="page_content">
+        <div id="page_content_inner">
+
+            <h3 class="heading_b uk-margin-bottom">Категории записей</h3>
+
+            <div class="md-card uk-margin-medium-bottom">
+                <div class="md-card-content">
+                    <div class="uk-overflow-container">
+                        <table class="uk-table uk-table-hover">
+                            <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Количество записей</th>
+                                <th>Количество записей</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% @post_categories.each do |category| %>
+                                <tr>
+                                    <td><%= link_to category.name, edit_administrator_post_category_path(category) %></td>
+                                      
+                                    <td><%= category.posts.count %></td>
+                                    <td>
+                                        <%= link_to "Удалить", administrator_post_category_path(category), method: :delete, data: { confirm: 'Удалить категорию ?' } %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+           
+        </div>
+    </div>
+
+     <div class="md-fab-wrapper">
+                <a class="md-btn md-btn-success" href="/administrator/post_categories/new">Добавить</a>
+            </div>
