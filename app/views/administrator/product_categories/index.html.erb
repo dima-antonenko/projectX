@@ -1,51 +1,88 @@
-<div id="content">
-				<section>
-					
-					<div class="section-body contain-lg">
+<div id="page_content">
+        <div id="page_content_inner">
 
-						<!-- BEGIN INTRO -->
-						<div class="row">
-							<div class="col-lg-12">
-								<h1 class="text-primary">Все категории</h1>
-							</div><!--end .col -->
-						</div><!--end .row -->
-						<!-- END INTRO -->
+            <div class="md-card">
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin="">
+                        <div class="uk-width-medium-3-10">
+                            <label for="product_search_name">Название</label>
+                            <input type="text" class="md-input" id="product_search_name">
+                        </div>
+                        <div class="uk-width-medium-1-10">
+                            <label for="product_search_price">Цена</label>
+                            <input type="text" class="md-input" id="product_search_price">
+                        </div>
+                        <div class="uk-width-medium-3-10">
+                            <div class="uk-margin-small-top">
+                                <select id="product_search_status" data-md-selectize multiple data-md-selectize-bottom>
+                                    <option value="">Статус</option>
+                                    <option value="1">В наличии</option>
+                                    <option value="2">Под заказ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-1-10">
+                            <div class="uk-margin-top uk-text-nowrap">
+                                <input type="checkbox" name="product_search_active" id="product_search_active" data-md-icheck/>
+                                <label for="product_search_active" class="inline-label">Опубликован</label>
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-2-10 uk-text-center">
+                            <a href="#" class="md-btn md-btn-primary uk-margin-small-top">Искать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-						<!-- BEGIN RESPONSIVE TABLE 1 -->
-						<div class="row">
-							
-							<div class="col-lg-12">
-								<div class="card">
-									<div class="card-body">
-										<div class="table-responsive">
-											<table class="table no-margin">
-												<thead>
-													<tr>
-														<th>id</th>
-														<th>Название</th>
-														
-														<th></th>
-													</tr>
-												</thead>
-												<tbody>
-													<% @product_categories.each do |category| %>
-													<tr>
-														<td><%= category.id %></td>
-														<td><%= link_to category.name, edit_administrator_product_category_path(category)
-														 %></td>
-														
-														<td><%= link_to 'Удалить', administrator_product_category_path(category), method: :delete, data: { confirm: 'Удалить проект ?' } %></td>
-													</tr>
-													<% end %>
-												</tbody>
-											</table>
-										</div><!--end .table-responsive -->
-									</div><!--end .card-body -->
-								</div><!--end .card -->
-							</div><!--end .col -->
-						</div><!--end .row -->
-						<!-- END RESPONSIVE TABLE 1 -->
+            <div class="md-card">
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1">
+                            <div class="uk-overflow-container">
+                                <table class="uk-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Изображение</th>
+                                            <th>Название</th>
+                                            <th>Родитель</th>
+                                            <th>На главной</th>
+                                            <th>Действие</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <% @product_categories.each do |category| %>
+                                        <tr>
+                                            <td><img class="img_thumb" src="<%= category.avatar.admin %>" alt=""></td>
+                                            <td class="uk-text-large uk-text-nowrap"><a href="<%= edit_administrator_product_category_path(category.id) %>"><%= category.name %></a></td>
+                                            <td class="uk-text-nowrap"> 
+                                            <% if category.product_category != nil %>
+                                                <%= category.product_category.name %>
+                                            <% else %> 
+                                                Родительская категория
+                                            <% end %>   
+                                            </td>
+                                            
+                                           <td>
+                                            <% if category.to_main_page == true %>
+                                                 <i class="material-icons uk-text-success md-24"></i>
+                                            <% else %>
+                                                 <i class="material-icons uk-text-muted md-24">&#xE835;</i>            
+                                            <% end %>            
+                                            </td>
+                                            <td class="uk-text-nowrap">
+                                                <%= link_to "<i class=\"material-icons md-24\">&#xE8F4;</i>".html_safe, administrator_product_category_path(category), method: :delete, data: { confirm: 'Удалить категорию ?' } %>
+                                                <!-- <a href="#"><i class="material-icons md-24">&#xE872;</i></a> -->
+                                            </td>
+                                        </tr>
+                                        <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-					</div>
-				</section>
-			</div>
+        </div>
+    </div>

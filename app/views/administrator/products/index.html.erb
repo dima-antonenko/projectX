@@ -53,7 +53,7 @@
                                     <tbody>
                                       <% @products.each do |product| %>
                                         <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_2.jpg" alt=""></td>
+                                            <td><img class="img_thumb" src="<%= product.avatar.admin %>" alt=""></td>
                                             <td class="uk-text-large uk-text-nowrap"><a href="<%= edit_administrator_product_path(product.id) %>"><%= product.name %></a></td>
                                             <td class="uk-text-nowrap">$ <%= product.price %></td>
                                             <td class="uk-text-nowrap">
@@ -72,24 +72,16 @@
                                             <% end %>            
                                             </td>
                                             <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
+                                                <% # link_to "<i class=\"material-icons md-24\">&#xE8F4;</i>".html_safe, administrator_product_path(product) %>
+                                                <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, administrator_product_path(product), method: :delete, data: { confirm: 'Удалить товар ?' } %>
+                                            
                                             </td>
                                         </tr>
                                         <% end %>
                                     </tbody>
                                 </table>
                             </div>
-                            <ul class="uk-pagination uk-margin-medium-top uk-margin-medium-bottom">
-                                <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
-                                <li class="uk-active"><span>1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><span>&hellip;</span></li>
-                                <li><a href="#">20</a></li>
-                                <li><a href="#"><i class="uk-icon-angle-double-right"></i></a></li>
-                            </ul>
+                            
                         </div>
                     </div>
                 </div>
