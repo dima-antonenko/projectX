@@ -1,0 +1,47 @@
+<div id="page_content">
+        <div id="page_content_inner">
+
+
+
+            <div class="md-card">
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1">
+                            <div class="uk-overflow-container">
+                                <table class="uk-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Название</th>
+                                            <th>
+                                               Страница
+                                            </th>
+                                            <th>Дескриптор</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <% @site_variables.each do |variable| %>
+                                        <tr>
+                                            <td class="uk-text-large uk-text-nowrap"><a href="<%= edit_administrator_site_variable_path(variable) %>"><%= variable.name %></a></td>
+                                            <td>
+                                                <% if variable.static_page != nil %>
+                                                    <%= variable.static_page.name %>
+                                                <% else %>
+                                                    --
+                                                <% end %>
+                                            </td>
+                                            <td><%= variable.descriptor %></td>
+                                        </tr>
+                                        <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="md-fab-wrapper">
+                <a class="md-btn md-btn-success" href="/administrator/site_variables/new">Добавить</a>
+            </div>
+        </div>
+    </div>

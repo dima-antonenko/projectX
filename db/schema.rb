@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812120559) do
+ActiveRecord::Schema.define(version: 20150813161627) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -154,6 +154,18 @@ ActiveRecord::Schema.define(version: 20150812120559) do
   add_index "sellers", ["surname"], name: "index_sellers_on_surname"
   add_index "sellers", ["zip"], name: "index_sellers_on_zip"
 
+  create_table "site_variables", force: :cascade do |t|
+    t.integer "static_page_id"
+    t.string  "name"
+    t.text    "content"
+    t.string  "descriptor"
+  end
+
+  add_index "site_variables", ["content"], name: "index_site_variables_on_content"
+  add_index "site_variables", ["descriptor"], name: "index_site_variables_on_descriptor"
+  add_index "site_variables", ["name"], name: "index_site_variables_on_name"
+  add_index "site_variables", ["static_page_id"], name: "index_site_variables_on_static_page_id"
+
   create_table "sliders", force: :cascade do |t|
     t.string   "name"
     t.string   "descriptor"
@@ -177,5 +189,15 @@ ActiveRecord::Schema.define(version: 20150812120559) do
   add_index "slides", ["image"], name: "index_slides_on_image"
   add_index "slides", ["slider_id"], name: "index_slides_on_slider_id"
   add_index "slides", ["title"], name: "index_slides_on_title"
+
+  create_table "static_pages", force: :cascade do |t|
+    t.string "name"
+    t.text   "content"
+    t.string "descriptor"
+  end
+
+  add_index "static_pages", ["content"], name: "index_static_pages_on_content"
+  add_index "static_pages", ["descriptor"], name: "index_static_pages_on_descriptor"
+  add_index "static_pages", ["name"], name: "index_static_pages_on_name"
 
 end

@@ -52,6 +52,10 @@
                                 <%= f.text_field :name, class: "md-input", cols: 30, rows: 4 %>
                             </div>
                             <div class="uk-form-row">
+                                    <label >Категория</label>
+                                    <%= f.select :post_category_id , PostCategory.all.collect {|category| [category.name, category.id ]},{include_blank: 'Не выбрано'}, {"data-md-selectize ": true } %>
+                            </div>
+                            <div class="uk-form-row">
                                 <label>Содержимое</label>
                                 <%= f.text_area :content, class: "md-input", cols: 30, rows: 4 %>
                             </div>

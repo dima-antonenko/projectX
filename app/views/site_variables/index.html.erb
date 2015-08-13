@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Site Variables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @site_variables.each do |site_variable| %>
+      <tr>
+        <td><%= link_to 'Show', site_variable %></td>
+        <td><%= link_to 'Edit', edit_site_variable_path(site_variable) %></td>
+        <td><%= link_to 'Destroy', site_variable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Site variable', new_site_variable_path %>

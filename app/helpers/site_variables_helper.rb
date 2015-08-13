@@ -1,0 +1,2 @@
+module SiteVariablesHelper
+end

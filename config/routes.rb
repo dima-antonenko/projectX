@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :site_variables
+
+  resources :static_pages
+
   resources :slides
 
   resources :sliders
@@ -39,6 +43,8 @@ Rails.application.routes.draw do
     resources :sliders
     resources :slides
     resources :sellers
+    resources :static_pages
+    resources :site_variables
   end
   get '/administrator', to: 'administrator#dashboard'
 
