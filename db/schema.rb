@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812052953) do
+ActiveRecord::Schema.define(version: 20150812120559) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -153,5 +153,29 @@ ActiveRecord::Schema.define(version: 20150812052953) do
   add_index "sellers", ["status"], name: "index_sellers_on_status"
   add_index "sellers", ["surname"], name: "index_sellers_on_surname"
   add_index "sellers", ["zip"], name: "index_sellers_on_zip"
+
+  create_table "sliders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "descriptor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sliders", ["descriptor"], name: "index_sliders_on_descriptor"
+  add_index "sliders", ["name"], name: "index_sliders_on_name"
+
+  create_table "slides", force: :cascade do |t|
+    t.integer  "slider_id"
+    t.string   "title"
+    t.string   "image"
+    t.string   "descriptor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "slides", ["descriptor"], name: "index_slides_on_descriptor"
+  add_index "slides", ["image"], name: "index_slides_on_image"
+  add_index "slides", ["slider_id"], name: "index_slides_on_slider_id"
+  add_index "slides", ["title"], name: "index_slides_on_title"
 
 end

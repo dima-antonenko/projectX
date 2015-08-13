@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :slides
+
+  resources :sliders
+
   resources :orders
 
   resources :line_items
@@ -32,6 +36,8 @@ Rails.application.routes.draw do
     resources :orders
     resources :posts
     resources :post_categories
+    resources :sliders
+    resources :slides
   end
   get '/administrator', to: 'administrator#dashboard'
 
