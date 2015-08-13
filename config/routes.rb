@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :post_categories
     resources :sliders
     resources :slides
+    resources :sellers
   end
   get '/administrator', to: 'administrator#dashboard'
 
