@@ -1,4 +1,4 @@
-class ProductAttacmentController < ApplicationController
+class ProductAttacmentsController < ApplicationController
   before_action :set_product_attacment, only: [:show, :edit, :update, :destroy]
 
   # GET /product_attacments
@@ -7,17 +7,13 @@ class ProductAttacmentController < ApplicationController
     @product_attacments = ProductAttacment.all
   end
 
-  # GET /product_attacments/1
-  # GET /product_attacments/1.json
-  def show
-  end
-
-  # GET /product_attacments/new
+ 
+  
   def new
     @product_attacment = ProductAttacment.new
   end
 
-  # GET /product_attacments/1/edit
+  
   def edit
   end
 
@@ -28,7 +24,7 @@ class ProductAttacmentController < ApplicationController
 
     respond_to do |format|
       if @product_attacment.save
-        format.html { redirect_to @product_attacment, notice: 'Product attacment was successfully created.' }
+        format.html { redirect_to :back, notice: 'Product attacment was successfully created.' }
         format.json { render :show, status: :created, location: @product_attacment }
       else
         format.html { render :new }
@@ -37,26 +33,13 @@ class ProductAttacmentController < ApplicationController
     end
   end
 
-  # PATCH/PUT /product_attacments/1
-  # PATCH/PUT /product_attacments/1.json
-  def update
-    respond_to do |format|
-      if @product_attacment.update(product_attacment_params)
-        format.html { redirect_to @product_attacment, notice: 'Product attacment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product_attacment }
-      else
-        format.html { render :edit }
-        format.json { render json: @product_attacment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  
 
-  # DELETE /product_attacments/1
-  # DELETE /product_attacments/1.json
+ 
   def destroy
     @product_attacment.destroy
     respond_to do |format|
-      format.html { redirect_to product_attacments_url, notice: 'Product attacment was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Product attacment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

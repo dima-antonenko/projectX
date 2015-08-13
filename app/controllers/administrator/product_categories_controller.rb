@@ -38,7 +38,7 @@ class Administrator::ProductCategoriesController < AdministratorController
             ProductCategoryAttacment.create(product_category_id: @product_category.id, image: image)
           end
         end
-        format.html { redirect_to edit_administrator_product_category_path(@product_category) , notice: 'Проект добавлен' }
+        format.html { redirect_to edit_administrator_product_category_path(@product_category) , notice: 'Запись добавлена' }
         format.json { render :show, status: :created, location: @product_category }
       else
         format.html { render :new }
@@ -85,8 +85,9 @@ class Administrator::ProductCategoriesController < AdministratorController
   private
 
   def product_category_params
-    params.require(:product_category).permit(:avatar, :name, :description, :avatar, :to_main_page, :product_category_id,
-      :seo_title, :seo_description, :seo_keywords)
+    params.require(:product_category).permit(:name, :description, :avatar, :to_main_page, :product_category_id,
+     :seo_title, :seo_description, :seo_keywords
+    )
 
   end
 

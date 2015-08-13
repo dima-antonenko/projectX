@@ -85,8 +85,8 @@ class Administrator::ProductsController < AdministratorController
   private
 
   def product_params
-    params.require(:product).permit(:avatar, :product_category_id, :name, :description, :short_description, :price, :old_price,
-      :sku, :avability, :qty, :best_seller_product, :status, :seo_title, :seo_description, :seo_keywords)
+    params.require(:product).permit(:name, :description, :short_description, :avatar, :price, :old_price, :avability, :qty,  :to_main_page, :product_category_id,
+     :seo_title, :seo_description, :seo_keywords)
 
   end
 
