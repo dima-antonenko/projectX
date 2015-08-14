@@ -28,7 +28,7 @@ class ProductCategoryAttacmentsController < ApplicationController
 
     respond_to do |format|
       if @product_category_attacment.save
-        format.html { redirect_to @product_category_attacment, notice: 'Product category attacment was successfully created.' }
+        format.html { redirect_to :back, notice: 'Product category attacment was successfully created.' }
         format.json { render :show, status: :created, location: @product_category_attacment }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ProductCategoryAttacmentsController < ApplicationController
   def update
     respond_to do |format|
       if @product_category_attacment.update(product_category_attacment_params)
-        format.html { redirect_to @product_category_attacment, notice: 'Product category attacment was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Product category attacment was successfully updated.' }
         format.json { render :show, status: :ok, location: @product_category_attacment }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ProductCategoryAttacmentsController < ApplicationController
   def destroy
     @product_category_attacment.destroy
     respond_to do |format|
-      format.html { redirect_to product_category_attacments_url, notice: 'Product category attacment was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Информация обновлена' }
       format.json { head :no_content }
     end
   end

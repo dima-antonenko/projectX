@@ -60,8 +60,8 @@ class Administrator::PostsController < AdministratorController
   private
 
   def post_params
-      params.require(:post).permit(:title, :content, :text, :content, :avatar,
-        :seo_title, :seo_description, :seo_keywords, :to_main_page)
+      params.require(:post).permit(:post_category_id, :name, :content, :lead, :to_main_page, :avatar, :seo_title, :seo_description,
+        :seo_keywords)
   end
 
   def set_post

@@ -60,8 +60,7 @@ class Administrator::SlidersController < AdministratorController
   private
 
   def slider_params
-      params.require(:slider).permit(:title, :content, :text, :content, :avatar,
-        :seo_title, :seo_description, :seo_keywords, :to_main_page)
+      params.require(:slider).permit(:name, :descriptor)
   end
 
   def set_slider

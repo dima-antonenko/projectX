@@ -24,7 +24,7 @@ class Administrator::SiteVariablesController < AdministratorController
 
     respond_to do |format|
       if @site_variable.save
-        format.html { redirect_to '/administrator/site_variables', notice: 'Информация обновлена' }
+        format.html { redirect_to :back, notice: 'Информация обновлена' }
         format.json { render :show, status: :created, location: @site_variable }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class Administrator::SiteVariablesController < AdministratorController
   def update
     respond_to do |format|
       if @site_variable.update(site_variable_params)
-        format.html { redirect_to '/administrator/site_variables', notice: 'Информация обновлена' }
+        format.html { redirect_to :back, notice: 'Информация обновлена' }
         format.json { render :show, status: :ok, location: @site_variable }
       else
         format.html { render :edit }
@@ -52,7 +52,7 @@ class Administrator::SiteVariablesController < AdministratorController
   def destroy
     @site_variable.destroy
     respond_to do |format|
-      format.html { redirect_to '/administrator/site_variables', notice: 'Информация обновлена' }
+      format.html { redirect_to :back, notice: 'Информация обновлена' }
       format.json { head :no_content }
     end
   end
@@ -60,8 +60,7 @@ class Administrator::SiteVariablesController < AdministratorController
   private
 
   def site_variable_params
-      params.require(:site_variable).permit(:title, :content, :text, :content, :avatar,
-        :seo_title, :seo_description, :seo_keywords, :to_main_page)
+      params.require(:site_variable).permit(:static_page_id, :name, :content, :descriptor)
   end
 
   def set_site_variable

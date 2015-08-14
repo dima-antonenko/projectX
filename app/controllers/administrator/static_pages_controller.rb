@@ -60,8 +60,7 @@ class Administrator::StaticPagesController < AdministratorController
   private
 
   def static_page_params
-      params.require(:static_page).permit(:title, :content, :text, :content, :avatar,
-        :seo_title, :seo_description, :seo_keywords, :to_main_page)
+      params.require(:static_page).permit(:name, :content, :descriptor)
   end
 
   def set_static_page

@@ -18,7 +18,7 @@ class Administrator::ProductsController < AdministratorController
   def new
     @product = Product.new
     
-    @product_attachment = @product.product_attachments.build
+   # @product_attachments = @product.product_attachments.build
   end
 
 
