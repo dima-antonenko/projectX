@@ -1,193 +1,195 @@
 <div id="page_content">
         <div id="page_content_inner">
 
-            <div class="md-card">
-                <div class="md-card-content">
-                    <div class="uk-grid" data-uk-grid-margin="">
-                        <div class="uk-width-medium-3-10">
-                            <label for="product_search_name">Product Name</label>
-                            <input type="text" class="md-input" id="product_search_name">
-                        </div>
-                        <div class="uk-width-medium-1-10">
-                            <label for="product_search_price">Price</label>
-                            <input type="text" class="md-input" id="product_search_price">
-                        </div>
-                        <div class="uk-width-medium-3-10">
-                            <div class="uk-margin-small-top">
-                                <select id="product_search_status" data-md-selectize multiple data-md-selectize-bottom>
-                                    <option value="">Status</option>
-                                    <option value="1">In stock</option>
-                                    <option value="2">Out of stock</option>
-                                    <option value="3">Ships in 3-5 days</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="uk-width-medium-1-10">
-                            <div class="uk-margin-top uk-text-nowrap">
-                                <input type="checkbox" name="product_search_active" id="product_search_active" data-md-icheck/>
-                                <label for="product_search_active" class="inline-label">Active</label>
-                            </div>
-                        </div>
-                        <div class="uk-width-medium-2-10 uk-text-center">
-                            <a href="#" class="md-btn md-btn-primary uk-margin-small-top">Filter</a>
+            <!-- statistics (small charts) -->
+            <div class="uk-grid uk-grid-width-large-1-5 uk-grid-width-medium-1-2 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin>
+                <div>
+                    <div class="md-card">
+                        <div class="md-card-content">
+                            <div class="uk-float-right uk-margin-top uk-margin-small-right"></div>
+                            <span class="uk-text-muted uk-text-small">Посетителей за сегодня</span>
+                            <h2 class="uk-margin-remove"><span class="countUpMe">100</span></h2>
                         </div>
                     </div>
                 </div>
+
+                <div>
+                    <div class="md-card">
+                        <div class="md-card-content">
+                            <div class="uk-float-right uk-margin-top uk-margin-small-right"></div>
+                            <span class="uk-text-muted uk-text-small">Посетителей за неделю</span>
+                            <h2 class="uk-margin-remove"><span class="countUpMe">1000</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="md-card">
+                        <div class="md-card-content">
+                            <div class="uk-float-right uk-margin-top uk-margin-small-right"></div>
+                            <span class="uk-text-muted uk-text-small">Продаж за неделю</span>
+                            <h2 class="uk-margin-remove"><span class="countUpMe">100</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="md-card">
+                        <div class="md-card-content">
+                            <div class="uk-float-right uk-margin-top uk-margin-small-right"></div>
+                            <span class="uk-text-muted uk-text-small">Доход за неделю</span>
+                            <h2 class="uk-margin-remove"><span class="countUpMe"> 10 000.$</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="md-card">
+                        <div class="md-card-content">
+                            <div class="uk-float-right uk-margin-top uk-margin-small-right"></div>
+                            <span class="uk-text-muted uk-text-small">Новых продавцов </span>
+                            <h2 class="uk-margin-remove"><span class="countUpMe"> 7</span></h2>
+                        </div>
+                    </div>
+                </div>
+            
             </div>
 
-            <div class="md-card">
-                <div class="md-card-content">
-                    <div class="uk-grid" data-uk-grid-margin>
-                        <div class="uk-width-1-1">
-                            <div class="uk-overflow-container">
-                                <table class="uk-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Product Name</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th>Status</th>
-                                            <th>Active</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_2.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Qui voluptatem distinctio repudiandae.</a></td>
-                                            <td class="uk-text-nowrap">$ 489.00</td>
-                                            <td>51</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-danger">Out of stock</span></td>
-                                            <td><i class="material-icons uk-text-muted md-24">&#xE835;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_2.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Necessitatibus aliquam modi adipisci.</a></td>
-                                            <td class="uk-text-nowrap">$ 507.00</td>
-                                            <td>32</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-muted">Ships in 3-5 days</span></td>
-                                            <td><i class="material-icons uk-text-success md-24">&#xE834;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_3.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Quia rerum fugit.</a></td>
-                                            <td class="uk-text-nowrap">$ 595.00</td>
-                                            <td>65</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-success">In stock</span></td>
-                                            <td><i class="material-icons uk-text-muted md-24">&#xE835;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_3.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Omnis autem magni a.</a></td>
-                                            <td class="uk-text-nowrap">$ 496.00</td>
-                                            <td>77</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-muted">Ships in 3-5 days</span></td>
-                                            <td><i class="material-icons uk-text-success md-24">&#xE834;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_1.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Vel officia et repudiandae.</a></td>
-                                            <td class="uk-text-nowrap">$ 550.00</td>
-                                            <td>14</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-danger">Out of stock</span></td>
-                                            <td><i class="material-icons uk-text-muted md-24">&#xE835;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_1.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Odio at itaque.</a></td>
-                                            <td class="uk-text-nowrap">$ 529.00</td>
-                                            <td>73</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-success">In stock</span></td>
-                                            <td><i class="material-icons uk-text-success md-24">&#xE834;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_1.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Ullam voluptatibus nostrum.</a></td>
-                                            <td class="uk-text-nowrap">$ 456.00</td>
-                                            <td>64</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-danger">Out of stock</span></td>
-                                            <td><i class="material-icons uk-text-muted md-24">&#xE835;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_1.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Dolor quia nulla.</a></td>
-                                            <td class="uk-text-nowrap">$ 526.00</td>
-                                            <td>65</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-success">In stock</span></td>
-                                            <td><i class="material-icons uk-text-muted md-24">&#xE835;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_1.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Quas nihil in quas.</a></td>
-                                            <td class="uk-text-nowrap">$ 523.00</td>
-                                            <td>75</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-danger">Out of stock</span></td>
-                                            <td><i class="material-icons uk-text-success md-24">&#xE834;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img class="img_thumb" src="/altair/assets/img/ecommerce/s6_edge_1.jpg" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="ecommerce_product_details.html">Enim ut voluptas.</a></td>
-                                            <td class="uk-text-nowrap">$ 598.00</td>
-                                            <td>83</td>
-                                            <td class="uk-text-nowrap"><span class="uk-badge uk-badge-success">In stock</span></td>
-                                            <td><i class="material-icons uk-text-muted md-24">&#xE835;</i></td>
-                                            <td class="uk-text-nowrap">
-                                                <a href="ecommerce_product_details.html"><i class="material-icons md-24">&#xE8F4;</i></a>
-                                                <a href="#"><i class="material-icons md-24">&#xE872;</i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <ul class="uk-pagination uk-margin-medium-top uk-margin-medium-bottom">
-                                <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
-                                <li class="uk-active"><span>1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><span>&hellip;</span></li>
-                                <li><a href="#">20</a></li>
-                                <li><a href="#"><i class="uk-icon-angle-double-right"></i></a></li>
+
+            <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
+               
+                <div class="uk-width-large-1-2">
+
+                    <div class="md-card">
+                        <div class="md-card-content">
+                         <h3>Ближайшие выплаты</h3>
+                            <ul class="md-list md-list-addon gmap_list" id="map_users_list">
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Продавец 1</span>
+                                        <span class="uk-text-small uk-text-muted">Текущий счет: 20 000$</span>
+                                        <span class="uk-text-small uk-text-muted">Осталось до выплаты: 5 000$</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Продавец 2</span>
+                                        <span class="uk-text-small uk-text-muted">Текущий счет: 10 000$</span>
+                                        <span class="uk-text-small uk-text-muted">Осталось до выплаты: 15 000$</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Продавец 3</span>
+                                        <span class="uk-text-small uk-text-muted">Текущий счет: 20 000$</span>
+                                        <span class="uk-text-small uk-text-muted">Осталось до выплаты: 5 000$</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Продавец 4</span>
+                                        <span class="uk-text-small uk-text-muted">Текущий счет: 10 000$</span>
+                                        <span class="uk-text-small uk-text-muted">Осталось до выплаты: 15 000$</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Продавец 5</span>
+                                        <span class="uk-text-small uk-text-muted">Текущий счет: 20 000$</span>
+                                        <span class="uk-text-small uk-text-muted">Осталось до выплаты: 5 000$</span>
+                                    </div>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
+                    
+                </div>
+                 <div class="uk-width-large-1-2">
+
+                    <div class="md-card">
+                        <div class="md-card-content">
+                         <h3>Недавно добавленные товары</h3>
+                            <ul class="md-list md-list-addon gmap_list" id="map_users_list">
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Товар 1</span>
+                                        <span class="uk-text-small uk-text-muted">Категория: категория 1</span>
+                                        <span class="uk-text-small uk-text-muted">Цена: 5 000$</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Товар 2</span>
+                                        <span class="uk-text-small uk-text-muted">Категория: категория 2</span>
+                                        <span class="uk-text-small uk-text-muted">Цена: 5 000$</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Товар 3</span>
+                                        <span class="uk-text-small uk-text-muted">Категория: категория 3</span>
+                                        <span class="uk-text-small uk-text-muted">Цена: 5 000$</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Товар 4</span>
+                                        <span class="uk-text-small uk-text-muted">Категория: категория 4</span>
+                                        <span class="uk-text-small uk-text-muted">Цена: 5 000$</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <img class="md-user-image md-list-addon-avatar" src="/altair/assets/img/avatars/avatar_01_tn.png" alt=""/>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading">Товар 5</span>
+                                        <span class="uk-text-small uk-text-muted">Категория: категория 1</span>
+                                        <span class="uk-text-small uk-text-muted">Цена: 5 000$</span>
+                                    </div>
+                                </li>
+
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 

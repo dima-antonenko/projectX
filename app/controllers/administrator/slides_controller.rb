@@ -24,7 +24,7 @@ class Administrator::SlidesController < AdministratorController
 
     respond_to do |format|
       if @slide.save
-        format.html { redirect_to '/administrator/slides', notice: 'Информация обновлена' }
+        format.html { redirect_to '/administrator/sliders', notice: 'Информация обновлена' }
         format.json { render :show, status: :created, location: @slide }
       else
         format.html { render :new }
@@ -52,7 +52,7 @@ class Administrator::SlidesController < AdministratorController
   def destroy
     @slide.destroy
     respond_to do |format|
-      format.html { redirect_to '/administrator/slides', notice: 'Информация обновлена' }
+      format.html { redirect_to '/administrator/sliders', notice: 'Информация обновлена' }
       format.json { head :no_content }
     end
   end
