@@ -53,7 +53,10 @@ Rails.application.routes.draw do
   end
 
   get '/administrator', to: 'administrator#dashboard'
+
   get '/seller', to: 'seller#dashboard'
+  get '/seller/seller_edit', to: 'seller#seller_edit'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
