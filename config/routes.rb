@@ -46,7 +46,14 @@ Rails.application.routes.draw do
     resources :static_pages
     resources :site_variables
   end
+
+  namespace :seller do
+    resources :products
+    resources :orders
+  end
+
   get '/administrator', to: 'administrator#dashboard'
+  get '/seller', to: 'seller#dashboard'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
