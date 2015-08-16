@@ -17,7 +17,7 @@ class SlideImageUploader < CarrierWave::Uploader::Base
   end
 
    version :normal do
-    process resize_to_fill: [300,366]
+    process resize_to_fill: [900,450]
   end
 
   version :admin do

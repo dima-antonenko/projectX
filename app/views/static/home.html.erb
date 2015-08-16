@@ -7,9 +7,9 @@
             <div class="col-sm-9 header-top-right">
                 <div class="homeslider">
                     <ul id="contenhomeslider">
-                      <li><img alt="Funky roots" src="/main/assets/data/slide-option2.jpg" title="Funky roots" /></li>
-                      <li><img alt="Funky roots" src="/main/assets/data/slide-option2.jpg" title="Funky roots" /></li>
-                      <li><img  alt="Funky roots" src="/main/assets/data/slide-option2.jpg" title="Funky roots" /></li>
+                    <% @slider.slides.each do |slide| %>
+                      <li><img alt="Funky roots" src="<%= slide.image.normal %>" title="Funky roots" /></li>
+                    <% end %>
                     </ul>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="div-2" >
                         <a href="#">
-                            <img src="/main/assets/data/cate-product4.png" alt="Electronics" class="hot-cate-img" />
+                            <img src="/data/cate-product1.png" alt="Electronics" class="hot-cate-img" />
                         </a>
                     </div>
                     
@@ -54,7 +54,7 @@
                     </div>
                     <div class="div-2" >
                         <a href="#">
-                            <img src="/main/assets/data/cate-product4.png" alt="Electronics" class="hot-cate-img" />
+                            <img src="/data/cate-product5.png" alt="Electronics" class="hot-cate-img" />
                         </a>
                     </div>
                     
@@ -78,7 +78,7 @@
                     </div>
                     <div class="div-2" >
                         <a href="#">
-                            <img src="/main/assets/data/cate-product4.png" alt="Electronics" class="hot-cate-img" />
+                            <img src="/data/cate-product4.png" alt="Electronics" class="hot-cate-img" />
                         </a>
                     </div>
                     
@@ -102,7 +102,7 @@
                     </div>
                     <div class="div-2" >
                         <a href="#">
-                            <img src="/main/assets/data/cate-product4.png" alt="Electronics" class="hot-cate-img" />
+                            <img src="/data/cate-product3.png" alt="Electronics" class="hot-cate-img" />
                         </a>
                     </div>
                     
@@ -137,14 +137,14 @@
 
                         <li>
                             <div class="left-block">
-                                <a href="#"><img class="img-responsive" alt="product" src="/main/assets/data/p44.jpg" /></a>
+                                <a href="#"><img class="img-responsive" alt="product" src="/data/bs1.jpg" /></a>
                                 
                                 <div class="add-to-cart">
                                     <a title="Купить" href="#">Купить</a>
                                 </div>
                             </div>
                             <div class="right-block">
-                                <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                <h5 class="product-name"><a href="#">Товар 1</a></h5>
                                 <div class="content_price">
                                     <span class="price product-price">$38,95</span>
                                 </div>
@@ -152,14 +152,14 @@
                         </li>
                         <li>
                             <div class="left-block">
-                                <a href="#"><img class="img-responsive" alt="product" src="/main/assets/data/ld8.jpg" /></a>
+                                <a href="#"><img class="img-responsive" alt="product" src="/data/bs2.jpg" /></a>
                                 
                                 <div class="add-to-cart">
                                     <a title="Купить" href="#">Купить</a>
                                 </div>
                             </div>
                             <div class="right-block">
-                                <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                <h5 class="product-name"><a href="#">Товар 2</a></h5>
                                 <div class="content_price">
                                     <span class="price product-price">$38,95</span>
                                 </div>
@@ -167,30 +167,14 @@
                         </li>
                         <li>
                             <div class="left-block">
-                                <a href="#"><img class="img-responsive" alt="product" src="/main/assets/data/ld6.jpg" /></a>
+                                <a href="#"><img class="img-responsive" alt="product" src="/data/bs3.jpg" /></a>
                                 
                                 <div class="add-to-cart">
                                     <a title="Купить" href="#">Купить</a>
                                 </div>
                             </div>
                             <div class="right-block">
-                                <h5 class="product-name"><a href="#">Название товара</a></h5>
-                                <div class="content_price">
-                                    <span class="price product-price">$38,95</span>
-                                    <span class="price old-price">$52,00</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="left-block">
-                                <a href="#"><img class="img-responsive" alt="product" src="/main/assets/data/ld4.jpg" /></a>
-                                
-                                <div class="add-to-cart">
-                                    <a title="Купить" href="#">Купить</a>
-                                </div>
-                            </div>
-                            <div class="right-block">
-                                <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                <h5 class="product-name"><a href="#">Товар 3</a></h5>
                                 <div class="content_price">
                                     <span class="price product-price">$38,95</span>
                                     <span class="price old-price">$52,00</span>
@@ -199,14 +183,30 @@
                         </li>
                         <li>
                             <div class="left-block">
-                                <a href="#"><img class="img-responsive" alt="product" src="/main/assets/data/p48.jpg" /></a>
+                                <a href="#"><img class="img-responsive" alt="product" src="/data/bs4.jpg" /></a>
                                 
                                 <div class="add-to-cart">
                                     <a title="Купить" href="#">Купить</a>
                                 </div>
                             </div>
                             <div class="right-block">
-                                <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                <h5 class="product-name"><a href="#">Товар 4</a></h5>
+                                <div class="content_price">
+                                    <span class="price product-price">$38,95</span>
+                                    <span class="price old-price">$52,00</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left-block">
+                                <a href="#"><img class="img-responsive" alt="product" src="/data/bs2.jpg" /></a>
+                                
+                                <div class="add-to-cart">
+                                    <a title="Купить" href="#">Купить</a>
+                                </div>
+                            </div>
+                            <div class="right-block">
+                                <h5 class="product-name"><a href="#">Товар 5</a></h5>
                                 <div class="content_price">
                                     <span class="price product-price">$38,95</span>
                                 </div>
@@ -275,7 +275,7 @@
                                 <div class="tab-panel active" id="tab-8">
                                     <div class="box-left">
                                         <div class="banner-img">
-                                            <a href="#"><img src="/main/assets/data/banner-product2.jpg" alt="Banner Product"></a>
+                                            <a href="#"><img src="/data/banner8.jpg" alt="Banner Product"></a>
                                         </div>
                                     </div>
                                     <div class="box-right">
@@ -284,7 +284,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p1.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -305,7 +305,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p2.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -326,7 +326,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p3.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -347,7 +347,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p4.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -368,7 +368,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p5.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -389,7 +389,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p6.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -421,7 +421,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p1.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -442,7 +442,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p2.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -463,7 +463,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p3.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -484,7 +484,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p4.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -505,7 +505,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p5.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -526,7 +526,7 @@
                                                 
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p6.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -605,21 +605,16 @@
                                 <div class="tab-panel active" id="tab-8">
                                     <div class="box-left">
                                         <div class="banner-img">
-                                            <a href="#"><img src="/main/assets/data/banner-product2.jpg" alt="Banner Product"></a>
+                                            <a href="#"><img src="/data/banner6.jpg" alt="Banner Product"></a>
                                         </div>
                                     </div>
                                     <div class="box-right">
                                         <ul class="product-list row">
                                             <li class="col-sm-4">
-                                                <div class="right-block">
-                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
-                                                    <div class="content_price">
-                                                        <span class="price product-price">$38,95</span>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p61.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p1.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -627,19 +622,20 @@
                                                     </div>
                                                     <div class="add-to-cart">
                                                         <a title="Купить" href="#">Купить</a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-block">
+                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                                    <div class="content_price">
+                                                        <span class="price product-price">$38,95</span>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="col-sm-4">
-                                                <div class="right-block">
-                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
-                                                    <div class="content_price">
-                                                        <span class="price product-price">$38,95</span>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p62.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p2.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -647,19 +643,20 @@
                                                     </div>
                                                     <div class="add-to-cart">
                                                         <a title="Купить" href="#">Купить</a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-block">
+                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                                    <div class="content_price">
+                                                        <span class="price product-price">$38,95</span>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="col-sm-4">
-                                                <div class="right-block">
-                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
-                                                    <div class="content_price">
-                                                        <span class="price product-price">$38,95</span>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p63.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p3.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -667,19 +664,20 @@
                                                     </div>
                                                     <div class="add-to-cart">
                                                         <a title="Купить" href="#">Купить</a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-block">
+                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                                    <div class="content_price">
+                                                        <span class="price product-price">$38,95</span>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="col-sm-4">
-                                                <div class="right-block">
-                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
-                                                    <div class="content_price">
-                                                        <span class="price product-price">$38,95</span>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p64.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p4.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -687,19 +685,20 @@
                                                     </div>
                                                     <div class="add-to-cart">
                                                         <a title="Купить" href="#">Купить</a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-block">
+                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                                    <div class="content_price">
+                                                        <span class="price product-price">$38,95</span>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="col-sm-4">
-                                                <div class="right-block">
-                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
-                                                    <div class="content_price">
-                                                        <span class="price product-price">$38,95</span>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p65.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p5.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -707,20 +706,20 @@
                                                     </div>
                                                     <div class="add-to-cart">
                                                         <a title="Купить" href="#">Купить</a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-block">
+                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                                    <div class="content_price">
+                                                        <span class="price product-price">$38,95</span>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="col-sm-4">
-                                                <div class="right-block">
-                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
-                                                    <div class="content_price">
-                                                        <span class="price product-price">$38,95</span>
-                                                        <span class="price old-price">$52,00</span>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="left-block">
                                                     <a href="#">
-                                                    <img class="img-responsive" alt="product" src="/main/assets/data/p66.jpg" /></a>
+                                                    <img class="img-responsive" alt="product" src="/data/p6.jpg" /></a>
                                                     <div class="quick-view">
                                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -728,6 +727,12 @@
                                                     </div>
                                                     <div class="add-to-cart">
                                                         <a title="Купить" href="#">Купить</a>
+                                                    </div>
+                                                </div>
+                                                <div class="right-block">
+                                                    <h5 class="product-name"><a href="#">Название товара</a></h5>
+                                                    <div class="content_price">
+                                                        <span class="price product-price">$38,95</span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -876,16 +881,13 @@
                 <ul class="owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":4}}'>
                     <li>
                         <div class="post-thumb image-hover2">
-                            <a href="#"><img src="/main/assets/data/blog1.jpg" alt="Blog"></a>
+                            <a href="#"><img src="/data/blog1.jpg" alt="Blog"></a>
                         </div>
                         <div class="post-desc">
                             <h5 class="post-title">
-                                <a href="#">Заголвок новости</a>
+                                <a href="#">Новость 1</a>
                             </h5>
-                            <div class="post-meta">
-                                <span class="date">February 27, 2015</span>
-                                
-                            </div>
+                            
                             <div class="readmore">
                                 <a href="#">Подробнее</a>
                             </div>
@@ -893,16 +895,12 @@
                     </li>
                     <li>
                         <div class="post-thumb image-hover2">
-                            <a href="#"><img src="/main/assets/data/blog2.jpg" alt="Blog"></a>
+                            <a href="#"><img src="/data/blog2.jpg" alt="Blog"></a>
                         </div>
                         <div class="post-desc">
-                            <h5 class="post-title">
-                                <a href="#">Заголвок новости</a>
+                             <h5 class="post-title">
+                                <a href="#">Новость 2</a>
                             </h5>
-                            <div class="post-meta">
-                                <span class="date">February 27, 2015</span>
-                                
-                            </div>
                             <div class="readmore">
                                 <a href="#">Подробнее</a>
                             </div>
@@ -910,16 +908,12 @@
                     </li>
                     <li>
                         <div class="post-thumb image-hover2">
-                            <a href="#"><img src="/main/assets/data/blog3.jpg" alt="Blog"></a>
+                            <a href="#"><img src="/data/blog3.jpg" alt="Blog"></a>
                         </div>
                         <div class="post-desc">
-                            <h5 class="post-title">
-                                <a href="#">Big sales this summer</a>
+                             <h5 class="post-title">
+                                <a href="#">Новость 3</a>
                             </h5>
-                            <div class="post-meta">
-                                <span class="date">February 27, 2015</span>
-                                
-                            </div>
                             <div class="readmore">
                                 <a href="#">Подробнее</a>
                             </div>
@@ -927,16 +921,12 @@
                     </li>
                     <li>
                         <div class="post-thumb image-hover2">
-                            <a href="#"><img src="/main/assets/data/blog4.jpg" alt="Blog"></a>
+                            <a href="#"><img src="/data/blog4.jpg" alt="Blog"></a>
                         </div>
                         <div class="post-desc">
-                            <h5 class="post-title">
-                                <a href="#">How to shop with us</a>
+                             <h5 class="post-title">
+                                <a href="#">Новость 4</a>
                             </h5>
-                            <div class="post-meta">
-                                <span class="date">February 27, 2015</span>
-                                
-                            </div>
                             <div class="readmore">
                                 <a href="#">Подробнее</a>
                             </div>
@@ -951,3 +941,4 @@
     </div>
 </div>
 
+</div>
