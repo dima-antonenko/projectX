@@ -1,32 +1,7 @@
 Seller.create!([
   {name: "Иван", surname: "Иванов", email: "ivanov@test.ru", skype: "skype_ivanov", phone: "+7 123 456 78", zip: "192837", sity: "Москва", avatar: nil, status: "status", info: "info"}
 ])
-Cart.create!([
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {}
-])
+
 LineItem.create!([
   {product_id: 1, cart_id: 15, quantity: 1, order_id: nil},
   {product_id: 1, cart_id: 20, quantity: 1, order_id: nil},
