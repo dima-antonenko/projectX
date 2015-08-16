@@ -4,7 +4,12 @@
     <!-- MAIN HEADER -->
     <div class="container main-header">
         <div class="row">
-            <div class="col-xs-4 col-sm-12 col-md-5 col-lg-4 header-search-box">
+           
+
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 logo">
+                <a href="/"><img alt="Kute Shop" src="/main/assets/data/option5/logo.png" /></a>
+            </div>
+             <div class="col-xs-4 col-sm-12 col-md-5 col-lg-4 header-search-box">
                 <form class="form-inline">
                       <div class="form-group input-serach">
                         <input type="text"  placeholder="Поиск ... ">
@@ -12,56 +17,46 @@
                       <button type="submit" class="pull-right btn-search"><i class="fa fa-search"></i></button>
                 </form>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 logo">
-                <a href="index.html"><img alt="Kute Shop" src="/main/assets/data/option5/logo.png" /></a>
-            </div>
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 group-button-header">
                 
                 <div class="btn-cart" id="cart-block">
-                    <a title="My cart" href="cart.html">Cart</a>
-                    <span class="notify notify-right">2</span>
-                    <div class="cart-block">
+                    <a title="My cart" href="cart.html">Корзина</a>
+                    <% if @minicart %>
+                        <span class="notify notify-right"><%= @minicart.line_items.size %></span>
+                        <div class="cart-block">
                         <div class="cart-block-content">
-                            <h5 class="cart-title">2 Items in my cart</h5>
+                            <h5 class="cart-title">Содержимое корзины</h5>
                             <div class="cart-block-list">
                                 <ul>
+                                <% @minicart.line_items.each do |item| %>
                                 <li class="product-info">
                                     <div class="p-left">
                                         <a href="#" class="remove_link"></a>
                                         <a href="#">
-                                        <img class="img-responsive" src="/main/assets/data/product-100x122.jpg" alt="p10">
+                                        <img class="img-responsive" src="<%= item.product.avatar.thumb %>" alt="p10">
                                         </a>
                                     </div>
                                     <div class="p-right">
-                                        <p class="p-name">Donec Ac Tempus</p>
-                                        <p class="p-rice">61,19 €</p>
-                                        <p>Qty: 1</p>
+                                        <p class="p-name"><%= item.product.name %></p>
+                                        <p class="p-rice"><%= item.product.price %></p>
+                                        <p>Qty: <%= item.quantity %></p>
                                     </div>
                                 </li>
-                                <li class="product-info">
-                                    <div class="p-left">
-                                        <a href="#" class="remove_link"></a>
-                                        <a href="#">
-                                        <img class="img-responsive" src="/main/assets/data/product-s5-100x122.jpg" alt="p10">
-                                        </a>
-                                    </div>
-                                    <div class="p-right">
-                                        <p class="p-name">Donec Ac Tempus</p>
-                                        <p class="p-rice">61,19 €</p>
-                                        <p>Qty: 1</p>
-                                    </div>
-                                </li>
+                               <% end %>
                             </ul>
                             </div>
                             <div class="toal-cart">
-                                <span>Total</span>
-                                <span class="toal-price pull-right">122.38 €</span>
+                                <span>Всего: </span>
+                                <span class="toal-price pull-right"><%= @minicart.total_price %> $</span>
                             </div>
                             <div class="cart-buttons">
-                                <a href="order.html" class="btn-check-out">Checkout</a>
+                                <a href="<%= @cart_url %>" class="btn-check-out">Подробнее</a>
                             </div>
                         </div>
                     </div>
+                    <% end %> 
+
+                    
                 </div>
             </div>
         </div>
