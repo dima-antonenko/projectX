@@ -1,5 +1,5 @@
 class AddStatusToProduct < ActiveRecord::Migration
   def change
-  	add_column :products, :string, :status, index: true 
+  	add_column :products, :status, :string, index: true 
   end
 end
