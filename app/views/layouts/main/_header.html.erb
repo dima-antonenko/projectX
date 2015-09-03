@@ -1,239 +1,20 @@
 <div id="header" class="header">
-  
-    <!--/.top-header -->
-    <!-- MAIN HEADER -->
-    <div class="container main-header">
-        <div class="row">
-           
-
-            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 logo">
-                <a href="/"><img alt="Kute Shop" src="/main/assets/data/option5/logo.png" /></a>
-            </div>
-             <div class="col-xs-4 col-sm-12 col-md-5 col-lg-4 header-search-box">
-                <form class="form-inline">
-                      <div class="form-group input-serach">
-                        <input type="text"  placeholder="Поиск ... ">
-                      </div>
-                      <button type="submit" class="pull-right btn-search"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 group-button-header">
-                
-                <div class="btn-cart" id="cart-block">
-                    <a title="My cart" href="cart.html">Корзина</a>
-                    <% if @minicart %>
-                        <span class="notify notify-right"><%= @minicart.line_items.size %></span>
-                        <div class="cart-block">
-                        <div class="cart-block-content">
-                            <h5 class="cart-title">Содержимое корзины</h5>
-                            <div class="cart-block-list">
-                                <ul>
-                                <% @minicart.line_items.each do |item| %>
-                                <li class="product-info">
-                                    <div class="p-left">
-                                        <a href="#" class="remove_link"></a>
-                                        <a href="#">
-                                        <img class="img-responsive" src="<%= item.product.avatar.thumb %>" alt="p10">
-                                        </a>
-                                    </div>
-                                    <div class="p-right">
-                                        <p class="p-name"><%= item.product.name %></p>
-                                        <p class="p-rice"><%= item.product.price %></p>
-                                        <p>Qty: <%= item.quantity %></p>
-                                    </div>
-                                </li>
-                               <% end %>
-                            </ul>
-                            </div>
-                            <div class="toal-cart">
-                                <span>Всего: </span>
-                                <span class="toal-price pull-right"><%= @minicart.total_price %> $</span>
-                            </div>
-                            <div class="cart-buttons">
-                                <a href="<%= @cart_url %>" class="btn-check-out">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    <% end %> 
-
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END MANIN HEADER -->
-    <div id="nav-top-menu" class="nav-top-menu">
+    
+    <div class="top-header">
+        <div class="container">
+            <div id="nav-top-menu" class="nav-top-menu">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3" id="box-vertical-megamenus">
-                    <div class="box-vertical-megamenus">
-                    <h4 class="title">
-                        <span class="btn-open-mobile"><i class="fa fa-bars"></i></span>
-                    </h4>
-                    <div class="vertical-menu-content is-home">
-                        <ul class="vertical-menu-list">
-                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/12.png">Категория 1</a></li>
-                            <li>
-                                <a class="parent" href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/13.png">Категория 2</a>
-                                <div class="vertical-dropdown-menu">
-                                    <div class="vertical-groups col-sm-12">
-                                        <div class="mega-group col-sm-4">
-                                            <h4 class="mega-group-header"><span>Категория 2 - 1</span></h4>
-                                            <ul class="group-link-default">
-                                                <li><a href="#">Категория 2 - 1 - 1</a></li>
-                                                <li><a href="#">Категория 2 - 1 - 2</a></li>
-                                                <li><a href="#">Категория 2 - 1 - 3</a></li>
-                                                <li><a href="#">Категория 2 - 1 - 4</a></li>
-                                                <li><a href="#">Категория 2 - 1 - 5</a></li>
-                                                <li><a href="#">Категория 2 - 1 - 6</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="mega-group col-sm-4">
-                                            <h4 class="mega-group-header"><span>Категория 3 - 1</span></h4>
-                                            <ul class="group-link-default">
-                                                <li><a href="#">Категория 3 - 1 - 1</a></li>
-                                                <li><a href="#">Категория 3 - 1 - 2</a></li>
-                                                <li><a href="#">Категория 3 - 1 - 3</a></li>
-                                                <li><a href="#">Категория 3 - 1 - 4</a></li>
-                                                <li><a href="#">Категория 3 - 1 - 5</a></li>
-                                                <li><a href="#">Категория 3 - 1 - 6</a></li>
-                                            </ul>
-                                        </div>
-                                       
-                                        <div class="mega-group col-sm-4">
-                                           <h4 class="mega-group-header"><span>Категория 4 - 1</span></h4>
-                                            <ul class="group-link-default">
-                                                <li><a href="#">Категория 4 - 1 - 1</a></li>
-                                                <li><a href="#">Категория 4 - 1 - 2</a></li>
-                                                <li><a href="#">Категория 4 - 1 - 3</a></li>
-                                                <li><a href="#">Категория 4 - 1 - 4</a></li>
-                                                <li><a href="#">Категория 4 - 1 - 5</a></li>
-                                                <li><a href="#">Категория 4 - 1 - 6</a></li>
-                                            </ul>
-                                        </div>
-                                    
-                                        <div class="mega-custom-html col-sm-12">
-                                            <a href="#"><img src="/main/assets/data/banner-megamenu.jpg" alt="Banner"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/14.png">Категория 3</a></li>
-                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/15.png">Категория 4</a></li>
-                            <li>
-                                <a class="parent" href="#">
-                                <img class="icon-menu" alt="Funky roots" src="/main/assets/data/16.png">Категория 5</a>
-                                <div class="vertical-dropdown-menu">
-                                        <div class="vertical-groups col-sm-12">
-                                            <div class="mega-group col-sm-12">
-                                                <h4 class="mega-group-header"><span>Лучшие предложения</span></h4>
-                                                <div class="row mega-products">
-                                                    <div class="col-sm-3 mega-product">
-                                                        <div class="product-avatar">
-                                                            <a href="#"><img src="/main/assets/data/p10.jpg" alt="product1"></a>
-                                                        </div>
-                                                        <div class="product-name">
-                                                            <a href="#">Название товара</a>
-                                                        </div>
-                                                        <div class="product-price">
-                                                            <div class="new-price">$38</div>
-                                                            <div class="old-price">$45</div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    <div class="col-sm-3 mega-product">
-                                                        <div class="product-avatar">
-                                                            <a href="#"><img src="/main/assets/data/p11.jpg" alt="product1"></a>
-                                                        </div>
-                                                        <div class="product-name">
-                                                            <a href="#">Название товара</a>
-                                                        </div>
-                                                        <div class="product-price">
-                                                            <div class="new-price">$38</div>
-                                                            <div class="old-price">$45</div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    <div class="col-sm-3 mega-product">
-                                                        <div class="product-avatar">
-                                                            <a href="#"><img src="/main/assets/data/p12.jpg" alt="product1"></a>
-                                                        </div>
-                                                        <div class="product-name">
-                                                            <a href="#">Название товара</a>
-                                                        </div>
-                                                        <div class="product-price">
-                                                            <div class="new-price">$38</div>
-                                                            <div class="old-price">$45</div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    <div class="col-sm-3 mega-product">
-                                                        <div class="product-avatar">
-                                                            <a href="#"><img src="/main/assets/data/p13.jpg" alt="product1"></a>
-                                                        </div>
-                                                        <div class="product-name">
-                                                            <a href="#">Название товара</a>
-                                                        </div>
-                                                        <div class="product-price">
-                                                            <div class="new-price">$38</div>
-                                                            <div class="old-price">$45</div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </li>
-                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/17.png">Категория 6</a></li>
-                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/18.png">Категория 7</a></li>
-                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/19.png">Категория 8</a></li>
-                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/20.png">Категория 9</a></li>
-                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/21.png">Категория 10</a></li>
-                            <li>
-                                <a href="#">
-                                    <img class="icon-menu" alt="Funky roots" src="/main/assets/data/21.png">
-                                    Категория 11
-                                </a>
-                            </li>
-                            <li class="cat-link-orther">
-                                <a href="#">
-                                    <img class="icon-menu" alt="Funky roots" src="/main/assets/data/22.png">
-                                    Категория 12
-                                </a>
-                            </li>
-                            <li class="cat-link-orther">
-                                <a href="#">
-                                    <img class="icon-menu" alt="Funky roots" src="/main/assets/data/12.png">Категория 13
-                                </a>
-                            </li>
-                            <li class="cat-link-orther">
-                                <a href="#">
-                                    <img class="icon-menu" alt="Funky roots" src="/main/assets/data/14.png">
-                                    Категория 14
-                                </a>
-                            </li>
-                            <li class="cat-link-orther">
-                            <a href="#"><img class="icon-menu" alt="Funky roots" src="/main/assets/data/17.png">Категория 15</a></li>
-                        </ul>
-                        <div class="all-category"><span class="open-cate">Развернуть</span></div>
-                    </div>
-                </div>
-                </div>
+                
                 <div id="main-menu" class="col-sm-9 main-menu">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                    <i class="fa fa-bars"></i>
-                                </button>
-                                <a class="navbar-brand" href="#">Меню</a>
-                            </div>
+                           
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="/">Главная</a></li>
+                                    <li class="active"><a href="#">Home</a></li>
                                     <li class="dropdown">
-                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Ссылка</a>
+                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Fashion</a>
                                         <ul class="dropdown-menu mega_dropdown" role="menu" style="width: 830px;">
                                             <li class="block-container col-sm-3">
                                                 <ul class="block">
@@ -243,13 +24,13 @@
                                                         </a>
                                                     </li>
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">MEN'S</a>
                                                     </li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
+                                                    <li class="link_container"><a href="#">Skirts</a></li>
+                                                    <li class="link_container"><a href="#">Jackets</a></li>
+                                                    <li class="link_container"><a href="#">Tops</a></li>
+                                                    <li class="link_container"><a href="#">Scarves</a></li>
+                                                    <li class="link_container"><a href="#">Pants</a></li>
                                                 </ul>
                                             </li>
                                              <li class="block-container col-sm-3">
@@ -260,13 +41,13 @@
                                                         </a>
                                                     </li>
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">WOMEN'S</a>
                                                     </li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
+                                                    <li class="link_container"><a href="#">Skirts</a></li>
+                                                    <li class="link_container"><a href="#">Jackets</a></li>
+                                                    <li class="link_container"><a href="#">Tops</a></li>
+                                                    <li class="link_container"><a href="#">Scarves</a></li>
+                                                    <li class="link_container"><a href="#">Pants</a></li>
                                                 </ul>
                                             </li>
                                              <li class="block-container col-sm-3">
@@ -277,13 +58,13 @@
                                                         </a>
                                                     </li>
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Kids</a>
                                                     </li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
+                                                    <li class="link_container"><a href="#">Shoes</a></li>
+                                                    <li class="link_container"><a href="#">Clothing</a></li>
+                                                    <li class="link_container"><a href="#">Tops</a></li>
+                                                    <li class="link_container"><a href="#">Scarves</a></li>
+                                                    <li class="link_container"><a href="#">Accessories</a></li>
                                                 </ul>
                                             </li>
                                              <li class="block-container col-sm-3">
@@ -294,111 +75,110 @@
                                                         </a>
                                                     </li>
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">TRENDING</a>
                                                     </li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
+                                                    <li class="link_container"><a href="#">Men's Clothing</a></li>
+                                                    <li class="link_container"><a href="#">Kid's Clothing</a></li>
+                                                    <li class="link_container"><a href="#">Women's Clothing</a></li>
+                                                    <li class="link_container"><a href="#">Accessories</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Ссылка</a></li>
+                                    <li><a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Sports</a></li>
                                     <li class="dropdown">
-                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Ссылка
-                                        </a>
+                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Foods</a>
                                             <ul class="mega_dropdown dropdown-menu" style="width: 830px;">
                                             <li class="block-container col-sm-3">
                                                 <ul class="block">
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Asian</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Vietnamese Pho</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Noodles</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Seafood</a>
                                                     </li>
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Sausages</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Meat Dishes</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Desserts</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Tops</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Tops</a>
                                                     </li>
                                                 </ul>
                                             </li>
                                             <li class="block-container col-sm-3">
                                                 <ul class="block">
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">European</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Greek Potatoes</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Famous Spaghetti</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Famous Spaghetti</a>
                                                     </li>
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Chicken</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Italian Pizza</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">French Cakes</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Tops</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Tops</a>
                                                     </li>
                                                 </ul>
                                             </li>
                                             <li class="block-container col-sm-3">
                                                 <ul class="block">
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">FAST</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Hamberger</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Pizza</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Noodles</a>
                                                     </li>
                                                     <li class="link_container group_header">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Sandwich</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Salad</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Paste</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Tops</a>
                                                     </li>
                                                     <li class="link_container">
-                                                        <a href="#">Ссылка</a>
+                                                        <a href="#">Tops</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -413,23 +193,25 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Ссылка</a>
+
+                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Digital<span class="notify notify-right">new</span></a>
                                         <ul class="dropdown-menu container-fluid">
                                             <li class="block-container">
                                                 <ul class="block">
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
-                                                    <li class="link_container"><a href="#">Ссылка</a></li>
+                                                    <li class="link_container"><a href="#">Mobile</a></li>
+                                                    <li class="link_container"><a href="#">Tablets</a></li>
+                                                    <li class="link_container"><a href="#">Laptop</a></li>
+                                                    <li class="link_container"><a href="#">Memory Cards</a></li>
+                                                    <li class="link_container"><a href="#">Accessories</a></li>
                                                 </ul>
                                             </li>
                                         </ul> 
                                     </li>
-                                    <li><a href="category.html">Ссылка</a></li>
-                                    <li><a href="category.html">Ссылка</a></li>
-                                    <li><a href="category.html">Ссылка</a></li>
+                                    <li><a href="category.html">Furniture</a></li>
+                                    <li><a href="category.html">Jewelry</a></li>
+                                    <li><a href="category.html">Blog</a></li>
                                 </ul>
+                               
                             </div><!--/.nav-collapse -->
                         </div>
                     </nav>
@@ -447,5 +229,34 @@
                 <div class="shopping-cart-box-ontop-content"></div>
             </div>
         </div>
+    </div>
+        </div>
+    </div>
+   
+   
+
+    <div class="container main-header">
+     
+           <div class="col-xs-3 col-sm-3 col-md-3 ">
+               
+           </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 header-search-box center-block">
+                <form class="form-inline">
+                      <div class="form-group form-category">
+                        <select class="select-category">
+                            <option value="2">Все города</option>
+                            <option value="1">Город 1</option>
+                            <option value="2">Город 2</option>
+                        </select>
+                      </div>
+                      <div class="form-group input-serach">
+                        <input type="text"  placeholder="Введите текст запроса">
+                      </div>
+                      <button type="submit" class="pull-right btn-search"></button>
+                </form>
+            </div>
+
+      
+        
     </div>
 </div>
