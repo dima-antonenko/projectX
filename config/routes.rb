@@ -24,9 +24,9 @@ Rails.application.routes.draw do
     resources :posts
   end 
 
-  resources :product_categories do
-    resources :products
-  end 
+  resources :product_categories
+  resources :products
+
   
   resources :product_attacments
 
