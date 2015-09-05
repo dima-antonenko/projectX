@@ -64,4 +64,5 @@ while i < 5
   else
     MenuItem.create(menu_id: @menu.id, name: "Ссылка #{i}", link: "/")
   end
+  i += 1
 end

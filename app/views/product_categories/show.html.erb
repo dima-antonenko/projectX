@@ -105,7 +105,7 @@
                         <li class="col-sx-12 col-sm-4">
                             <div class="product-container">
                                 <div class="left-block">
-                                    <a href="<%= product_category_product_path(@product_category, product) %>">
+                                    <a href="<%= product_path(product) %>">
                                         <% if product.avatar.normal != nil %>
                                             <img class="img-responsive" alt="product" src="<%= product.avatar.normal %>" />
                                         <% else %>
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="right-block">
                                     <h5 class="product-name">
-                                    <%=  link_to product.name, product_category_product_path(@product_category, product)%>
+                                    <%=  link_to product.name, product_path(product)%>
                                     </h5>
                                     <div class="product-star">
                                         <i class="fa fa-star"></i>
