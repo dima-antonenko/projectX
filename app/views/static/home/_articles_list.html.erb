@@ -1,0 +1,25 @@
+<div class="blog-list">
+            <h2 class="page-heading">
+                <span class="page-heading-title">Последние новости</span>
+            </h2>
+            <div class="blog-list-wapper">
+                <ul class="owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":4}}'>
+                    <% @posts.each do |post| %>
+                    <li>
+                        <div class="post-thumb image-hover2">
+                            <a href="<%= post_path(post) %>"><img src="/data/blog1.jpg" ></a>
+                        </div>
+                        <div class="post-desc">
+                            <h5 class="post-title">
+                                <%= link_to post.name, post_path(post) %>
+                            </h5>
+                            
+                            <div class="readmore">
+                                <%= link_to "Подробнее", post_path(post) %>
+                            </div>
+                        </div>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>

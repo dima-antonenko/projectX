@@ -1,0 +1,27 @@
+<div id="hot-categories" class="row">
+        <% @categories_list.each do |category| %>    
+           <div class="col-sm-6  col-lg-3 cate-box">
+                <div class="cate-tit" >
+                    <div class="div-1" style="width: 46%;">
+                        <div class="cate-name-wrap">
+                            <p class="cate-name"><%= category.name %></p>
+                        </div>
+                        <a href="" class="cate-link" data-ac="flipInX" ><span>подробнее</span></a>
+                    </div>
+                    <div class="div-2" >
+                        <a href="#">
+                            <img src="/data/cate-product1.png" alt="Electronics" class="hot-cate-img" />
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="cate-content">
+                    <ul>
+                        <% category.product_categories.each do |category| %>
+                        <li><%= link_to category.name, product_category_path(category) %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>  
+        <% end %>                                                    
+        </div>

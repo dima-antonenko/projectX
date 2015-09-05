@@ -20,9 +20,8 @@ Rails.application.routes.draw do
 
   
 
-  resources :post_categories do
-    resources :posts
-  end 
+  resources :post_categories
+  resources :posts 
 
   resources :product_categories
   resources :products

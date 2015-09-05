@@ -1,0 +1,30 @@
+<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                
+                <div class="latest-deals-product">
+                    <% @products.each do |list| %>
+                       <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "10" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":5}}'>
+                        <% list.each do |product| %>
+                        <li>
+                            <div class="left-block">
+                                <a href="#"><img class="img-responsive" alt="product" src="/data/bs1.jpg" /></a>
+                                
+                                <div class="add-to-cart">
+                                    <a title="Купить" href="#">Купить</a>
+                                </div>
+                            </div>
+                            <div class="right-block">
+                                <h5 class="product-name"><%= link_to product.name, product_path(product) %></h5>
+                                <div class="content_price">
+                                    <span class="price product-price"><%= product.price %> $</span>
+                                </div>
+                            </div>
+                        </li>
+                        <% end %>
+                    </ul>
+                    <% end %>    
+                </div>
+            </div>
+        </div>
+    </div>

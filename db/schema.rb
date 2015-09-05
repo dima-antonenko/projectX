@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904122717) do
+ActiveRecord::Schema.define(version: 20150905010653) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,6 +30,30 @@ ActiveRecord::Schema.define(version: 20150904122717) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
+
+  create_table "menu_items", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "menu_item_id"
+    t.string  "name"
+    t.string  "descriptor"
+    t.string  "link"
+    t.integer "position"
+  end
+
+  add_index "menu_items", ["descriptor"], name: "index_menu_items_on_descriptor"
+  add_index "menu_items", ["link"], name: "index_menu_items_on_link"
+  add_index "menu_items", ["menu_id"], name: "index_menu_items_on_menu_id"
+  add_index "menu_items", ["menu_item_id"], name: "index_menu_items_on_menu_item_id"
+  add_index "menu_items", ["name"], name: "index_menu_items_on_name"
+  add_index "menu_items", ["position"], name: "index_menu_items_on_position"
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.string "descriptor"
+  end
+
+  add_index "menus", ["descriptor"], name: "index_menus_on_descriptor"
+  add_index "menus", ["name"], name: "index_menus_on_name"
 
   create_table "orders", force: :cascade do |t|
     t.string   "name"
@@ -102,12 +126,14 @@ ActiveRecord::Schema.define(version: 20150904122717) do
     t.text     "description"
     t.string   "avatar"
     t.string   "to_main_page"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.integer  "product_category_id"
     t.string   "seo_title"
     t.string   "seo_description"
     t.string   "seo_keywords"
+    t.boolean  "to_main_page_product_categories_list",       default: false
+    t.integer  "to_main_page_product_categories_list_order", default: 1
   end
 
   add_index "product_categories", ["avatar"], name: "index_product_categories_on_avatar"
