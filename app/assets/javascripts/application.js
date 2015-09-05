@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+
+ $("a#fancyBoxLink").fancybox({
+        'href'   : '#myDivID',
+        'titleShow'  : false,
+        'transitionIn'  : 'elastic',
+        'transitionOut' : 'elastic'
+    });
+
+ });

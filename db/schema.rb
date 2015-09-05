@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905010653) do
+ActiveRecord::Schema.define(version: 20150905205113) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -54,6 +54,24 @@ ActiveRecord::Schema.define(version: 20150905010653) do
 
   add_index "menus", ["descriptor"], name: "index_menus_on_descriptor"
   add_index "menus", ["name"], name: "index_menus_on_name"
+
+  create_table "mini_carts", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "count"
+    t.boolean  "agree_newsletter", default: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "mini_carts", ["agree_newsletter"], name: "index_mini_carts_on_agree_newsletter"
+  add_index "mini_carts", ["count"], name: "index_mini_carts_on_count"
+  add_index "mini_carts", ["email"], name: "index_mini_carts_on_email"
+  add_index "mini_carts", ["name"], name: "index_mini_carts_on_name"
+  add_index "mini_carts", ["phone"], name: "index_mini_carts_on_phone"
+  add_index "mini_carts", ["product_id"], name: "index_mini_carts_on_product_id"
 
   create_table "orders", force: :cascade do |t|
     t.string   "name"

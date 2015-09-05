@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :mini_carts
+
   resources :site_variables
 
   resources :static_pages

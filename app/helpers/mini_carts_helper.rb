@@ -1,0 +1,2 @@
+module MiniCartsHelper
+end

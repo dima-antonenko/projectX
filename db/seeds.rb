@@ -19,12 +19,20 @@ end
 children_category_counter = 0
 
 
+
 # products to main page in product grid
 while i < 35
-  Product.create!([
-                    {product_category_id: @product_category.id, seller_id: 1, name: "Тестовый товар #{i}", price: 5000, old_price: 8000, sku: "1234",
-                     avability: "in_stock",  status: "published", to_main_page: true, count_sales: i, count_views: i * 2, show_in_category_block_to_main_page: true },
-  ])
+
+  @product = Product.new(
+                    product_category_id: @product_category.id, seller_id: 1, name: "Тестовый товар #{i}", price: 5000, old_price: 8000, sku: "1234",
+                     avability: "in_stock",  status: "published", to_main_page: true, count_sales: i, count_views: i * 2,
+                      show_in_category_block_to_main_page: true )
+
+  File.open("public/data/demo/products/avatar#{rand(1..8)}.jpg") do |f|
+      @product.avatar = f
+  end
+
+  @product.save
   i += 1
 end
 
