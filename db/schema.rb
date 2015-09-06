@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905205113) do
+ActiveRecord::Schema.define(version: 20150906220754) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -171,6 +171,14 @@ ActiveRecord::Schema.define(version: 20150905205113) do
   add_index "product_category_attacments", ["image"], name: "index_product_category_attacments_on_image"
   add_index "product_category_attacments", ["product_category_id"], name: "index_product_category_attacments_on_product_category_id"
 
+  create_table "product_tags", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "tag_id"
+  end
+
+  add_index "product_tags", ["product_id"], name: "index_product_tags_on_product_id"
+  add_index "product_tags", ["tag_id"], name: "index_product_tags_on_tag_id"
+
 # Could not dump table "products" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
@@ -245,5 +253,13 @@ ActiveRecord::Schema.define(version: 20150905205113) do
   add_index "static_pages", ["content"], name: "index_static_pages_on_content"
   add_index "static_pages", ["descriptor"], name: "index_static_pages_on_descriptor"
   add_index "static_pages", ["name"], name: "index_static_pages_on_name"
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+  end
+
+  add_index "tags", ["slug"], name: "index_tags_on_slug"
+  add_index "tags", ["title"], name: "index_tags_on_title"
 
 end

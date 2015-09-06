@@ -12,6 +12,9 @@ class Product < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_line_item
 
   has_many :mini_carts
+
+  has_many :product_tags
+  has_many :tags, through: :product_tags
   private
 
   def ensure_not_referenced_by_any_line_item

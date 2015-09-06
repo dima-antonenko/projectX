@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :product_tags
+
+  resources :tags
+
   resources :mini_carts
 
   resources :site_variables
