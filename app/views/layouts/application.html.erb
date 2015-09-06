@@ -34,8 +34,9 @@
 </head>
 <body class="<%= yield(:class) %>">
 <%= render '/layouts/main/header' %>
-
-
+<% if yield(:class) == 'home option6' %>
+<%= render '/static/home/search_area.html.erb' %>
+<% end %>
 <div class="columns-container">
     <div class="container" id="columns">
         <!-- breadcrumb -->

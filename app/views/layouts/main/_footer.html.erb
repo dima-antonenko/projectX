@@ -5,46 +5,49 @@
                 
                 <div class="col-md-9">
                     <div class="row">
+                        
                         <div class="col-sm-3">
-                            <div class="introduce-title">Заголовок 1</div>
+
+                            <div class="introduce-title"><%= @footer_menu0.name %></div>
                             <ul id="introduce-company"  class="introduce-list">
-                                <li><a href="#">Ссылка 1</a></li>
-                                <li><a href="#">Ссылка 2</a></li>
-                                <li><a href="#">Ссылка 3</a></li>
-                                <li><a href="#">Ссылка 4</a></li>
-                                <li><a href="#">Ссылка 5</a></li>
+                                <% @footer_menu0.menu_items.each do |menu_item| %>
+                                  <li><%= link_to menu_item.name, menu_item.link %></li>
+                                <% end %>
                             </ul>
                         </div>
+
                         <div class="col-sm-3">
-                            <div class="introduce-title">Заголовок 2</div>
-                            <ul id = "introduce-Account" class="introduce-list">
-                                <li><a href="#">Ссылка 1</a></li>
-                                <li><a href="#">Ссылка 2</a></li>
-                                <li><a href="#">Ссылка 3</a></li>
-                                <li><a href="#">Ссылка 4</a></li>
-                                <li><a href="#">Ссылка 5</a></li>
+
+                            <div class="introduce-title"><%= @footer_menu1.name %></div>
+                            <ul id="introduce-company"  class="introduce-list">
+                                <% @footer_menu1.menu_items.each do |menu_item| %>
+                                  <li><%= link_to menu_item.name, menu_item.link %></li>
+                                <% end %>
                             </ul>
                         </div>
+
                         <div class="col-sm-3">
-                            <div class="introduce-title">Заголовок 3</div>
-                            <ul id = "introduce-support"  class="introduce-list">
-                                <li><a href="#">Ссылка 1</a></li>
-                                <li><a href="#">Ссылка 2</a></li>
-                                <li><a href="#">Ссылка 3</a></li>
-                                <li><a href="#">Ссылка 4</a></li>
-                                <li><a href="#">Ссылка 5</a></li>
+
+                            <div class="introduce-title"><%= @footer_menu2.name %></div>
+                            <ul id="introduce-company"  class="introduce-list">
+                                <% @footer_menu2.menu_items.each do |menu_item| %>
+                                  <li><%= link_to menu_item.name, menu_item.link %></li>
+                                <% end %>
                             </ul>
                         </div>
+
                         <div class="col-sm-3">
-                            <div class="introduce-title">Заголовок 4</div>
-                            <ul id = "introduce-support"  class="introduce-list">
-                               <li><a href="#">Ссылка 1</a></li>
-                                <li><a href="#">Ссылка 2</a></li>
-                                <li><a href="#">Ссылка 3</a></li>
-                                <li><a href="#">Ссылка 4</a></li>
-                                <li><a href="#">Ссылка 5</a></li>
+
+                            <div class="introduce-title"><%= @footer_menu3.name %></div>
+                            <ul id="introduce-company"  class="introduce-list">
+                                <% @footer_menu3.menu_items.each do |menu_item| %>
+                                  <li><%= link_to menu_item.name, menu_item.link %></li>
+                                <% end %>
                             </ul>
                         </div>
+
+                        
+
                     </div>
                 </div>
                 <div class="col-md-3">

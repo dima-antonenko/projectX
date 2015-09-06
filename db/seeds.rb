@@ -52,3 +52,11 @@ end
     MenuItem.create(menu_id: @menu.id, name: "Ссылка #{i}", link: "/")
   end
 end
+
+#create menus in footer
+4.times do |i|
+  @menu = Menu.create(name: "Меню  в футоре #{i}", descriptor: "footer_menu#{i}")
+  5.times do |k|
+    MenuItem.create(menu_id: @menu.id, name: "Ссылка #{i}", link: "/")
+  end 
+end  
