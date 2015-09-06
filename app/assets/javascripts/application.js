@@ -17,7 +17,7 @@
 
 $(document).ready(function() {
 
- $("a#fancyBoxLink").fancybox({
+ $("a.fancyBoxLink").fancybox({
         'href'   : '#myDivID',
         'titleShow'  : false,
         'transitionIn'  : 'elastic',

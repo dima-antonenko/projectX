@@ -51,7 +51,7 @@
                                 <a href="#"><img src="/data/sub-cat2.jpg" alt="Product"></a>
                             </div>
                             <h5 class="product-name">
-                            <a href="#">>Категория 1 - 2</a>
+                            <a href="#">Категория 1 - 2</a>
                             
                             </h5>
                         </div>
@@ -99,7 +99,7 @@
             
         </div>
         
-        <a href="#myDivID" id="fancyBoxLink">Click me to show this awesome div</a>
+       
         <ul class="row product-list grid">
             <% @products.each do |product| %>
             <li class="col-sx-12 col-sm-4">
@@ -116,8 +116,8 @@
                         
                         <div class="add-to-cart">
                             <!--  <a title="Add to Cart" href="#add">В корзину</a> -->
-                            
-                            <%= button_to 'Купить', line_items_path(product_id: product)%>
+                             <a href="#myDivID" class="fancyBoxLink">Купить</a>
+                            <%# button_to 'Купить', line_items_path(product_id: product)%>
                         </div>
                     </div>
                     <div class="right-block">
@@ -173,46 +173,58 @@
                 </ul>
             </nav>
         </div>
-        <div class="show-product-item">
-            <select name="">
-                <option value="">18</option>
-                <option value="">20</option>
-                <option value="">50</option>
-                <option value="">100</option>
-            </select>
-        </div>
-        <div class="sort-product">
-            <select>
-                <option value="">Название</option>
-                <option value="">Цена</option>
-            </select>
-            <div class="sort-product-icon">
-                <i class="fa fa-sort-alpha-asc"></i>
-            </div>
-        </div>
+        
+       
     </div>
 </div>
 <!-- ./ Center colunm -->
 </div>
 <div style="display:none">
 <div id="myDivID">
-    <%= form_for(@mini_cart) do |f| %>
-    <div class="fields_left">
-        <div class="form_group">
-            <label > Имя <span class="red">*</span></label>
-            <%= f.text_field :name %>
-        </div>
-        <div class="form_group">
-            <label > Телефон  <span class="red">*</span></label>
-            <%= f.text_field :phone %>
-        </div>
-    </div>
-    <div class="fields_right">
-        <div class="form_group">
-            <label > Email </label>
-            <%= f.text_field :email %>
-        </div>
-         <input type="submit" class="sub" value="Отправить" >
-        <% end %>
-    </div>
+    <div class="box-border">
+                <ul>
+                    <p>Товар: Тестовый товар 1</p>
+                    <p>Цена: 5000 $</p>
+                    <p class="subcaption bold">Контакты покупателя</p>
+                      <%= form_for(@mini_cart) do |f| %>
+                    <li class="row">
+
+                        <div class="col-sm-6">
+                            <label for="first_name" class="required">Имя</label>
+                             <%= f.text_field :name, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                        <div class="col-sm-6">
+                            <label for="last_name" class="required">Телефон</label>
+                            <%= f.text_field :phone, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                    </li><!--/ .row -->
+                    <li class="row">
+                        <div class="col-sm-6">
+                            <label for="company_name">Email</label>
+                            <%= f.text_field :email, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                        <div class="col-sm-6">
+                            <label for="email_address" class="required">Подписаться на рассылку</label>
+                             <%= f.select(:agree_newsletter, options_for_select([['Да', true],['Нет', false]], selected: true),{},{class: "input form-control"}) %>
+                        </div><!--/ [col] -->
+                    </li><!--/ .row -->
+                    <li class="row"> 
+                        <div class="col-xs-12">
+
+                            <label for="address" class="required">Адрес</label>
+                            <%= f.text_area :phone, class: "input form-control" %>
+
+                        </div><!--/ [col] -->
+
+                    </li><!-- / .row -->
+
+                    <li>
+                    
+                    <%= f.submit "Оформить заказ", class: "button submit_minicart" %>
+                    </li>
+
+                    <% end %>
+                </ul>
+            </div>
+</div>
 </div>

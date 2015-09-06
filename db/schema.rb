@@ -60,12 +60,14 @@ ActiveRecord::Schema.define(version: 20150905205113) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
+    t.string   "address"
     t.integer  "count"
     t.boolean  "agree_newsletter", default: true
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
+  add_index "mini_carts", ["address"], name: "index_mini_carts_on_address"
   add_index "mini_carts", ["agree_newsletter"], name: "index_mini_carts_on_agree_newsletter"
   add_index "mini_carts", ["count"], name: "index_mini_carts_on_count"
   add_index "mini_carts", ["email"], name: "index_mini_carts_on_email"

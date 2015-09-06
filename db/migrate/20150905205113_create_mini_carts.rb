@@ -5,6 +5,7 @@ class CreateMiniCarts < ActiveRecord::Migration
     t.string :name, index: true
     t.string :email, index: true
     t.string :phone, index: true
+    t.string :address, index: true
     t.integer :count, index: true
     t.boolean :agree_newsletter, default: true, index: true
     t.timestamps null: false
