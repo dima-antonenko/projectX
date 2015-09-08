@@ -66,9 +66,12 @@
                     <div class="uk-grid" data-uk-grid-margin>
                         <div class="uk-width-large-2-2">
                            
-                        <%= f.select :tags_list , ProductCategory.all.collect {|category| [category.name, category.id ]},{include_blank: 'Не выбрано'}, {"multiple": true, id: "selec_adv_1" } %>
+                        <%= f.select(:tags_list, options_for_select(Tag.all.collect {|tag| [tag.title, tag.id ]}, selected: @product.tags.all.collect {|tag| [tag.title, tag.id ]}), {},{"multiple": true, id: "selec_adv_1" }) %>
                         </div>
-                        
+                        <% @product.tags.each do |tag| %>
+                            <%= tag.title %> <br/>
+                        <% end %>
+                        <%= params %>
                     </div>
                 </div>
             </div>
