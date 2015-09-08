@@ -15,6 +15,9 @@ class Product < ActiveRecord::Base
 
   has_many :product_tags
   has_many :tags, through: :product_tags
+
+   attr_accessor :tags_list
+
   private
 
   def ensure_not_referenced_by_any_line_item

@@ -63,7 +63,7 @@ class Administrator::ProductsController < AdministratorController
           end
         end
 
-        format.html { redirect_to :back , notice: 'Информация обновлена' }
+        format.html { redirect_to :back , notice: params }
         format.json { render :index, status: :ok, location: @product }
       else
         format.html { render :update }
@@ -86,7 +86,7 @@ class Administrator::ProductsController < AdministratorController
 
   def product_params
     params.require(:product).permit(:name, :description, :short_description, :avatar, :price, :old_price, :avability, :qty,  :to_main_page, :product_category_id,
-     :seo_title, :seo_description, :seo_keywords)
+     :seo_title, :seo_description, :seo_keywords, :tags_list)
 
   end
 
