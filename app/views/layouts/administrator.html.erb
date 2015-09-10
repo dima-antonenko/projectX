@@ -7,25 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <link rel="icon" type="image/png" href="/altair/assets/img/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="/altair/assets/img/favicon-32x32.png" sizes="32x32">
-
     <title>Project X  -- панель админстратора</title>
 
-
-    <!-- uikit -->
-    <link rel="stylesheet" href="/altair/bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
-
-    <!-- flag icons -->
-    <link rel="stylesheet"href="/altair/assets/icons/flags/flags.min.css" media="all">
-
-    <!-- altair admin -->
-    <link rel="stylesheet" href="/altair/assets/css/main.min.css" media="all">
-
-  <%= stylesheet_link_tag    'administrator', media: 'all', 'data-turbolinks-track' => true%>
-  
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'administrator', media: 'all' %>
+    <%= csrf_meta_tags %>
 
 </head>
 <body class="sidebar_main_open">
@@ -35,7 +20,54 @@
     <%= render '/layouts/administrator/sidebar' %>
     <%= yield %>
 
-    <%= javascript_include_tag 'administrator', 'data-turbolinks-track' => true%>
+    <!-- google web fonts -->
+    <script>
+        WebFontConfig = {
+            google: {
+                families: [
+                    'Source+Code+Pro:400,700:latin',
+                    'Roboto:400,300,500,700,400italic:latin'
+                ]
+            }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+    <!-- momentJS date library -->
+    <script src="/altair/bower_components/moment/min/moment.min.js"></script>
+
+    <!-- common functions -->
+    <script src="/altair/assets/js/common.min.js"></script>
+    <!-- uikit functions -->
+    <script src="/altair/assets/js/uikit_custom.min.js"></script>
+    <!-- altair common functions/helpers -->
+    <script src="/altair/assets/js/altair_admin_common.min.js"></script>
+
+    <!-- page specific plugins -->
+    <!-- ionrangeslider -->
+    <script src="/altair/bower_components/ionrangeslider/js/ion.rangeSlider.min.js"></script>
+    <!-- htmleditor (codeMirror) -->
+    <script src="/altair/assets/js/uikit_htmleditor_custom.min.js"></script>
+    <!-- inputmask-->
+    <script src="/altair/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.min.js"></script>
+
+    <!--  forms advanced functions -->
+    <script src="/altair/assets/js/pages/forms_advanced.js"></script>
+    
+    <!-- enable hires images -->
+    <script>
+        $(function() {
+            altair_helpers.retina_images();
+        });
+    </script>
 
 </body>
 </html>

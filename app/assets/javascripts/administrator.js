@@ -13,22 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-
-
-//= require moment.min.js
-//= require common.min.js
-//= require uikit_custom.min.js
-//= require altair_admin_common.min.js
-//= require handlebars.min.js
-//= require handlebars_helpers.min.js
-//= require page_invoices.min.js
-
-//= require jquery.inputmask.bundle.min.js
-//= require forms_advanced.js
-
-
-
+//= require_tree ./administrator
 
   WebFontConfig = {
             google: {
