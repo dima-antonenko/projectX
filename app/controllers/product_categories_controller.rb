@@ -10,9 +10,16 @@ class ProductCategoriesController < ApplicationController
   # GET /product_categories/1
   # GET /product_categories/1.json
   def show
-    @products = @product_category.products
+    @products = @product_category.products.paginate(:page => params[:page], :per_page => 12)
     @product_category_attacments =  ProductCategoryAttacment.where(product_category_id: @product_category.id)
     @mini_cart = MiniCart.new
+
+
+    #sidebar data
+    @sidebar_product_categories = ProductCategory.where(to_sidebar: true)
+    @sidebar_products           = Product.where(to_sidebar: true)
+    @sidebar_banners            = Banner.where(to_sidebar: true)
+
   end
 
   

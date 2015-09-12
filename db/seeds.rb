@@ -60,3 +60,37 @@ end
     MenuItem.create(menu_id: @menu.id, name: "Ссылка #{i}", link: "/")
   end 
 end  
+
+
+### data in sidebar on product_category
+
+#create tags
+10.times do |t|
+  Tag.create(title: "tag #{t}", slug: "tag #{t}")
+end  
+
+
+#create product_tags
+@products = Product.all
+@tags     = Tag.all.take(2)
+
+@tags.each do |tag|
+  @products.each do |product|
+    ProductTag.create(product_id: product.id, tag_id: tag.id)
+  end  
+end
+
+
+#add products to sidebar
+@products.take(3).each do |product|
+  product.update_attribute(to_sidebar: true)
+end
+
+
+#add banners
+2.times do |t|
+  @banner = Banner.new()
+   File.open("public/data/demo/products/avatar#{rand(1..8)}.jpg") do |f|
+      @product.avatar = f
+  end
+end  

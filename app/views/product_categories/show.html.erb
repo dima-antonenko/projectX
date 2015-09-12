@@ -28,57 +28,25 @@
         <!-- subcategories -->
         <div class="cat-short-desc">
             <div class="desc-text text-left">
-                <p>
-                    Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula. Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Vestibulum sed ante. Donec sagittis euismod purus. Sed ut perspiciatis sit voluptatem accusantim doloremque laudantim.
-                </p>
+                <%= @product_category.description %>
             </div>
             <div class="cat-short-desc-products">
                 <ul class="row">
+                  <% @product_category.product_categories.take(4).each do |category| %>
                     <li class="col-sm-3">
                         <div class="product-container">
                             <div class="product-thumb">
-                                <a href="#"><img src="/data/sub-cat1.jpg" alt="Product"></a>
+                                <a href="#"><img src="<%= category.avatar.sub_cat_list %>"></a>
                             </div>
                             <h5 class="product-name">
-                            <a href="#">Категория 1 - 1</a>
+                            <%= link_to category.name, product_category_path(category) %>
                             
                             </h5>
                         </div>
                     </li>
-                    <li class="col-sm-3">
-                        <div class="product-container">
-                            <div class="product-thumb">
-                                <a href="#"><img src="/data/sub-cat2.jpg" alt="Product"></a>
-                            </div>
-                            <h5 class="product-name">
-                            <a href="#">Категория 1 - 2</a>
-                            
-                            </h5>
-                        </div>
-                    </li>
-                    <li class="col-sm-3">
-                        <div class="product-container">
-                            <div class="product-thumb">
-                                <a href="#"><img src="/data/sub-cat3.jpg" alt="Product"></a>
-                            </div>
-                            <h5 class="product-name">
-                            <a href="#">>Категория 1 - 3</a>
-                            
-                            </h5>
-                        </div>
-                    </li>
-                    <li class="col-sm-3">
-                        <div class="product-container">
-                            <div class="product-thumb">
-                                <a href="#"><img src="/data/sub-cat4.jpg" alt="Product"></a>
-                            </div>
-                            <h5 class="product-name">
-                            <a href="#">>Категория 1 - 4</a>
-                            
-                            </h5>
-                        </div>
-                    </li>
+                  <% end %>  
                 </ul>
+
             </div>
         </div>
         <!-- ./subcategories -->
@@ -87,15 +55,7 @@
             <h2 class="page-heading">
             <span class="page-heading-title"><%= @product_category.name %></span>
             </h2>
-            <ul class="display-product-option">
-                <li class="view-as-grid selected">
-                    <span>grid</span>
-                </li>
-                <li class="view-as-list">
-                    <span>list</span>
-                </li>
-            </ul>
-            <!-- PRODUCT LIST -->
+            
             
         </div>
         
@@ -156,21 +116,14 @@
         <!-- ./PRODUCT LIST -->
     </div>
     <!-- ./view-product-list-->
+   
+
+
     <div class="sortPagiBar">
         <div class="bottom-pagination">
             <nav>
-                <ul class="pagination">
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">Вперед &raquo;</span>
-                        </a>
-                    </li>
-                </ul>
+                 <%= will_paginate @products %>
+               
             </nav>
         </div>
         

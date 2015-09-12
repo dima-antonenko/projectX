@@ -56,7 +56,7 @@ class ProductTagsController < ApplicationController
   def destroy
     @product_tag.destroy
     respond_to do |format|
-      format.html { redirect_to product_tags_url, notice: 'Product tag was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Product tag was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

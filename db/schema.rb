@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906220754) do
+ActiveRecord::Schema.define(version: 20150911234311) do
+
+  create_table "banners", force: :cascade do |t|
+    t.string  "name"
+    t.string  "image"
+    t.string  "descriptor"
+    t.boolean "to_category_sidebar", default: false
+  end
+
+  add_index "banners", ["descriptor"], name: "index_banners_on_descriptor"
+  add_index "banners", ["image"], name: "index_banners_on_image"
+  add_index "banners", ["name"], name: "index_banners_on_name"
+  add_index "banners", ["to_category_sidebar"], name: "index_banners_on_to_category_sidebar"
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -154,6 +166,7 @@ ActiveRecord::Schema.define(version: 20150906220754) do
     t.string   "seo_keywords"
     t.boolean  "to_main_page_product_categories_list",       default: false
     t.integer  "to_main_page_product_categories_list_order", default: 1
+    t.boolean  "to_category_sidebar"
   end
 
   add_index "product_categories", ["avatar"], name: "index_product_categories_on_avatar"

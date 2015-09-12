@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree ./main
 
-/*
+
 
 $(document).ready(function() {
 
@@ -26,6 +26,8 @@ $(document).ready(function() {
         'transitionOut' : 'elastic'
     });
 
+
+ 
+
  });
 
- */

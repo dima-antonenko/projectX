@@ -78,16 +78,7 @@ altair_form_adv = {
                     label     : ''
                 }
             },
-            options: [
-                {id: 1, title: 'Mercury', url: 'http://en.wikipedia.org/wiki/Mercury_(planet)'},
-                {id: 2, title: 'Venus', url: 'http://en.wikipedia.org/wiki/Venus'},
-                {id: 3, title: 'Earth', url: 'http://en.wikipedia.org/wiki/Earth'},
-                {id: 4, title: 'Mars', url: 'http://en.wikipedia.org/wiki/Mars'},
-                {id: 5, title: 'Jupiter', url: 'http://en.wikipedia.org/wiki/Jupiter'},
-                {id: 6, title: 'Saturn', url: 'http://en.wikipedia.org/wiki/Saturn'},
-                {id: 7, title: 'Uranus', url: 'http://en.wikipedia.org/wiki/Uranus'},
-                {id: 8, title: 'Neptune', url: 'http://en.wikipedia.org/wiki/Neptune'}
-            ],
+           
             maxItems: null,
             valueField: 'id',
             labelField: 'title',
