@@ -3,6 +3,13 @@ ProductCategory.destroy_all
 Post.destroy_all
 Menu.destroy_all
 MenuItem.destroy_all
+Tag.destroy_all
+ProductTag.destroy_all
+Banner.destroy_all
+
+
+### main page
+
 
 #one category on main page and children
 @product_category = ProductCategory.create(name: "Категория 1", to_main_page: true)
@@ -64,6 +71,7 @@ end
 
 ### data in sidebar on product_category
 
+
 #create tags
 10.times do |t|
   Tag.create(title: "tag #{t}", slug: "tag #{t}")
@@ -83,14 +91,29 @@ end
 
 #add products to sidebar
 @products.take(3).each do |product|
-  product.update_attribute(to_sidebar: true)
+  product.update_attribute(:to_category_sidebar, true)
 end
 
 
 #add banners
 2.times do |t|
-  @banner = Banner.new()
-   File.open("public/data/demo/products/avatar#{rand(1..8)}.jpg") do |f|
-      @product.avatar = f
+  @banner = Banner.new(name: "category_banner_#{t}", to_category_sidebar: true )
+ 
+  File.open("public/data/demo/banners/category_banner_#{t}.png") do |f|
+      @banner.image = f
   end
+  @banner.save
+end 
+
+
+### add data to products
+@products = Product.all
+
+@products.each do |product|
+ @attachment = ProductAttacment.new(product_id: product.id)
+
+ File.open("public/data/demo/products/avatar#{rand(1..8)}.jpg") do |f|
+      @attachment.image = f
+  end
+ @attachment.save
 end  
