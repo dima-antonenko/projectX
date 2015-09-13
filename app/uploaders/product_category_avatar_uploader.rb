@@ -44,6 +44,10 @@ class ProductCategoryAvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [172, 210]
   end
 
+  version :cat_list_index do
+    process :resize_to_fill => [116, 91]
+  end 
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list

@@ -6,6 +6,19 @@ MenuItem.destroy_all
 Tag.destroy_all
 ProductTag.destroy_all
 Banner.destroy_all
+ProductCategoryAttacment.destroy_all
+ProductAttacment.destroy_all
+StaticPage.destroy_all
+
+@text_lorem = "Довольно часто, планируя купить тюльпаны оптом, мы сталкиваемся с недобросовестной деятельностью многих магазинов, приобретая некачественный и неоригинальный товар. Увы, предугадать, что вырастет из луковиц, невозможно. Именно поэтому осуществлять заказ тюльпанов лучше в специализированных магазинах, таких, как Флориум. У нас вы можете выбрать интересующий вас сорт из богатого ассортимента, приобрести красивые цветы и выращивать на радость себе и окружающим.
+
+В магазине Флориум тюльпаны купить можно самые разнообразные: белой, желтой, розовой, насыщенно-красной, пестрой или темной окраски, овальной, лилиевидной, чашевидной или пионовидной формы, с ровными или бахромчатыми краями. На нашем сайте размещена информация и фотографии, которые помогут вам грамотно выбрать посадочный материал, а также познакомят с методиками выращивания тюльпанов. Кроме того, мы предоставляем нашим клиентам значительные скидки, если они приобретают тюльпаны оптом.
+
+Сделайте свой загородный участок островком красоты, гармонии и хорошего настроения — спешите недорого купить тюльпаны в интернет магазине «Флориум». У нас представлен широкий ассортимент этих цветов, который позволит удовлетворить любого, даже самого взыскательного цветовода.
+
+Тюльпаны - это декоративные растения из семейства лилиевидных, происходящих из степных и полупустынных районов Азии. С точки зрения выращивания цветов с целью продажи тюльпаны уступают только розам и хризантемам. На сегодня известно около 100 тысяч сортов тюльпанов, поделены на 15 групп. Важнейшие из них сорта: Менделя, Рембрандта, гибриды Дарвина, тюльпаны лилевидные и папугайные. На сегодня только 800 видов выращиваются для большой продажи. Росток высотой от 12 до 40 см достигает обычно одним цветком, но также известные сорта с многоцветковыми побегами. У диких тюльпанов цветы одинарные красного, белого или желтого цвета. В случае культурных сортов является возможность получения более богатой палитры цветов.
+
+Период вегетации тюльпанов длится с марта до конца июня. Размножение проходит посредством отделения дочерних луковиц от материнских, что происходит раз в год. Чтобы луковицы тюльпанов успели пустить корни до замерзания почвы, они высаживаются в период между сентябрем и ноябрем. В теплицах эти цветы можно выращивать круглый год. Тюльпаны эффективно развиваются в рыхлой почве с pH, приближенному к нейтральному. Независимо от места разведения, обязателен доступ света, ибо только тогда ростки, цветы вступят верного окраску. В отдельных случаях используются затемненные теплицы."
 
 
 ### main page
@@ -25,7 +38,7 @@ end
   @product = Product.new(
                     product_category_id: @product_category.id, seller_id: 1, name: "Тестовый товар #{i}", price: 5000, old_price: 8000, sku: "1234",
                      avability: "in_stock",  status: "published", to_main_page: true, count_sales: i, count_views: i * 2,
-                      show_in_category_block_to_main_page: true )
+                      show_in_category_block_to_main_page: true, description: @text_lorem )
   File.open("public/data/demo/products/avatar#{rand(1..8)}.jpg") do |f|
       @product.avatar = f
   end
@@ -68,6 +81,13 @@ end
   end 
 end  
 
+#create banner
+@banner = Banner.new(name: "баннер на главной", descriptor: "main_page_category_banner")
+File.open("public/data/demo/banners/main_page_category_banner.jpg") do |f|
+  @banner.image = f
+end
+@banner.save
+
 
 ### data in sidebar on product_category
 
@@ -105,15 +125,58 @@ end
   @banner.save
 end 
 
+#add product_categories
+@product_categories = ProductCategory.all.take(5)
+
+@product_categories.each do |category|
+  category.update_attribute(:to_category_sidebar, true)
+end  
+
+
 
 ### add data to products
+
+
+#add attacments images
 @products = Product.all
 
 @products.each do |product|
+ @product.update_attribute(:description, @text_lorem)
  @attachment = ProductAttacment.new(product_id: product.id)
 
  File.open("public/data/demo/products/avatar#{rand(1..8)}.jpg") do |f|
       @attachment.image = f
-  end
+ end
  @attachment.save
-end  
+end
+
+
+#add data to product categories
+
+
+#add avatars and description
+@product_categories = ProductCategory.all
+
+@product_categories.each do |category|
+  File.open("public/data/demo/product_categories/avatar#{rand(1..6)}.jpg") do |f|
+    category.avatar = f
+  end
+
+  category.description = @text_lorem
+  category.save
+end
+
+#add attacments
+
+@product_categories.each do |category|
+ @attacment = ProductCategoryAttacment.new(product_category_id: category.id)
+
+ File.open("public/data/demo/product_categories/avatar#{rand(1..6)}.jpg") do |f|
+    @attacment.image = f
+ end
+
+ @attacment.save
+end
+
+#add content product_categories#index
+StaticPage.create(name: "Категории товаров", content: @text_lorem, descriptor: "product_categories")  

@@ -4,7 +4,10 @@ class ProductCategoriesController < ApplicationController
   # GET /product_categories
   # GET /product_categories.json
   def index
-    @product_categories = ProductCategory.all
+    @product_categories = ProductCategory.where(
+     product_category: nil).order(:to_main_page_product_categories_list)
+
+    @page = StaticPage.where(descriptor: "product_categories").first
   end
 
   # GET /product_categories/1
@@ -16,9 +19,9 @@ class ProductCategoriesController < ApplicationController
 
 
     #sidebar data
-    @sidebar_product_categories = ProductCategory.where(to_sidebar: true)
-    @sidebar_products           = Product.where(to_sidebar: true)
-    @sidebar_banners            = Banner.where(to_sidebar: true)
+    @sidebar_product_categories = ProductCategory.where(to_category_sidebar: true)
+    @sidebar_products           = Product.where(to_category_sidebar: true)
+    @sidebar_banners            = Banner.where(to_category_sidebar: true)
 
   end
 

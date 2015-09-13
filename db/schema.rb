@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911234311) do
+ActiveRecord::Schema.define(version: 20150912215213) do
 
   create_table "banners", force: :cascade do |t|
     t.string  "name"
     t.string  "image"
     t.string  "descriptor"
     t.boolean "to_category_sidebar", default: false
+    t.string  "link",                default: "/"
   end
 
   add_index "banners", ["descriptor"], name: "index_banners_on_descriptor"

@@ -10,7 +10,7 @@ class StaticController < ApplicationController
     @categories_list = ProductCategory.where(to_main_page_product_categories_list: true,
      product_category: nil).order(:to_main_page_product_categories_list).take(8)
     @posts = Post.where(to_main_page: true).take(4)
-
+    @product_category_banner = Banner.where(descriptor: "main_page_category_banner").first
    
   end
 

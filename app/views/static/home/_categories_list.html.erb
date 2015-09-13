@@ -6,11 +6,11 @@
                         <div class="cate-name-wrap">
                             <p class="cate-name"><%= category.name %></p>
                         </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>подробнее</span></a>
+                        <a href="<%= product_category_path(category) %>" class="cate-link" data-ac="flipInX" ><span>подробнее</span></a>
                     </div>
                     <div class="div-2" >
-                        <a href="#">
-                            <img src="/data/cate-product1.png" alt="Electronics" class="hot-cate-img" />
+                        <a href="<%= product_category_path(category) %>">
+                            <img src="<%= category.avatar.cat_list_index %>"  class="hot-cate-img" />
                         </a>
                     </div>
                     

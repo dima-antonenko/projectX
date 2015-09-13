@@ -79,3 +79,14 @@
 .submit_minicart{
   margin-top: 20px;
 }
+
+.sidebar_product_list{
+  ul{
+    li{
+      width: 100%;
+      float: left;
+      clear: both;
+      position: relative;
+    }
+  }
+}
