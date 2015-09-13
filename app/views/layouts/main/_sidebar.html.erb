@@ -17,9 +17,44 @@
                     </div>
                 </div>
                
+                <div class="block left-module">
+                    <p class="title_block">Горячие предложения</p>
+                    <div class="block_content product-onsale">
+                        <ul class="product-list owl-carousel" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="true">
+                          <% @sidebar_hot_products.each do |product| %>
+                            <li>
+                                <div class="product-container">
+                                    <div class="left-block">
+                                        <a href="#">
+                                            <img class="img-responsive" alt="product" src="<%= product.avatar.thumb %>" />
+                                        </a>
+                                        <div class="price-percent-reduction2">скидка 30%</div>
+                                    </div>
+                                    <div class="right-block">
+                                        <h5 class="product-name"><%= link_to product.name, product_path(product) %></h5>
+                                        <div class="product-star">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                        <div class="content_price">
+                                            <span class="price product-price"><%= product.price %></span>
+                                            <span class="price old-price"><%= product.old_price %></span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                           <% end %>    
+                        </ul>
+                    </div>
+                </div>
+
                 <!-- ./block filter  -->
                  <div class="block left-module sidebar_product_list">
-                    <p class="title_block">Избранные товары</p>
+                    <p class="title_block">Топ продаж</p>
                     <div class="block_content">
                         <ul class="products-block">
                           <% @sidebar_products.each do |product| %> 

@@ -11,6 +11,11 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product_attacments = ProductAttacment.where(product_id: @product.id)
+    #sidebar data
+    @sidebar_product_categories = ProductCategory.where(to_category_sidebar: true)
+    @sidebar_products           = Product.where(to_category_sidebar: true)
+    @sidebar_banners            = Banner.where(to_category_sidebar: true)
+    @sidebar_hot_products       = Product.where(hot_product: true)
   end
 
   # GET /products/new

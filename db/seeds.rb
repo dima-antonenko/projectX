@@ -112,6 +112,7 @@ end
 #add products to sidebar
 @products.take(3).each do |product|
   product.update_attribute(:to_category_sidebar, true)
+  product.update_attribute(:hot_product, true)
 end
 
 
