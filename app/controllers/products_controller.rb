@@ -12,15 +12,15 @@ class ProductsController < ApplicationController
   def show
 
     @seller = @product.seller
-    @seller_reviews = @seller.seller_reviews
+    @seller_reviews = @seller.seller_reviews.all
 
     @product_attacments = ProductAttacment.where(product_id: @product.id)
     @related_products = @product.product_category.products.take(6)
     @seller_products = @product.seller.products.take(6)
 
     #question
-    @question = ProductQuestion.c(product_id: @product.id)
-
+    @question = ProductQuestion.new(params[:question])
+    @question.product_id = @product.id
     #sidebar data
     @sidebar_product_categories = ProductCategory.where(to_category_sidebar: true)
     @sidebar_products           = Product.where(to_category_sidebar: true)
