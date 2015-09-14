@@ -10,7 +10,14 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+
+    @seller = @product.seller
+    @seller_reviews = @seller.seller_reviews
+
     @product_attacments = ProductAttacment.where(product_id: @product.id)
+    @related_products = @product.product_category.products.take(6)
+    @seller_products = @product.seller.products.take(6)
+
     #sidebar data
     @sidebar_product_categories = ProductCategory.where(to_category_sidebar: true)
     @sidebar_products           = Product.where(to_category_sidebar: true)
@@ -18,56 +25,7 @@ class ProductsController < ApplicationController
     @sidebar_hot_products       = Product.where(hot_product: true)
   end
 
-  # GET /products/new
-  def new
-    @product = Product.new
-  end
-
-  # GET /products/1/edit
-  def edit
-  end
-
-  # POST /products
-  # POST /products.json
-  def create
-    @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
-  def update
-    
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /products/1
-  # DELETE /products/1.json
-  def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

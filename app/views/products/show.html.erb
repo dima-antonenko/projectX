@@ -60,10 +60,18 @@
                                     <% end %>   
                                 </div>
                                 <div class="product-desc">
+                                    Теги:
+                                    <% @product.tags.each do |tag| %>
+                                        <%= link_to tag.title, tag_path(tag) %>
+                                    <% end %>
+                                </div>
+                                <div class="product-desc">
                                      <%= button_to 'Купить', line_items_path(product_id: @product),{ class: "btn-add-cart" }%>
                                      <%= button_to 'Купить в 1 клик', line_items_path(product_id: @product),{ class: "btn" }%>
                                      <a href="#" class="ask_link"><i class="fa fa-envelope-o fa-fw"></i>Задать вопрос продавцу</a>
                                 </div>
+
+
 
                                 
                             </div>
@@ -89,39 +97,39 @@
                                     <table class="table table-bordered">
                                         <tr>
                                             <td width="200">Имя</td>
-                                            <td>Иван</td>
+                                            <td><%= @seller.name %></td>
                                         </tr>
                                         <tr>
                                             <td>Фамилия</td>
-                                            <td>Иванов</td>
+                                            <td><%= @seller.surname %></td>
                                         </tr>
                                         <tr>
                                             <td>Email</td>
-                                            <td>Ivanov@test.ru</td>
+                                            <td><%= @seller.email %></td>
                                         </tr>
                                         <tr>
                                             <td>Телефон</td>
-                                            <td>+7 123 456 78</td>
+                                            <td><%= @seller.phone %></td>
                                         </tr>
                                         <tr>
                                             <td>Skype</td>
-                                            <td>ivanov_skype</td>
+                                            <td><%= @seller.skype %></td>
                                         </tr>
                                         <tr>
                                             <td>Город</td>
-                                            <td>Москва</td>
+                                            <td><%= @seller.sity %></td>
                                         </tr>
                                         <tr>
                                             <td>Дата регистрации</td>
-                                            <td>01.01.2015</td>
+                                            <td><%= @seller.created_at.to_date %></td>
                                         </tr>
                                         <tr>
                                             <td>Количество продаж</td>
-                                            <td>50</td>
+                                            <td><%= @seller.sales %></td>
                                         </tr>
                                         <tr>
                                             <td>Процент положительных отзывов</td>
-                                            <td>90%</td>
+                                            <td><%= @seller.good_reviews %>%</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -200,11 +208,12 @@
                         <div class="page-product-box">
                             <h3 class="heading">Похожие товары</h3>
                             <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
+                            <% @related_products.each do |product| %>
                                 <li>
                                     <div class="product-container">
                                         <div class="left-block">
                                             <a href="#">
-                                                <img class="img-responsive" alt="product" src="/main/assets/data/p40.jpg" />
+                                                <img class="img-responsive" alt="product" src="<%= product.avatar.normal %>" />
                                             </a>
                                             
                                             <div class="add-to-cart">
@@ -212,78 +221,16 @@
                                             </div>
                                         </div>
                                         <div class="right-block">
-                                            <h5 class="product-name"><a href="#">Товар 3</a></h5>
+                                            <h5 class="product-name"><%= link_to product.name, product_path(product) %></h5>
                                             
                                             <div class="content_price">
-                                                <span class="price product-price">$38,95</span>
-                                                <span class="price old-price">$52,00</span>
+                                                <span class="price product-price"><%= product.price %> $</span>
+                                                <span class="price old-price"><%= product.old_price %> $</span>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="product-container">
-                                        <div class="left-block">
-                                            <a href="#">
-                                                <img class="img-responsive" alt="product" src="/main/assets/data/p35.jpg" />
-                                            </a>
-                                            
-                                            <div class="add-to-cart">
-                                                <a title="Купить" href="#add">Купить</a>
-                                            </div>
-                                        </div>
-                                        <div class="right-block">
-                                            <h5 class="product-name"><a href="#">Товар 4</a></h5>
-                                            
-                                            <div class="content_price">
-                                                <span class="price product-price">$38,95</span>
-                                                <span class="price old-price">$52,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="product-container">
-                                        <div class="left-block">
-                                            <a href="#">
-                                                <img class="img-responsive" alt="product" src="/main/assets/data/p37.jpg" />
-                                            </a>
-                                            
-                                            <div class="add-to-cart">
-                                                <a title="Купить" href="#add">Купить</a>
-                                            </div>
-                                        </div>
-                                        <div class="right-block">
-                                            <h5 class="product-name"><a href="#">Товар 5</a></h5>
-                                            
-                                            <div class="content_price">
-                                                <span class="price product-price">$38,95</span>
-                                                <span class="price old-price">$52,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="product-container">
-                                        <div class="left-block">
-                                            <a href="#">
-                                                <img class="img-responsive" alt="product" src="/main/assets/data/p39.jpg" />
-                                            </a>
-                                            
-                                            <div class="add-to-cart">
-                                                <a title="Купить" href="#add">Купить</a>
-                                            </div>
-                                        </div>
-                                        <div class="right-block">
-                                            <h5 class="product-name"><a href="#">Товар 6</a></h5>
-                                            
-                                            <div class="content_price">
-                                                <span class="price product-price">$38,95</span>
-                                                <span class="price old-price">$52,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                            <% end %>    
                             </ul>
                         </div>
                         <!-- ./box product -->
@@ -291,11 +238,12 @@
                         <div class="page-product-box">
                             <h3 class="heading">Другие товары этого продавца</h3>
                             <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
-                                <li>
+                             <% @seller_products.each do |product| %>
+                                  <li>
                                     <div class="product-container">
                                         <div class="left-block">
                                             <a href="#">
-                                                <img class="img-responsive" alt="product" src="/main/assets/data/p97.jpg" />
+                                                <img class="img-responsive" alt="product" src="<%= product.avatar.normal %>" />
                                             </a>
                                             
                                             <div class="add-to-cart">
@@ -303,78 +251,16 @@
                                             </div>
                                         </div>
                                         <div class="right-block">
-                                            <h5 class="product-name"><a href="#">Товар 10</a></h5>
+                                            <h5 class="product-name"><%= link_to product.name, product_path(product) %></h5>
                                             
                                             <div class="content_price">
-                                                <span class="price product-price">$38,95</span>
-                                                <span class="price old-price">$52,00</span>
+                                                <span class="price product-price"><%= product.price %> $</span>
+                                                <span class="price old-price"><%= product.old_price %> $</span>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="product-container">
-                                        <div class="left-block">
-                                            <a href="#">
-                                                <img class="img-responsive" alt="product" src="/main/assets/data/p34.jpg" />
-                                            </a>
-                                            
-                                            <div class="add-to-cart">
-                                                <a title="Купить" href="#add">Купить</a>
-                                            </div>
-                                        </div>
-                                        <div class="right-block">
-                                            <h5 class="product-name"><a href="#">Товар 11</a></h5>
-                                            
-                                            <div class="content_price">
-                                                <span class="price product-price">$38,95</span>
-                                                <span class="price old-price">$52,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="product-container">
-                                        <div class="left-block">
-                                            <a href="#">
-                                                <img class="img-responsive" alt="product" src="/main/assets/data/p36.jpg" />
-                                            </a>
-                                            
-                                            <div class="add-to-cart">
-                                                <a title="Купить" href="#add">Купить</a>
-                                            </div>
-                                        </div>
-                                        <div class="right-block">
-                                            <h5 class="product-name"><a href="#">Товар 12</a></h5>
-                                            
-                                            <div class="content_price">
-                                                <span class="price product-price">$38,95</span>
-                                                <span class="price old-price">$52,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="product-container">
-                                        <div class="left-block">
-                                            <a href="#">
-                                                <img class="img-responsive" alt="product" src="/main/assets/data/p36.jpg" />
-                                            </a>
-                                            
-                                            <div class="add-to-cart">
-                                                <a title="Купить" href="#add">Купить</a>
-                                            </div>
-                                        </div>
-                                        <div class="right-block">
-                                            <h5 class="product-name"><a href="#">Товар 12</a></h5>
-                                            
-                                            <div class="content_price">
-                                                <span class="price product-price">$38,95</span>
-                                                <span class="price old-price">$52,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                <% end %>
                             </ul>
                         </div>
                         <!-- ./box product -->

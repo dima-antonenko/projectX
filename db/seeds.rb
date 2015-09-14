@@ -9,6 +9,9 @@ Banner.destroy_all
 ProductCategoryAttacment.destroy_all
 ProductAttacment.destroy_all
 StaticPage.destroy_all
+Seller.destroy_all
+SellerReview.destroy_all
+ProductQuestion.destroy_all
 
 @text_lorem = "Довольно часто, планируя купить тюльпаны оптом, мы сталкиваемся с недобросовестной деятельностью многих магазинов, приобретая некачественный и неоригинальный товар. Увы, предугадать, что вырастет из луковиц, невозможно. Именно поэтому осуществлять заказ тюльпанов лучше в специализированных магазинах, таких, как Флориум. У нас вы можете выбрать интересующий вас сорт из богатого ассортимента, приобрести красивые цветы и выращивать на радость себе и окружающим.
 
@@ -19,6 +22,19 @@ StaticPage.destroy_all
 Тюльпаны - это декоративные растения из семейства лилиевидных, происходящих из степных и полупустынных районов Азии. С точки зрения выращивания цветов с целью продажи тюльпаны уступают только розам и хризантемам. На сегодня известно около 100 тысяч сортов тюльпанов, поделены на 15 групп. Важнейшие из них сорта: Менделя, Рембрандта, гибриды Дарвина, тюльпаны лилевидные и папугайные. На сегодня только 800 видов выращиваются для большой продажи. Росток высотой от 12 до 40 см достигает обычно одним цветком, но также известные сорта с многоцветковыми побегами. У диких тюльпанов цветы одинарные красного, белого или желтого цвета. В случае культурных сортов является возможность получения более богатой палитры цветов.
 
 Период вегетации тюльпанов длится с марта до конца июня. Размножение проходит посредством отделения дочерних луковиц от материнских, что происходит раз в год. Чтобы луковицы тюльпанов успели пустить корни до замерзания почвы, они высаживаются в период между сентябрем и ноябрем. В теплицах эти цветы можно выращивать круглый год. Тюльпаны эффективно развиваются в рыхлой почве с pH, приближенному к нейтральному. Независимо от места разведения, обязателен доступ света, ибо только тогда ростки, цветы вступят верного окраску. В отдельных случаях используются затемненные теплицы."
+
+
+### seller
+
+
+@seller = Seller.create(name: "Иван", surname: "Иванов", email: "ivanov@mail.ru", skype: "skype_ivanov", zip: 12345,
+ sity: "Москва", sales: 10, score: 100.0, good_reviews: 90)
+
+#create seller reviews
+5.times do |i|
+  SellerReview.create(seller_id: @seller.id, name: "Николай", email: "nikolay@mail.ru", phone: "+7 123-45-67", skype: "skype_nikola", rating: 4, 
+    published: true)
+end  
 
 
 ### main page
@@ -36,7 +52,7 @@ end
 # products to main page in product grid
 35.times do |i| 
   @product = Product.new(
-                    product_category_id: @product_category.id, seller_id: 1, name: "Тестовый товар #{i}", price: 5000, old_price: 8000, sku: "1234",
+                    product_category_id: @product_category.id, seller_id: @seller.id, name: "Тестовый товар #{i}", price: 5000, old_price: 8000, sku: "1234",
                      avability: "in_stock",  status: "published", to_main_page: true, count_sales: i, count_views: i * 2,
                       show_in_category_block_to_main_page: true, description: @text_lorem )
   File.open("public/data/demo/products/avatar#{rand(1..8)}.jpg") do |f|
@@ -150,6 +166,13 @@ end
  end
  @attachment.save
 end
+
+#add questions
+
+@products.each do |product|
+  ProductQuestion.create(product_id: product.id, name: "Николай", email: "nikolay@mail.ru", phone: "+7 123-456-78", skype: "skype_nikolay",
+    question: "Здесь текст вопроса")
+end  
 
 
 #add data to product categories

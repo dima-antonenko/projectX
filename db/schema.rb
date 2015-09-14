@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913012615) do
+ActiveRecord::Schema.define(version: 20150913232140) do
 
   create_table "banners", force: :cascade do |t|
     t.string  "name"
@@ -185,6 +185,26 @@ ActiveRecord::Schema.define(version: 20150913012615) do
   add_index "product_category_attacments", ["image"], name: "index_product_category_attacments_on_image"
   add_index "product_category_attacments", ["product_category_id"], name: "index_product_category_attacments_on_product_category_id"
 
+  create_table "product_questions", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "skype"
+    t.boolean  "viewed",     default: false
+    t.text     "question"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "product_questions", ["email"], name: "index_product_questions_on_email"
+  add_index "product_questions", ["name"], name: "index_product_questions_on_name"
+  add_index "product_questions", ["phone"], name: "index_product_questions_on_phone"
+  add_index "product_questions", ["product_id"], name: "index_product_questions_on_product_id"
+  add_index "product_questions", ["question"], name: "index_product_questions_on_question"
+  add_index "product_questions", ["skype"], name: "index_product_questions_on_skype"
+  add_index "product_questions", ["viewed"], name: "index_product_questions_on_viewed"
+
   create_table "product_tags", force: :cascade do |t|
     t.integer "product_id"
     t.integer "tag_id"
@@ -195,6 +215,25 @@ ActiveRecord::Schema.define(version: 20150913012615) do
 
 # Could not dump table "products" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
+
+  create_table "seller_reviews", force: :cascade do |t|
+    t.integer  "seller_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "skype"
+    t.integer  "rating",     default: 3
+    t.boolean  "published",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "seller_reviews", ["email"], name: "index_seller_reviews_on_email"
+  add_index "seller_reviews", ["name"], name: "index_seller_reviews_on_name"
+  add_index "seller_reviews", ["phone"], name: "index_seller_reviews_on_phone"
+  add_index "seller_reviews", ["published"], name: "index_seller_reviews_on_published"
+  add_index "seller_reviews", ["rating"], name: "index_seller_reviews_on_rating"
+  add_index "seller_reviews", ["skype"], name: "index_seller_reviews_on_skype"
 
   create_table "sellers", force: :cascade do |t|
     t.string   "name"
@@ -207,8 +246,11 @@ ActiveRecord::Schema.define(version: 20150913012615) do
     t.string   "avatar"
     t.string   "status"
     t.text     "info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "sales",        default: 0
+    t.decimal  "score",        default: 0.0
+    t.integer  "good_reviews", default: 0
   end
 
   add_index "sellers", ["avatar"], name: "index_sellers_on_avatar"
