@@ -33,7 +33,7 @@ ProductQuestion.destroy_all
 #create seller reviews
 5.times do |i|
   SellerReview.create(seller_id: @seller.id, name: "Николай", email: "nikolay@mail.ru", phone: "+7 123-45-67", skype: "skype_nikola", rating: 4, 
-    published: true)
+    published: true, content: "Здесь текст отзыва")
 end  
 
 

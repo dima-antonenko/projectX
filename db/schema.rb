@@ -222,12 +222,14 @@ ActiveRecord::Schema.define(version: 20150913232140) do
     t.string   "email"
     t.string   "phone"
     t.string   "skype"
+    t.text     "content"
     t.integer  "rating",     default: 3
     t.boolean  "published",  default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "seller_reviews", ["content"], name: "index_seller_reviews_on_content"
   add_index "seller_reviews", ["email"], name: "index_seller_reviews_on_email"
   add_index "seller_reviews", ["name"], name: "index_seller_reviews_on_name"
   add_index "seller_reviews", ["phone"], name: "index_seller_reviews_on_phone"

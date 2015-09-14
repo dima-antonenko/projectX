@@ -6,6 +6,7 @@ class CreateSellerReviews < ActiveRecord::Migration
       t.string :email, index: true
       t.string :phone, index: true
       t.string :skype, index: true
+      t.text   :content, index: true 
       t.integer :rating, index: true, default: 3
       t.boolean :published, default: false, index: true 
       t.timestamps null: false

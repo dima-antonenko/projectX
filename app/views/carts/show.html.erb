@@ -38,7 +38,7 @@
                                 <a href="#"><img src="<%= item.product.avatar.cart_thumb %>" alt="Product"></a>
                             </td>
                             <td class="cart_description">
-                                <p class="product-name"><%= link_to item.product.name, product_category_product_path(item.product.product_category.id, item.product.id) %></p>
+                                <p class="product-name"><%= link_to item.product.name, product_path(item.product.id) %></p>
                                 <small class="cart_ref">Артикул : <%= item.product.sku %></small><br>
                                 <small><a href="#">Атрибут : значение</a></small><br>   
                                 <small><a href="#">Атрибут 2 : значение</a></small>

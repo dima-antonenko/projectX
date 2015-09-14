@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="product-desc">
                                      <%= button_to 'Купить', line_items_path(product_id: @product),{ class: "btn-add-cart" }%>
-                                     <%= button_to 'Купить в 1 клик', line_items_path(product_id: @product),{ class: "btn" }%>
+                                     <a href="#myDivID" class="fancyBoxLink btn">Заказать в 1 клик</a>
                                      <a href="#" class="ask_link"><i class="fa fa-envelope-o fa-fw"></i>Задать вопрос продавцу</a>
                                 </div>
 
@@ -135,67 +135,41 @@
                                 </div>
                                 <div id="reviews" class="tab-panel">
                                     <div class="product-comments-block-tab">
+                                     <% @seller_reviews.each do |review| %>
                                         <div class="comment row">
                                             <div class="col-sm-3 author">
                                                 <div class="grade">
-                                                    <span>Отлично</span>
+                                                    
+                                                    <% case review.rating %>
+                                                    <% when 1 %>
+                                                        <span>Очень плохо</span>
+                                                    <% when 2 %>
+                                                        <span>Плохо плохо</span>
+                                                    <% when 3 %>
+                                                        <span>Удоблетворительно</span>
+                                                    <% when 4 %>
+                                                        <span>Хорошо</span>
+                                                    <% when 5 %>
+                                                        <span>Отлично</span>                
+                                                    <% else %>
+                                                        <span>Хорошо</span>
+                                                    <% end %>
                                                     <span class="reviewRating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
+                                                        <% review.rating.times do |i| %>
+                                                            <i class="fa fa-star"></i>
+                                                        <% end %>
                                                     </span>
                                                 </div>
                                                 <div class="info-author">
-                                                    <span><strong>Дмитрий</strong></span>
-                                                    <em>04.08.2015</em>
+                                                    <span><strong><%= review.name %></strong></span>
+                                                    <em><%= review.created_at.to_date %></em>
                                                 </div>
                                             </div>
                                             <div class="col-sm-9 commnet-dettail">
-                                               Здесь текст отзыва
+                                               <%= review.content %>
                                             </div>
                                         </div>
-                                        <div class="comment row">
-                                            <div class="col-sm-3 author">
-                                                <div class="grade">
-                                                    <span>Хорошо</span>
-                                                    <span class="reviewRating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="info-author">
-                                                    <span><strong>Александр</strong></span>
-                                                    <em>04.08.2015</em>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-9 commnet-dettail">
-                                               Здесь текст отзыва
-                                            </div>
-                                        </div>
-
-                                        <div class="comment row">
-                                            <div class="col-sm-3 author">
-                                                <div class="grade">
-                                                    <span>Удоблетворительно</span>
-                                                    <span class="reviewRating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="info-author">
-                                                    <span><strong>Николай</strong></span>
-                                                    <em>04.08.2015</em>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-9 commnet-dettail">
-                                               Здесь текст отзыва
-                                            </div>
-                                        </div>
+                                      <% end %>  
                                         
                                     </div>
                                     
@@ -269,4 +243,50 @@
             </div>
         </div>
     </div>
+</div>
+
+
+<div style="display:none">
+<div id="myDivID">
+    <div class="box-border">
+                <ul>
+                    <p class="subcaption bold">Задайте свой вопрос</p>
+                      <%= form_for(@question) do |f| %>
+                    <li class="row">
+
+                        <div class="col-sm-6">
+                            <label for="first_name" class="required">Имя</label>
+                             <%= f.text_field :name, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                        <div class="col-sm-6">
+                            <label for="last_name" class="required">Телефон</label>
+                            <%= f.text_field :phone, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                    </li><!--/ .row -->
+                    <li class="row">
+                        <div class="col-sm-6">
+                            <label for="company_name">Email</label>
+                            <%= f.text_field :email, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                        
+                    </li><!--/ .row -->
+                    <li class="row"> 
+                        <div class="col-xs-12">
+
+                            <label for="address" class="required">Вопрос</label>
+                            <%= f.text_area :question, class: "input form-control" %>
+
+                        </div><!--/ [col] -->
+
+                    </li><!-- / .row -->
+
+                    <li>
+                    
+                    <%= f.submit "Спросить", class: "button submit_minicart" %>
+                    </li>
+
+                    <% end %>
+                </ul>
+            </div>
+</div>
 </div>
