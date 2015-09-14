@@ -38,7 +38,7 @@
                                         <i class="fa fa-star-half-o"></i>
                                     </div>
                                     <div class="comments-advices">
-                                        <a href="#"><i class="fa fa-user"></i> <%= "#{@product.seller.name}  #{@product.seller.surname}" %></a>
+                                        <a href="<%= seller_path(@seller) %>"><i class="fa fa-user"></i> <%= "#{@product.seller.name}  #{@product.seller.surname}" %></a>
                                     </div>
                                 </div>
                                 <div class="product-price-group">

@@ -1,4 +1,241 @@
-<p id="notice"><%= notice %></p>
+<% provide(:class, 'category-page option6') %>
+<div class="breadcrumb clearfix">
+    <a class="home" href="/" title="Return to Home">Главная</a>
 
-<%= link_to 'Edit', edit_seller_path(@seller) %> |
-<%= link_to 'Back', sellers_path %>
+    <span class="navigation-pipe">Продавцы</span>
+    <span class="navigation-pipe">&nbsp;</span>
+    <span class="navigation_page"><%= " #{@seller.name} #{@seller.surname}" %></span>
+</div>
+<div class="row">
+
+    <%= render '/layouts/main/sidebar' %>
+    <div class="center_column col-xs-12 col-sm-9" id="center_column">
+
+
+
+        <div class="row">
+       
+       <div class=" col-sm-5">
+            <div id="information" class="tab-panel">
+            <h4>Контактная информация</h4>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td width="200">Имя</td>
+                                            <td><%= @seller.name %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Фамилия</td>
+                                            <td><%= @seller.surname %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td><%= @seller.email %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Телефон</td>
+                                            <td><%= @seller.phone %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Skype</td>
+                                            <td><%= @seller.skype %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Город</td>
+                                            <td><%= @seller.sity %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Дата регистрации</td>
+                                            <td><%= @seller.created_at.to_date %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Количество продаж</td>
+                                            <td><%= @seller.sales %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Процент положительных отзывов</td>
+                                            <td><%= @seller.good_reviews %>%</td>
+                                        </tr>
+                                    </table>
+                                </div>           
+       </div>
+
+       <div class=" col-sm-7">
+                                    <div class="product-comments-block-tab">
+                                    <h4>Последние отзывы о продавце</h4>
+                                     <% @seller_reviews.each do |review| %>
+                                        <div class="comment row">
+
+                                            <div class="col-sm-4 author">
+                                                <div class="grade">
+                                                    
+                                                    <% case review.rating %>
+                                                    <% when 1 %>
+                                                        <span>Очень плохо</span>
+                                                    <% when 2 %>
+                                                        <span>Плохо плохо</span>
+                                                    <% when 3 %>
+                                                        <span>Удоблетворительно</span>
+                                                    <% when 4 %>
+                                                        <span>Хорошо</span>
+                                                    <% when 5 %>
+                                                        <span>Отлично</span>                
+                                                    <% else %>
+                                                        <span>Хорошо</span>
+                                                    <% end %>
+                                                    <span class="reviewRating">
+                                                        <% review.rating.times do |i| %>
+                                                            <i class="fa fa-star"></i>
+                                                        <% end %>
+                                                    </span>
+                                                </div>
+                                                <div class="info-author">
+                                                    <span><strong><%= review.name %></strong></span>
+                                                    <em><%= review.created_at.to_date %></em>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8 commnet-dettail">
+                                               <%= review.content %>
+                                            </div>
+                                        </div>
+                                      <% end %>  
+                                        
+                                    </div>
+                                           
+       </div>
+
+       
+        </div>
+
+
+       
+
+        <div id="view-product-list" class="view-product-list">
+            <h2 class="page-heading">
+            <span class="page-heading-title"><%= "Все товары продавца: #{@seller.name} #{@seller.surname}" %></span>
+            </h2>
+            
+            
+        </div>
+        
+       
+        <ul class="row product-list grid">
+            <% @products.each do |product| %>
+            <li class="col-sx-12 col-sm-4">
+                <div class="product-container">
+                    <div class="left-block">
+                        <a href="<%= product_path(product) %>">
+                            <% if product.avatar.normal != nil %>
+                            <img class="img-responsive" alt="product" src="<%= product.avatar.normal %>" />
+                            <% else %>
+                            <img class="img-responsive" alt="product" src="/main/data/p35.jpg" />
+                            <% end %>
+                            
+                        </a>
+                        
+                        <div class="add-to-cart">
+                            <!--  <a title="Add to Cart" href="#add">В корзину</a> -->
+                             <a href="#myDivID" class="fancyBoxLink">Купить</a>
+                            <%# button_to 'Купить', line_items_path(product_id: product)%>
+                        </div>
+                    </div>
+                    <div class="right-block">
+                        <h5 class="product-name">
+                        <%=  link_to product.name, product_path(product)%>
+                        </h5>
+                        <div class="product-star">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        <div class="content_price">
+                            <span class="price product-price">$<%= product.price %></span>
+                            <% if product.old_price != nil %>
+                            <span class="price old-price">$<%= product.old_price %></span>
+                            <% end %>
+                        </div>
+                        <div class="info-orther">
+                            <% if product.sku != nil %>
+                            <p>Артикул: #<%= product.sku %></p>
+                            <% else %>
+                            <p>Артикул: #<%= product.id %></p>
+                            <% end %>
+                            <p class="availability">Наличие: <span>В наличии</span></p>
+                            <div class="product-desc">
+                                <%= product.short_description %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+        <!-- ./PRODUCT LIST -->
+    </div>
+    <!-- ./view-product-list-->
+   
+
+
+    <div class="sortPagiBar">
+        <div class="bottom-pagination">
+            <nav>
+                 <%= will_paginate @products %>
+               
+            </nav>
+        </div>
+        
+       
+    </div>
+</div>
+<!-- ./ Center colunm -->
+</div>
+<div style="display:none">
+<div id="myDivID">
+    <div class="box-border">
+                <ul>
+                    <p>Товар: Тестовый товар 1</p>
+                    <p>Цена: 5000 $</p>
+                    <p class="subcaption bold">Контакты покупателя</p>
+                      <%= form_for(@mini_cart) do |f| %>
+                    <li class="row">
+
+                        <div class="col-sm-6">
+                            <label for="first_name" class="required">Имя</label>
+                             <%= f.text_field :name, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                        <div class="col-sm-6">
+                            <label for="last_name" class="required">Телефон</label>
+                            <%= f.text_field :phone, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                    </li><!--/ .row -->
+                    <li class="row">
+                        <div class="col-sm-6">
+                            <label for="company_name">Email</label>
+                            <%= f.text_field :email, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                        <div class="col-sm-6">
+                            <label for="email_address" class="required">Подписаться на рассылку</label>
+                             <%= f.select(:agree_newsletter, options_for_select([['Да', true],['Нет', false]], selected: true),{},{class: "input form-control"}) %>
+                        </div><!--/ [col] -->
+                    </li><!--/ .row -->
+                    <li class="row"> 
+                        <div class="col-xs-12">
+
+                            <label for="address" class="required">Адрес</label>
+                            <%= f.text_area :phone, class: "input form-control" %>
+
+                        </div><!--/ [col] -->
+
+                    </li><!-- / .row -->
+
+                    <li>
+                    
+                    <%= f.submit "Оформить заказ", class: "button submit_minicart" %>
+                    </li>
+
+                    <% end %>
+                </ul>
+            </div>
+</div>
+</div>
