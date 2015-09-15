@@ -11,7 +11,7 @@ set :login,        'hosting_dima-antonenko'
 set :unicorn_conf, "/etc/unicorn/#{fetch(:application)}.#{fetch(:login)}.rb"
 set :unicorn_pid,  "/var/run/unicorn/#{fetch(:user)}/#{fetch(:application)}.#{fetch(:login)}.pid"
  
-set :rvm_ruby_version, "2.2.0"
+set :rvm_ruby_version, "2.2.2"
 set :bundle_cmd,       -> {"rvm use #{fetch(:rvm_ruby_version)} do bundle"}
 set :rake,             -> { "#{fetch(:bundle_cmd)} exec rake" }
  
@@ -105,7 +105,7 @@ namespace :deploy do
 
 
   after :finishing, 'deploy:cleanup'
-  after "deploy:restart", "deploy:cleanup"
+
 
 
 end
