@@ -9,7 +9,7 @@ class ProductQuestionsController < ApplicationController
 
   def create
     @product_question = ProductQuestion.new(product_question_params)
-
+    @product_question.product_id = params[:product_id]
     respond_to do |format|
       if @product_question.save
         format.html { redirect_to :back, notice: 'Спасибо за Ваш вопрос' }
@@ -28,6 +28,6 @@ class ProductQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_question_params
-      params[:product_question].permit(:name, :email, :phone, :skype, :question, :product_id)
+      params[:product_question].permit(:name, :email, :phone, :skype, :question, :product_id, :agree_newsletter)
     end
 end

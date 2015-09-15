@@ -14,6 +14,7 @@ class Product < ActiveRecord::Base
   has_many :mini_carts
 
   has_many :product_tags
+   has_many :product_questions
   has_many :tags, through: :product_tags
 
    attr_accessor :tags_list

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913232140) do
+ActiveRecord::Schema.define(version: 20150914233825) do
 
   create_table "banners", force: :cascade do |t|
     t.string  "name"
@@ -191,10 +191,11 @@ ActiveRecord::Schema.define(version: 20150913232140) do
     t.string   "email"
     t.string   "phone"
     t.string   "skype"
-    t.boolean  "viewed",     default: false
+    t.boolean  "viewed",           default: false
     t.text     "question"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "agree_newsletter", default: true
   end
 
   add_index "product_questions", ["email"], name: "index_product_questions_on_email"

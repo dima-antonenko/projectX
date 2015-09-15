@@ -14,6 +14,8 @@ class ProductsController < ApplicationController
     @seller = @product.seller
     @seller_reviews = @seller.seller_reviews.all
 
+    @mini_cart = MiniCart.new
+
     @product_attacments = ProductAttacment.where(product_id: @product.id)
     @related_products = @product.product_category.products.take(6)
     @seller_products = @product.seller.products.take(6)

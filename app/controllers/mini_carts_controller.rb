@@ -8,7 +8,7 @@ class MiniCartsController < ApplicationController
   
   def create
     @mini_cart = MiniCart.new(mini_cart_params)
-
+    @mini_cart.product_id = params[:product_id]
     respond_to do |format|
       if @mini_cart.save
         format.html { redirect_to :back, notice: 'Заказ оформлен' }

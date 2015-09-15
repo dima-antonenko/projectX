@@ -27,7 +27,7 @@ ProductQuestion.destroy_all
 ### seller
 
 
-@seller = Seller.create(name: "Иван", surname: "Иванов", email: "ivanov@mail.ru", skype: "skype_ivanov", zip: 12345,
+@seller = Seller.create(name: "Иван", surname: "Иванов", email: "ivanov@mail.ru", skype: "skype_ivanov", zip: 12345, phone: "+7-12-34-567",
  sity: "Москва", sales: 10, score: 100.0, good_reviews: 90)
 
 #create seller reviews

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   resources :product_tags
-  resources :product_questions
+  
 
   resources :tags
 
-  resources :mini_carts
+  
 
   resources :site_variables
 
@@ -31,10 +31,14 @@ Rails.application.routes.draw do
   resources :posts 
 
   resources :product_categories
-  resources :products
+  resources :products do
+    resources :product_questions
+    resources :mini_carts
+  end  
 
   
   resources :product_attacments
+
 
 
   root 'static#home'

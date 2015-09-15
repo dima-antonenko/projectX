@@ -19,8 +19,15 @@
 
 $(document).ready(function() {
 
- $("a.fancyBoxLink").fancybox({
-        'href'   : '#myDivID',
+ $("a.mini_cart").fancybox({
+        'href'   : '#mini_cart',
+        'titleShow'  : false,
+        'transitionIn'  : 'elastic',
+        'transitionOut' : 'elastic'
+    });
+
+  $("a.question_form").fancybox({
+        'href'   : '#question_form',
         'titleShow'  : false,
         'transitionIn'  : 'elastic',
         'transitionOut' : 'elastic'

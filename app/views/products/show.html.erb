@@ -67,13 +67,9 @@
                                 </div>
                                 <div class="product-desc">
                                      <%= button_to 'Купить', line_items_path(product_id: @product),{ class: "btn-add-cart" }%>
-                                     <a href="#myDivID" class="fancyBoxLink btn">Заказать в 1 клик</a>
-                                     <a href="#" class="ask_link"><i class="fa fa-envelope-o fa-fw"></i>Задать вопрос продавцу</a>
+                                     <a href="#mini_cart" class="mini_cart btn">Заказать в 1 клик</a>
+                                     <a href="#question_form" class="question_form">Задать вопрос продавцу</a>
                                 </div>
-                                <%= params %>
-
-
-                                
                             </div>
                         </div>
                         <!-- tab product -->
@@ -247,11 +243,11 @@
 
 
 <div style="display:none">
-<div id="myDivID">
+<div id="question_form">
     <div class="box-border">
                 <ul>
-                    <p class="subcaption bold">Задайте свой вопрос</p>
-                      <%= form_for(@question) do |f| %>
+                    <p class="subcaption bold">Задайте свой вопрос продавцу</p>
+                    <%= form_for ([@product, ProductQuestion.new(product_id: @product.id)]) do |f| %>
                     <li class="row">
 
                         <div class="col-sm-6">
@@ -268,6 +264,10 @@
                             <label for="company_name">Email</label>
                             <%= f.text_field :email, class: "input form-control" %>
                         </div><!--/ [col] -->
+                         <div class="col-sm-6">
+                            <label for="email_address" class="required">Подписаться на рассылку</label>
+                             <%= f.select(:agree_newsletter, options_for_select([['Да', true],['Нет', false]], selected: true),{},{class: "input form-control"}) %>
+                        </div>
                         
                     </li><!--/ .row -->
                     <li class="row"> 
@@ -283,6 +283,53 @@
                     <li>
                     
                     <%= f.submit "Спросить", class: "button submit_minicart" %>
+                    </li>
+
+                    <% end %>
+                </ul>
+            </div>
+</div>
+<div id="mini_cart">
+    <div class="box-border">
+                <ul>
+                    <p>Товар: <%= @product.name %></p>
+                    <p>Цена: <%= @product.price %> $</p>
+                    <p class="subcaption bold">Контакты покупателя</p>
+                    <%= form_for ([@product, MiniCart.new(product_id: @product.id)]) do |f| %>
+                    <li class="row">
+
+                        <div class="col-sm-6">
+                            <label for="first_name" class="required">Имя</label>
+                             <%= f.text_field :name, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                        <div class="col-sm-6">
+                            <label for="last_name" class="required">Телефон</label>
+                            <%= f.text_field :phone, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                    </li><!--/ .row -->
+                    <li class="row">
+                        <div class="col-sm-6">
+                            <label for="company_name">Email</label>
+                            <%= f.text_field :email, class: "input form-control" %>
+                        </div><!--/ [col] -->
+                        <div class="col-sm-6">
+                            <label for="email_address" class="required">Подписаться на рассылку</label>
+                             <%= f.select(:agree_newsletter, options_for_select([['Да', true],['Нет', false]], selected: true),{},{class: "input form-control"}) %>
+                        </div><!--/ [col] -->
+                    </li><!--/ .row -->
+                    <li class="row"> 
+                        <div class="col-xs-12">
+
+                            <label for="address" class="required">Адрес</label>
+                            <%= f.text_area :address, class: "input form-control" %>
+
+                        </div><!--/ [col] -->
+
+                    </li><!-- / .row -->
+
+                    <li>
+                    
+                    <%= f.submit "Оформить заказ", class: "button submit_minicart" %>
                     </li>
 
                     <% end %>
