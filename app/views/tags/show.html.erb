@@ -40,7 +40,7 @@
                         
                         <div class="add-to-cart">
                             <!--  <a title="Add to Cart" href="#add">В корзину</a> -->
-                             <a href="#myDivID" class="fancyBoxLink">Купить</a>
+                             <a href="#mini_cart" class="mini_cart">Купить</a>
                             <%# button_to 'Купить', line_items_path(product_id: product)%>
                         </div>
                     </div>
@@ -74,36 +74,15 @@
                         </div>
                     </div>
                 </div>
-            </li>
-            <% end %>
-        </ul>
-        <!-- ./PRODUCT LIST -->
-    </div>
-    <!-- ./view-product-list-->
-   
-
-
-    <div class="sortPagiBar">
-        <div class="bottom-pagination">
-            <nav>
-                 <%= will_paginate @products %>
-               
-            </nav>
-        </div>
-        
-       
-    </div>
-</div>
-<!-- ./ Center colunm -->
-</div>
-<div style="display:none">
-<div id="myDivID">
+                <div style="display:none">
+<div id="mini_cart">
     <div class="box-border">
                 <ul>
-                    <p>Товар: Тестовый товар 1</p>
-                    <p>Цена: 5000 $</p>
+                    <p>Товар: <%= product.name %></p>
+                    <p>Цена: <%= product.price %> $</p>
                     <p class="subcaption bold">Контакты покупателя</p>
-                      <%= form_for(@mini_cart) do |f| %>
+                       <%= form_for ([product, MiniCart.new(product_id: product.id)]) do |f| %>
+
                     <li class="row">
 
                         <div class="col-sm-6">
@@ -144,4 +123,26 @@
                 </ul>
             </div>
 </div>
+</div>
+            </li>
+            <% end %>
+        </ul>
+        <!-- ./PRODUCT LIST -->
+    </div>
+    <!-- ./view-product-list-->
+   
+
+
+    <div class="sortPagiBar">
+        <div class="bottom-pagination">
+            <nav>
+                 <%= will_paginate @products %>
+               
+            </nav>
+        </div>
+        
+       
+    </div>
+</div>
+<!-- ./ Center colunm -->
 </div>
