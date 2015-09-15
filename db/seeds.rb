@@ -203,4 +203,27 @@ end
 end
 
 #add content product_categories#index
-StaticPage.create(name: "Категории товаров", content: @text_lorem, descriptor: "product_categories")  
+StaticPage.create(name: "Категории товаров", content: @text_lorem, descriptor: "product_categories")
+
+
+#add slugs 
+@products = Product.all
+@product_categories = ProductCategory.all
+@posts = Post.all
+@tags = Tag.all
+
+@products.each do |product|
+  product.update_attribute(:slug, "product_custom_url_#{product.id}")
+end
+
+@product_categories.each do |category|
+  category.update_attribute(:slug, "product_category_custom_url_#{category.id}")
+end 
+
+@posts.each do |post|
+  post.update_attribute(:slug, "post_custom_url_#{post.id}")
+end 
+
+@tags.each do |tag|
+  tag.update_attribute(:slug, "tag_custom_url_#{tag.id}")
+end 

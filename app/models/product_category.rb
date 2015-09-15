@@ -1,4 +1,6 @@
 class ProductCategory < ActiveRecord::Base
+	extend FriendlyId
+  	 friendly_id :slug, use: :slugged
 	has_many :products
 
 	has_many :product_categories

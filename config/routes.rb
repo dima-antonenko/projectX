@@ -67,6 +67,8 @@ Rails.application.routes.draw do
   get '/seller', to: 'seller#dashboard'
   get '/seller/seller_edit', to: 'seller#seller_edit'
 
+  match "/search" => "products#search", via: [ :get, :post ]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

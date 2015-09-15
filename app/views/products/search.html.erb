@@ -1,0 +1,36 @@
+<% provide(:class, 'category-page option6') %>
+<div class="breadcrumb clearfix">
+    <a class="home" href="/" title="Return to Home">Главная</a>
+    <span class="navigation-pipe">&nbsp;</span>
+    <span class="navigation_page">Результаты поиска</span>
+</div>
+<!-- ./breadcrumb -->
+<div class="row">
+    <!-- Left colunm -->
+    <%= render '/layouts/main/sidebar' %>
+    <!-- ./left colunm -->
+    <!-- Center colunm-->
+    <div class="center_column col-xs-12 col-sm-9" id="center_column">
+        <!-- category-slider -->
+        <div class="category-slider">
+            
+        </div>
+
+
+        <!-- ./subcategories -->
+        <!-- view-product-list-->
+        <div id="view-product-list" class="view-product-list">
+            <h2 class="page-heading">
+            <span class="page-heading-title">Результаты поиска</span>
+            </h2>
+            <p>Запрос: <%= params[:query] %></p>
+            <% if params[:select_name] == "all" %>
+                <p>Город: все города</p>
+            <% elsif params[:select_name] == "sity_1" %>
+                <p>Город: Город 1</p>
+            <% elsif params[:select_name] == "sity_2" %>
+                <p>Город: Город 2</p>
+            <% end %>
+        </div>
+        
+  
