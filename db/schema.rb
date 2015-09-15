@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914233825) do
+ActiveRecord::Schema.define(version: 20150915054206) do
 
   create_table "banners", force: :cascade do |t|
     t.string  "name"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20150914233825) do
     t.string   "seo_keywords"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "slug"
   end
 
   add_index "post_categories", ["description"], name: "index_post_categories_on_description"
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 20150914233825) do
     t.string   "seo_keywords"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "slug"
   end
 
   add_index "posts", ["avatar"], name: "index_posts_on_avatar"
@@ -168,6 +170,7 @@ ActiveRecord::Schema.define(version: 20150914233825) do
     t.boolean  "to_main_page_product_categories_list",       default: false
     t.integer  "to_main_page_product_categories_list_order", default: 1
     t.boolean  "to_category_sidebar"
+    t.string   "slug"
   end
 
   add_index "product_categories", ["avatar"], name: "index_product_categories_on_avatar"
@@ -307,6 +310,7 @@ ActiveRecord::Schema.define(version: 20150914233825) do
     t.string "name"
     t.text   "content"
     t.string "descriptor"
+    t.string "slug"
   end
 
   add_index "static_pages", ["content"], name: "index_static_pages_on_content"
