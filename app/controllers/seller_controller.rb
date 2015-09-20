@@ -5,7 +5,7 @@ class SellerController < ApplicationController
   layout "seller"
 
   def set_seller
-    @seller = Seller.find(1)
+    @seller = Seller.first
   end
 
   def dashboard
