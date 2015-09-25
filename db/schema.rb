@@ -11,34 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919145359) do
+ActiveRecord::Schema.define(version: 20150925110934) do
+
+  create_table "advert_categories", force: :cascade do |t|
+    t.integer "advert_id"
+    t.integer "product_category_id"
+    t.boolean "show_in_products"
+    t.integer "views",                     default: 5
+    t.integer "current_views",             default: 0
+    t.integer "residue_views"
+    t.decimal "category_price"
+    t.decimal "total_price"
+    t.integer "time_days",                 default: 5
+    t.integer "residue_views_in_product",  default: 0
+    t.integer "residue_views_in_category", default: 0
+    t.boolean "active",                    default: false
+  end
+
+  add_index "advert_categories", ["advert_id"], name: "index_advert_categories_on_advert_id"
+  add_index "advert_categories", ["current_views"], name: "index_advert_categories_on_current_views"
+  add_index "advert_categories", ["product_category_id"], name: "index_advert_categories_on_product_category_id"
+  add_index "advert_categories", ["residue_views"], name: "index_advert_categories_on_residue_views"
+  add_index "advert_categories", ["show_in_products"], name: "index_advert_categories_on_show_in_products"
+  add_index "advert_categories", ["time_days"], name: "index_advert_categories_on_time_days"
+  add_index "advert_categories", ["views"], name: "index_advert_categories_on_views"
 
   create_table "adverts", force: :cascade do |t|
     t.integer  "seller_id"
     t.integer  "product_id"
-    t.string   "place_type",       default: "product_category"
-    t.boolean  "show_in_products"
-    t.integer  "views",            default: 1
-    t.integer  "time_days"
     t.decimal  "total_price"
-    t.integer  "current_views",    default: 0
-    t.integer  "residue_views"
-    t.string   "status",           default: "processed"
-    t.boolean  "viewed_admin",     default: false
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.string   "status",       default: "processed"
+    t.boolean  "viewed_admin", default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "active",       default: false
   end
 
-  add_index "adverts", ["current_views"], name: "index_adverts_on_current_views"
-  add_index "adverts", ["place_type"], name: "index_adverts_on_place_type"
   add_index "adverts", ["product_id"], name: "index_adverts_on_product_id"
-  add_index "adverts", ["residue_views"], name: "index_adverts_on_residue_views"
   add_index "adverts", ["seller_id"], name: "index_adverts_on_seller_id"
-  add_index "adverts", ["show_in_products"], name: "index_adverts_on_show_in_products"
   add_index "adverts", ["status"], name: "index_adverts_on_status"
-  add_index "adverts", ["time_days"], name: "index_adverts_on_time_days"
   add_index "adverts", ["total_price"], name: "index_adverts_on_total_price"
-  add_index "adverts", ["views"], name: "index_adverts_on_views"
 
   create_table "banners", force: :cascade do |t|
     t.string  "name"

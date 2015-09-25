@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :advert_categories
+
   resources :adverts
 
   resources :product_tags
@@ -62,6 +64,7 @@ Rails.application.routes.draw do
   namespace :seller do
     resources :products
     resources :orders
+    resources :adverts    
   end
 
   get '/administrator', to: 'administrator#dashboard'

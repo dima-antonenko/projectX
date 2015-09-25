@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Advert Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @advert_categories.each do |advert_category| %>
+      <tr>
+        <td><%= link_to 'Show', advert_category %></td>
+        <td><%= link_to 'Edit', edit_advert_category_path(advert_category) %></td>
+        <td><%= link_to 'Destroy', advert_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Advert category', new_advert_category_path %>

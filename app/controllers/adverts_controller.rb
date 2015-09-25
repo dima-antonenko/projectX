@@ -19,6 +19,8 @@ class AdvertsController < ApplicationController
 
   # GET /adverts/1/edit
   def edit
+    @product_category = ProductCategory.all
+    @advert_categories = AdvertCategory.where(advert_id: @advert.id)
   end
 
   # POST /adverts
@@ -40,6 +42,14 @@ class AdvertsController < ApplicationController
   # PATCH/PUT /adverts/1
   # PATCH/PUT /adverts/1.json
   def update
+    @product = Product.find(params[:id])
+    @product.assign_attributes(product_params)
+
+    if params[:product][:tags_list] != nil
+      params[:product][:tags_list].each do |id|
+        ProductTag.create(product_id: @product.id, tag_id: id)
+      end
+    end
     respond_to do |format|
       if @advert.update(advert_params)
         format.html { redirect_to @advert, notice: 'Advert was successfully updated.' }
@@ -62,13 +72,13 @@ class AdvertsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_advert
-      @advert = Advert.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_advert
+    @advert = Advert.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def advert_params
-      params[:advert]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def advert_params
+    params[:advert]
+  end
 end

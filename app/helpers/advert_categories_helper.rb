@@ -1,0 +1,2 @@
+module AdvertCategoriesHelper
+end

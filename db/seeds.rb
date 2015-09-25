@@ -187,6 +187,9 @@ end
   end
 
   category.description = @text_lorem
+  category.count_views = 1
+  category.price_advert = 0.5
+  category.margin_product_one_view = 2.0
   category.save
 end
 

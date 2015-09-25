@@ -9,5 +9,7 @@ class ProductCategory < ActiveRecord::Base
 	has_many :product_category_attachments, inverse_of: :product_category
 	accepts_nested_attributes_for :product_category_attachments, allow_destroy: true
 
+	has_many :advert_categories
+
 	mount_uploader :avatar, ProductCategoryAvatarUploader
 end

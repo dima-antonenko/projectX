@@ -1,0 +1,17 @@
+<%= form_for(@advert_category) do |f| %>
+  <% if @advert_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@advert_category.errors.count, "error") %> prohibited this advert_category from being saved:</h2>
+
+      <ul>
+      <% @advert_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
