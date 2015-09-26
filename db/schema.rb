@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925110934) do
+ActiveRecord::Schema.define(version: 20150926174020) do
 
   create_table "advert_categories", force: :cascade do |t|
     t.integer  "advert_id"
@@ -43,12 +43,13 @@ ActiveRecord::Schema.define(version: 20150925110934) do
   create_table "adverts", force: :cascade do |t|
     t.integer  "seller_id"
     t.integer  "product_id"
-    t.decimal  "total_price"
+    t.decimal  "total_price",  default: 0.0
     t.string   "status",       default: "processed"
     t.boolean  "viewed_admin", default: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.boolean  "active",       default: false
+    t.integer  "total_views",  default: 0
   end
 
   add_index "adverts", ["product_id"], name: "index_adverts_on_product_id"

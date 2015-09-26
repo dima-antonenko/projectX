@@ -7,16 +7,20 @@
                                     <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                                         <div class="uk-width-large-2-2">
                                             <div class="uk-form-row">
-                                                <label>Название: обявление #3</label>
+                                                <label>id:  #<%= @advert.id %></label>
                                             </div>
                                             <div class="uk-form-row">
-                                                <label>Стоимость: $120</label>
+                                                <label>Стоимость: <%= @advert.total_price %></label>
                                             </div>
                                             <div class="uk-form-row">
-                                                <label>Общее количество показов: 1200$</label>
+                                                <label>Общее количество показов: <%= @advert.total_views %></label>
                                             </div>
                                             <div class="uk-form-row">
-                                                <label>Статус: Активно</label>
+                                                <% if @advert.active == true %>
+                                                    <label>Статус: Активно</label>
+                                                <% else %>
+                                                    <label>Статус: Не активно</label>
+                                                <% end %>    
                                             </div>
                                         </div>
                                        

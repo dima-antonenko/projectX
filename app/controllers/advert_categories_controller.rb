@@ -54,10 +54,16 @@ class AdvertCategoriesController < ApplicationController
   # DELETE /advert_categories/1
   # DELETE /advert_categories/1.json
   def destroy
+    @advert = Advert.find(@advert_category.advert_id)
+
+    @advert.total_price -= @advert_category.total_price
+    @advert.total_views -= @advert_category.views
+    @advert.active = false if @advert.advert_categories.count == 0
+    @advert.save
+
     @advert_category.destroy
     respond_to do |format|
-      format.html { redirect_to advert_categories_url, notice: 'Advert category was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to :back, notice: 'Позиция удалена' }
     end
   end
 

@@ -23,19 +23,20 @@
                                     <tr>
                                         <td><%= category.product_category.name %></td>
                                         <% if category.show_in_products == true %>
-                                        <td>da</td>
+                                        <td><i class="material-icons uk-text-success md-24"></i></td>
                                         <% else %>
-                                        <td>net</td>
+                                        <td><i class="material-icons uk-text-success md-24">&#xE835;</i></td>
                                         <% end %>
                                         <td><%= category.views %> / <%= category.views_in_day %></td>
-                                        <td><%= category.category_price %> </td>
-                                        <td><%= category.product_category.margin_product_one_view %></td>
-                                        <td><%= category.total_price %></td>
+                                        <td><%= category.category_price %> $ </td>
+                                        <td><%= category.product_category.margin_product_one_view %> $</td>
+                                        <td><%= category.total_price %> $</td>
                                         <td><%= category.time_days %></td>
                                         <td><%= category.current_views %> / <%= category.views_today %></td>
                                         <td><%= category.residue_views %> <br/> <%= category.residue_views_in_category %> / <%= category.residue_views_in_product %> </td>
                                         <td> <%= category.created_at.to_date + category.time_days.days %></td>
                                         <td><%= link_to 'Удалить', category, method: :delete %>
+
                                         </td>
                                     </tr>
                                     <% end %>

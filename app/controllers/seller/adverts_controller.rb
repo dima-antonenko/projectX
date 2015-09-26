@@ -15,10 +15,10 @@ class Seller::AdvertsController < SellerController
 
   def edit
     @advert = Advert.find(params[:id])
-    @product_categories = ProductCategory.all.collect {|category| [category.name, category.id ]}
+    @product_categories = ProductCategory.all.collect {|category| ["#{category.name}    цена: #{category.price_advert}$, надбавка за показ в товарах: #{category.price_advert}$", category.id ]}
     @advert_categories = AdvertCategory.where(advert_id: @advert.id)
     @product = Product.find(@advert.product_id)
-
+    @product_category = @product.product_category
     render 'seller/adverts/edit'
   end
 
@@ -46,12 +46,14 @@ class Seller::AdvertsController < SellerController
   # PATCH/PUT /adverts/1.json
   def update
 
-    @advert.assign_attributes(advert_params)
-    if params[:advert][:advert_category_id] != nil
+    #@advert.assign_attributes(advert_params)
+
+
+    if params[:advert][:advert_category_id] != "" && params[:advert][:advert_category_views] != "" && params[:advert][:advert_category_time_days] != ""
 
       @product_category = ProductCategory.find(params[:advert][:advert_category_id])
-
-      @advert_category = AdvertCategory.new(product_category_id: params[:advert][:advert_category_id], advert_id: @advert.id ,
+      @advert_category = AdvertCategory.new(product_category_id: params[:advert][:advert_category_id],
+                            advert_id: @advert.id ,
                             show_in_products: params[:advert][:advert_category_show_in_products],
                             views: params[:advert][:advert_category_views],
                             time_days: params[:advert][:advert_category_time_days],
@@ -60,9 +62,7 @@ class Seller::AdvertsController < SellerController
                             category_price: @category_price,
                             )
       @advert_category.views_in_day = @advert_category.views / @advert_category.time_days
-
       @advert_category.category_price = @product_category.price_advert
-
       @advert_category.total_price = @advert_category.category_price * params[:advert][:advert_category_views].to_i
 
       if params[:advert][:advert_category_show_in_products] == "true"
@@ -78,15 +78,21 @@ class Seller::AdvertsController < SellerController
       end 
        
       @advert_category.active = true  
-
       @advert_category.save
+
+
+     @advert.total_price += @advert_category.total_price
+     @advert.total_views += @advert_category.views
+     @advert.active = true if @advert.active == false
+     @advert.save
+    
     end
 
     respond_to do |format|
-      if @advert.update(advert_params)
+    if params[:advert][:advert_category_id] != "" && params[:advert][:advert_category_views] != "" && params[:advert][:advert_category_time_days] != ""
         format.html { redirect_to :back, notice: 'Информация обновлена' }
       else
-        format.html { redirect_to :back, notice: 'Произошла ошибка' }
+        format.html { redirect_to :back, notice: 'Заполнены не все данные'}
       end
     end
   end
@@ -96,9 +102,16 @@ class Seller::AdvertsController < SellerController
   def destroy
     @advert.destroy
     respond_to do |format|
-      format.html { redirect_to '/seller/advertrs', notice: 'Информация обновлена' }
+      format.html { redirect_to '/seller/advertrs', notice: 'Объявление удалено' }
       format.json { head :no_content }
     end
+  end
+
+
+  def destroy_advert_category(id)
+    @advert_category = AdvertCategory.find(id)
+    @advert_category.destroy
+    redirect_to :back
   end
 
   private

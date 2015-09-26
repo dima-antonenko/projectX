@@ -4,7 +4,7 @@ class CreateAdverts < ActiveRecord::Migration
       t.belongs_to :seller, index: true
       t.integer :product_id, index: true  
         
-      t.decimal :total_price, index: true
+      t.decimal :total_price, index: true, default: 0.00
       t.string  :status, index: true, default: "processed"
       t.boolean :viewed_admin, default: false
       t.timestamps null: false

@@ -7,16 +7,16 @@
                                     <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                                         <div class="uk-width-large-2-2">
                                             <div class="uk-form-row">
-                                                <label>Товар: Товар 3</label>
+                                                <label>Товар: <%= link_to @product.name, seller_product_path(@product) %></label>
                                             </div>
                                             <div class="uk-form-row">
-                                                <label>Категория: Цветы</label>
+                                                <label>Категория: <%= link_to @product_category.name, product_category_path(@product_category) %></label>
                                             </div>
                                             <div class="uk-form-row">
-                                                <label>Цена: 1200$</label>
+                                                <label>Цена: <%= @product.price %>$</label>
                                             </div>
                                             <div class="uk-form-row">
-                                                <label>Просмотры: 120</label>
+                                                <label>Просмотры: <%= @product.count_views %></label>
                                             </div>
                                         </div>
                                        

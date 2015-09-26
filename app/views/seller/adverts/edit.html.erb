@@ -3,6 +3,7 @@
         <div id="page_heading">
             <h1 id="product_edit_name">Объявление #<%= @advert.id %></h1>
             <p>Создано: <%= @advert.created_at.to_date %></p>
+        
         </div>
         <div id="page_content_inner">
             <%= form_for([:seller, @advert], class: "uk-form-stacked", id: "product_edit_form", :multipart => true ) do |f| %>
@@ -13,8 +14,11 @@
                          <%= render '/seller/adverts/edit/avatar' %>
 
                        <%= render '/seller/adverts/edit/product_info' %>
-                       <%= render '/seller/adverts/edit/advert_info' %>
 
+                      
+                         <% if @advert.advert_categories.count > 0 %>
+                        <%= render '/seller/adverts/edit/advert_info' %>
+                        <% end %>  
                     </div>
                     
                     
