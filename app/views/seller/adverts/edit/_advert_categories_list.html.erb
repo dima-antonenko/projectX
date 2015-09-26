@@ -1,0 +1,45 @@
+<div class="md-card">
+                        <div class="md-card-content">
+                            <h3 class="heading_a">Категории для показа</h3>
+                            
+                            <table class="uk-table uk-table-hover">
+                                <thead>
+                                    <tr>
+                                        <th >Категория</th>
+                                        <th>Показывать <br/> в товарах <br/> категории</th>
+                                        <th>Показов <br/> всего / в день</th>
+                                        <th>Цена <br/>за показ <br/> в категории</th>
+                                        <th>Надбавка <br/> за показ <br/> в товарах</th>
+                                        <th>Стоимость <br/> позиции</th>
+                                        <th>Время<br/> действия <br/> (дней)</th>
+                                        <th>Показано <br/> всего / сегодня</th>
+                                        <th>Остаток показов <br/> всего <br/> категория / карточка</th>
+                                        <th>Дата завершения</th>
+                                        <th>Действие</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% @advert_categories.each do |category| %>
+                                    <tr>
+                                        <td><%= category.product_category.name %></td>
+                                        <% if category.show_in_products == true %>
+                                        <td>da</td>
+                                        <% else %>
+                                        <td>net</td>
+                                        <% end %>
+                                        <td><%= category.views %> / <%= category.views_in_day %></td>
+                                        <td><%= category.category_price %> </td>
+                                        <td><%= category.product_category.margin_product_one_view %></td>
+                                        <td><%= category.total_price %></td>
+                                        <td><%= category.time_days %></td>
+                                        <td><%= category.current_views %> / <%= category.views_today %></td>
+                                        <td><%= category.residue_views %> <br/> <%= category.residue_views_in_category %> / <%= category.residue_views_in_product %> </td>
+                                        <td> <%= category.created_at.to_date + category.time_days.days %></td>
+                                        <td><%= link_to 'Удалить', category, method: :delete %>
+                                        </td>
+                                    </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>

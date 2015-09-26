@@ -13,6 +13,7 @@ class CreateAdvertCategories < ActiveRecord::Migration
       t.decimal :total_price
 
       t.integer :time_days, index: true, default: 5
+      t.timestamps null: false
     end
   end
 end

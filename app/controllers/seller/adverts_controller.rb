@@ -15,8 +15,9 @@ class Seller::AdvertsController < SellerController
 
   def edit
     @advert = Advert.find(params[:id])
-    @product_categories = ProductCategory.all
+    @product_categories = ProductCategory.all.collect {|category| [category.name, category.id ]}
     @advert_categories = AdvertCategory.where(advert_id: @advert.id)
+    @product = Product.find(@advert.product_id)
 
     render 'seller/adverts/edit'
   end
@@ -29,7 +30,7 @@ class Seller::AdvertsController < SellerController
   # POST /adverts
   # POST /adverts.json
   def create
-    @advert = Advert.create(advert_params)
+    @advert = Advert.create(product_id: params[:advert][:product_id])
 
     respond_to do |format|
       if @advert.save
@@ -58,6 +59,7 @@ class Seller::AdvertsController < SellerController
 
                             category_price: @category_price,
                             )
+      @advert_category.views_in_day = @advert_category.views / @advert_category.time_days
 
       @advert_category.category_price = @product_category.price_advert
 

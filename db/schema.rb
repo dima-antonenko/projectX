@@ -14,18 +14,22 @@
 ActiveRecord::Schema.define(version: 20150925110934) do
 
   create_table "advert_categories", force: :cascade do |t|
-    t.integer "advert_id"
-    t.integer "product_category_id"
-    t.boolean "show_in_products"
-    t.integer "views",                     default: 5
-    t.integer "current_views",             default: 0
-    t.integer "residue_views"
-    t.decimal "category_price"
-    t.decimal "total_price"
-    t.integer "time_days",                 default: 5
-    t.integer "residue_views_in_product",  default: 0
-    t.integer "residue_views_in_category", default: 0
-    t.boolean "active",                    default: false
+    t.integer  "advert_id"
+    t.integer  "product_category_id"
+    t.boolean  "show_in_products"
+    t.integer  "views",                     default: 5
+    t.integer  "current_views",             default: 0
+    t.integer  "residue_views"
+    t.decimal  "category_price"
+    t.decimal  "total_price"
+    t.integer  "time_days",                 default: 5
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "residue_views_in_product",  default: 0
+    t.integer  "residue_views_in_category", default: 0
+    t.boolean  "active",                    default: false
+    t.integer  "views_today",               default: 0
+    t.integer  "views_in_day",              default: 0
   end
 
   add_index "advert_categories", ["advert_id"], name: "index_advert_categories_on_advert_id"
