@@ -5,6 +5,7 @@ class AdvertsController < ApplicationController
   # GET /adverts.json
   def index
     @adverts = Advert.all
+   
   end
 
   # GET /adverts/1

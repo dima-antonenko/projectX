@@ -1,0 +1,37 @@
+<li>
+    
+    <table class="uk-table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Товар</th>
+                <th>Позиций</th>
+                <th>Показов  </th>
+                <th>Стоимость</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @arhive_adverts.each do |advert| %>
+            <tr>
+                <td><%= advert.id %></td>
+                <td class="uk-text-large uk-text-nowrap"><%= link_to advert.product.name, seller_product_path(advert.product) %></td>
+                <td class="uk-text-nowrap"><%= advert.advert_categories.count %></td>
+                <td class="uk-text-nowrap"><%= advert.total_views %>$</td>
+                <td class="uk-text-nowrap"> <%= advert.total_price %> </td>
+                <% if advert.active == true %>
+                <td class="uk-text-nowrap">Активное</td>
+                <% else %>
+                <td class="uk-text-nowrap">Архивное</td>
+                <% end %>
+                <td class="uk-text-nowrap">
+                    <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, seller_advert_path(advert), method: :delete, data: { confirm: 'Удалить ?' } %>
+                    
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    
+</li>

@@ -1,43 +1,33 @@
 <div id="page_content">
     <div id="page_content_inner">
-        <div class="md-card">
-            <div class="md-card-content">
-                <div class="uk-grid" data-uk-grid-margin>
-                    <div class="uk-width-1-1">
-                        <div class="uk-overflow-container">
-                            <table class="uk-table">
-                                <thead>
-                                    <tr>
-                                        <th>name</th>
-                                        <th>name</th>
-                                        <th>name</th>
-                                        <th>name</th>
-                                        <th>name</th>
-                                        <th>name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% @adverts.each do |advert| %>
-                                    <tr>
-                                        <td>text</td>
-                                        <td class="uk-text-large uk-text-nowrap"><a href="/">text</a></td>
-                                        <td class="uk-text-nowrap">text</td>
-                                        <td class="uk-text-nowrap"> <i class="material-icons uk-text-success md-24">&#xE835;</i></td>
-                                        <td><i class="material-icons uk-text-muted md-24">&#xE835;</i></td>
-                                        <td class="uk-text-nowrap">
-                                            <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, seller_advert_path(advert), method: :delete, data: { confirm: 'Удалить ?' } %>
-                                            
-                                        </td>
-                                    </tr>
-                                    <% end %>
-                                </tbody>
-                            </table>
+
+     <div class="md-card uk-margin-medium-bottom">
+                <div class="md-card-content">
+                    <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+                        <div class="uk-width-large-2-2">
+                            <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
+                                <div class="uk-width-1-10">
+                                    <ul class="uk-tab uk-tab-left" data-uk-tab="{connect:'#tabs_6'}">
+                                        <li class="uk-active"><a href="#">Все</a></li>
+                                        <li><a href="#">Активные</a></li>
+                                        <li><a href="#">Архивные</a></li>
+                                    </ul>
+                                </div>
+                                <div class="uk-width-9-10">
+                                    <ul id="tabs_6" class="uk-switcher uk-margin-small-top">
+                                        <%= render '/seller/adverts/index/all_adverts' %>
+                                        <%= render '/seller/adverts/index/active_adverts' %>
+                                        <%= render '/seller/adverts/index/arhive_adverts' %>
+                                         
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        
+                 
                     </div>
                 </div>
             </div>
-        </div>
+
         <div class="md-fab-wrapper">
             <button class="md-btn md-btn-success" data-uk-modal="{target:'#modal_overflow'}">Добавить</button>
         </div>

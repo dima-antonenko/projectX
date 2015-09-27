@@ -1,7 +1,8 @@
 class Advert < ActiveRecord::Base
 	belongs_to :seller
 	has_many :advert_categories
-
+	belongs_to :product
+	
 	attr_accessor :advert_category_id, :advert_category_show_in_products, :advert_category_views, :advert_category_time_days
 end
 

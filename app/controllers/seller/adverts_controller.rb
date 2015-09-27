@@ -6,11 +6,14 @@ class Seller::AdvertsController < SellerController
 
   def index
     @adverts = Advert.all
+    @active_adverts = Advert.where(active: true)
+    @arhive_adverts = Advert.where(active: false)
     @advert = Advert.new
 
     @product_categories = ProductCategory.all
     @products = @seller.products.all
-    render 'seller/adverts/index'
+    
+
   end
 
   def edit
