@@ -1,4 +1,4 @@
-class AdvertCategoriesController < ApplicationController
+class Site::AdvertCategoriesController < SiteController
   before_action :set_advert_category, only: [:show, :edit, :update, :destroy]
 
   # GET /advert_categories

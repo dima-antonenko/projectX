@@ -1,4 +1,4 @@
-class StaticPagesController < ApplicationController
+class Site::StaticPagesController < SiteController
   before_action :set_static_page, only: [:show, :edit, :update, :destroy]
 
   # GET /static_pages

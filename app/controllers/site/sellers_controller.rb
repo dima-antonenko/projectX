@@ -1,4 +1,4 @@
-class SellersController < ApplicationController
+class Site::SellersController < SiteController
   before_action :set_seller, only: [:show, :edit, :update, :destroy]
 
   def show

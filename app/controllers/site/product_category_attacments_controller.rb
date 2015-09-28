@@ -1,4 +1,4 @@
-class ProductCategoryAttacmentsController < ApplicationController
+class Site::ProductCategoryAttacmentsController < SiteController
   before_action :set_product_category_attacment, only: [:show, :edit, :update, :destroy]
 
   # GET /product_category_attacments

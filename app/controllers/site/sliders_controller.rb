@@ -1,4 +1,4 @@
-class SlidersController < ApplicationController
+class Site::SlidersController < SiteController
   before_action :set_slider, only: [:show, :edit, :update, :destroy]
 
   # GET /sliders

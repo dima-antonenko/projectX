@@ -1,4 +1,4 @@
-class MiniCartsController < ApplicationController
+class Site::MiniCartsController < SiteController
   before_action :set_mini_cart, only: [:show, :edit, :update, :destroy]
 
   def new

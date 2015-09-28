@@ -1,4 +1,4 @@
-class LineItemsController < ApplicationController
+class Site::LineItemsController < SiteController
   include CurrentCart
 
   before_action :set_cart, only: [:create,:update, :destroy]

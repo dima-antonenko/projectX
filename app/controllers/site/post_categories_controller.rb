@@ -1,4 +1,4 @@
-class PostCategoriesController < ApplicationController
+class Site::PostCategoriesController < SiteController
   before_action :set_post_category, only: [:show, :edit, :update, :destroy]
 
   def show

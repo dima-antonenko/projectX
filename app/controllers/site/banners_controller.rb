@@ -1,4 +1,4 @@
-class BannersController < ApplicationController
+class Site::BannersController < SiteController
   before_action :set_banner, only: [:show, :edit, :update, :destroy]
 
   # GET /banners

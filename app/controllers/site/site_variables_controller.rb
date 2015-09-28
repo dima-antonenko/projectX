@@ -1,4 +1,4 @@
-class SiteVariablesController < ApplicationController
+class Site::SiteVariablesController < SiteController
   before_action :set_site_variable, only: [:show, :edit, :update, :destroy]
 
   # GET /site_variables

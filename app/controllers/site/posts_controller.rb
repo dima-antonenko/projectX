@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Site::PostsController < SiteController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts

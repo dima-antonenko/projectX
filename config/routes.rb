@@ -1,53 +1,30 @@
 Rails.application.routes.draw do
 
-  resources :advert_categories
+scope module: 'site' do
+    resources :advert_categories
+    resources :adverts
+    resources :product_tags
+    resources :tags
+    resources :site_variables
+    resources :static_pages
+    resources :slides
+    resources :sliders
+    resources :orders
+    resources :line_items
+    resources :carts
+    resources :product_category_attacments
+    resources :sellers
+    resources :post_categories
+    resources :posts 
+    resources :product_attacments
+    resources :product_categories
 
-  resources :adverts
-
-  resources :product_tags
+    resources :products do
+      resources :product_questions
+      resources :mini_carts
+    end  
+ end 
   
-
-  resources :tags
-
-  
-
-  resources :site_variables
-
-  resources :static_pages
-
-  resources :slides
-
-  resources :sliders
-
-  resources :orders
-
-  resources :line_items
-
-  resources :carts
-
-  resources :product_category_attacments
-
-  resources :sellers
-
-  
-
-  resources :post_categories
-  resources :posts 
-
-  resources :product_categories
-  resources :products do
-    resources :product_questions
-    resources :mini_carts
-  end  
-
-  
-  resources :product_attacments
-
-
-
-  root 'static#home'
-
-
   namespace :administrator do
     resources :products
     resources :product_categories
@@ -60,6 +37,11 @@ Rails.application.routes.draw do
     resources :static_pages
     resources :site_variables
   end
+
+    root 'static#home'
+
+  
+
 
   namespace :seller do
     resources :products

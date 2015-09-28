@@ -1,4 +1,5 @@
-class StaticController < ApplicationController
+class Site::StaticController < SiteController
+  
   def home
     @slider = Slider.where(descriptor: "main_slider").first
     @products = Product.where(to_main_page: true).take(25).each_slice(5)

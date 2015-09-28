@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class Site::TagsController < SiteController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   def show

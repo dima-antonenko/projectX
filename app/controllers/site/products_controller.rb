@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class Site::ProductsController < SiteController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
 

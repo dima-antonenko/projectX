@@ -1,4 +1,4 @@
-class ProductCategoriesController < ApplicationController
+class Site::ProductCategoriesController < SiteController
   before_action :set_product_category, only: [:show, :edit, :update, :destroy]
 
   # GET /product_categories

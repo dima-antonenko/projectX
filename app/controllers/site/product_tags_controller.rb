@@ -1,4 +1,4 @@
-class ProductTagsController < ApplicationController
+class Site::ProductTagsController < SiteController
   before_action :set_product_tag, only: [:show, :edit, :update, :destroy]
 
   # GET /product_tags
