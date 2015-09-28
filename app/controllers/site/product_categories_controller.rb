@@ -4,10 +4,9 @@ class Site::ProductCategoriesController < SiteController
   # GET /product_categories
   # GET /product_categories.json
   def index
-    @product_categories = ProductCategory.where(
-     product_category: nil).order(:to_main_page_product_categories_list)
-
+    @product_categories = ProductCategory.where( product_category: nil).order(:to_main_page_product_categories_list)
     @page = StaticPage.where(descriptor: "product_categories").first
+  
   end
 
   # GET /product_categories/1
@@ -17,6 +16,7 @@ class Site::ProductCategoriesController < SiteController
     @product_category_attacments =  ProductCategoryAttacment.where(product_category_id: @product_category.id)
     @mini_cart = MiniCart.new
 
+    @advert_products = get_adverts_in_product_category(@product_category.id)
 
     #sidebar data
     @sidebar_product_categories = ProductCategory.where(to_category_sidebar: true)

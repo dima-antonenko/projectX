@@ -1,4 +1,4 @@
-class Seller::AdvertsController < SellerController
+  class Seller::AdvertsController < SellerController
 
   before_action :set_advert, only: [:show, :edit, :update, :destroy]
   before_action :set_seller, only: [:index, :edit, :update]
@@ -13,6 +13,10 @@ class Seller::AdvertsController < SellerController
     @product_categories = ProductCategory.all
     @products = @seller.products.all
     
+
+    @test = TestService.new("James")
+
+   
 
   end
 
