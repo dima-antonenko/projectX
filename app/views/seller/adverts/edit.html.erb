@@ -6,7 +6,6 @@
         
         </div>
         <div id="page_content_inner">
-            <%= form_for([:seller, @advert], class: "uk-form-stacked", id: "product_edit_form", :multipart => true ) do |f| %>
             <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
                 
                 <div class="uk-width-xLarge-10-10  uk-width-large-10-10">
@@ -36,20 +35,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <%# form_for ([@advert, @advert.advert_categories.build]) do |f| %>
+                                     <%= form_for([:seller, @advert, @advert_category], :multipart => true, advert_id: 1   ) do |f| %>
                                     <tr>
                                         <th class="uk-width-large-5-10">
-                                            <%= f.select :advert_category_id ,options_for_select(@product_categories), {include_blank: 'Не выбрано'},{"data-md-selectize": true }    %>
+                                            <%= f.select :product_category_id ,options_for_select(@product_categories), {include_blank: 'Не выбрано'},{"data-md-selectize": true }    %>
                                         </th>
-                                        <th class="uk-width-large-2-10"><%= f.select(:advert_category_show_in_products, options_for_select([['Да', true], ['Нет', false]], selected: nil), {include_blank: 'Не выбрано'},{"data-md-selectize": true }) %></th>
-                                        <th class="uk-width-large-1-10"><%= f.text_field :advert_category_views, class: "md-input" %></th>
+                                        <th class="uk-width-large-2-10"><%= f.select(:show_in_products, options_for_select([['Да', true], ['Нет', false]], selected: nil), {include_blank: 'Не выбрано'},{"data-md-selectize": true }) %></th>
+                                        <th class="uk-width-large-1-10"><%= f.text_field :views, class: "md-input" %></th>
                                         
-                                        <th class="uk-width-large-1-10"><%= f.text_field :advert_category_time_days, class: "md-input" %></th>
+                                        <th class="uk-width-large-1-10"><%= f.text_field :time_days, class: "md-input" %></th>
                                         
                                         <th class="uk-width-large-1-10"><%= f.submit(class: "md-btn md-btn-success", value: "Добавить") %>
                                             
                                         </th>
                                     </tr>
-                                    
+                                    <% end %>
                                 </tbody>
                             </table>
                             
@@ -62,10 +63,8 @@
             </div>
             <div class="md-fab-wrapper">
                 <a class="md-btn" href="/seller/adverts/">Назад</a>
-                <%= f.submit(class: "md-btn md-btn-success", value: "Обновить") %>
                 <a class="md-btn md-btn-danger" href="/seller/adverts/">Удалить</a>
             </div>
-            <% end %>
         </div>
     </div>
 </div>

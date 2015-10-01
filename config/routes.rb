@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-scope module: 'site' do
+scope module: 'site' do   
+    resources :adverts 
     resources :advert_categories
-    resources :adverts
+    
     resources :product_tags
     resources :tags
     resources :site_variables
@@ -46,7 +47,10 @@ scope module: 'site' do
   namespace :seller do
     resources :products
     resources :orders
-    resources :adverts    
+
+     resources :adverts do
+        resources :advert_categories
+    end  
   end
 
   get '/administrator', to: 'administrator#dashboard'
