@@ -1,6 +1,6 @@
   class Seller::AdvertsController < SellerController
 
-  before_action :set_advert, only: [:show, :edit, :update, :destroy]
+  before_action :set_advert, only: [:show, :edit, :update, :destroy, :set_active]
   before_action :set_seller, only: [:index, :edit, :update]
 
 
@@ -12,6 +12,7 @@
 
     @product_categories = ProductCategory.all
     @products           = @seller.products.all
+
   end
 
   def edit
@@ -21,6 +22,9 @@
     @product = Product.find(@advert.product_id)
     @product_category = @product.product_category
     @advert_category = AdvertCategory.new
+
+    @current_seller = Seller.find(@advert.seller_id)
+
     render 'seller/adverts/edit'
   end
 
@@ -29,14 +33,14 @@
   end
 
   def create
-    @advert = Advert.create(product_id: params[:advert][:product_id])
+    @seller = Seller.first
+    @advert = Advert.create(product_id: params[:advert][:product_id], seller_id: @seller.id)
 
     respond_to do |format|
       if @advert.save
         format.html { redirect_to edit_seller_advert_path(@advert), notice: 'Информация обновлена' }
       else
         format.html { render :new }
-        format.json { render json: @advert.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +60,16 @@
     @advert.destroy
     respond_to do |format|
       format.html { redirect_to '/seller/adverts', notice: 'Объявление удалено' }
-      format.json { head :no_content }
+    end
+  end
+
+  def set_active
+    respond_to do |format|
+      if SetAdvertStatus.new(@advert.id).set_active == true
+        format.html { redirect_to :back, notice: 'Объявление поставлено в очередь' }
+      else
+        format.html { redirect_to :back, notice: 'Ошибка' }
+      end  
     end
   end
 

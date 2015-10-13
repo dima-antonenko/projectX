@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-scope module: 'site' do   
-    resources :adverts 
+  scope module: 'site' do
+    resources :adverts
     resources :advert_categories
-    
+
     resources :product_tags
     resources :tags
     resources :site_variables
@@ -16,16 +16,16 @@ scope module: 'site' do
     resources :product_category_attacments
     resources :sellers
     resources :post_categories
-    resources :posts 
+    resources :posts
     resources :product_attacments
     resources :product_categories
 
     resources :products do
       resources :product_questions
       resources :mini_carts
-    end  
- end 
-  
+    end
+  end
+
   namespace :administrator do
     resources :products
     resources :product_categories
@@ -39,19 +39,22 @@ scope module: 'site' do
     resources :site_variables
   end
 
-    root 'static#home'
+  root 'static#home'
 
-  
+
 
 
   namespace :seller do
     resources :products
     resources :orders
 
-     resources :adverts do
-        resources :advert_categories
-    end  
+    resources :adverts do
+      post 'set_active', on: :member
+      resources :advert_categories 
+    end
   end
+
+
 
   get '/administrator', to: 'administrator#dashboard'
 

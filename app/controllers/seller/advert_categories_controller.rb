@@ -7,12 +7,12 @@ class Seller::AdvertCategoriesController < SellerController
   end
 
   def create
-    @advert_category = AdvertCategory.new(advert_category_params)
+   @advert_category = AdvertCategory.new(advert_category_params)
    @advert_category.advert_id = params[:advert_id]
 
     respond_to do |format|
       if @advert_category.save
-        AddAdvertCategory.new(@advert_category.id).update_params
+        AddAdvertCategoryToAdvert.new(@advert_category.id).update_params
         format.html { redirect_to :back, notice: 'success' }
       else
         format.html { redirect_to :back, notice: 'error' }
@@ -23,8 +23,7 @@ class Seller::AdvertCategoriesController < SellerController
   
 
   def destroy
-    @advert = Advert.find(@advert_category.advert_id)
-    AdvertUpdate.new(@advert.id, @advert_category.total_price, @advert_category.views).update_remove_category
+    UpdateAdvertForAddAdvertCategory.new(@advert_category).remove_advert_category
     @advert_category.destroy
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Позиция удалена' }
@@ -39,6 +38,6 @@ class Seller::AdvertCategoriesController < SellerController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advert_category_params
-      params[:advert_category].permit(:product_category_id, :show_in_products, :views, :time_days)
+      params[:advert_category].permit(:product_category_id, :show_in_products, :total_views, :time_days)
     end
 end
