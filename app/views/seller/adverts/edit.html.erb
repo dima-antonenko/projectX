@@ -3,7 +3,7 @@
         <div id="page_heading">
                     <h1 id="product_edit_name">Объявление #<%= @advert.id %></h1>
                     <p>Создано: <%= @advert.created_at.to_date %></p>
-           
+           <p><%= params[:notice] %></p>
         </div>
         <div id="page_content_inner">
             <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
@@ -18,45 +18,12 @@
                         <% end %>
                     </div>
                     
-                    
-                    <div class="md-card">
-                        <div class="md-card-content">
-                            <h3 class="heading_a">Добавить категорию</h3>
-                            <table class="uk-table uk-table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="uk-width-large-5-10">Категория</th>
-                                        <th class="uk-width-large-2-10">Показывать в товарах </th>
-                                        <th class="uk-width-large-1-10">Количество <br/> показов</th>
-                                        <th class="uk-width-large-1-10">Время действия <br/> дней</th>
-                                        <th class="uk-width-large-1-10"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%# form_for ([@advert, @advert.advert_categories.build]) do |f| %>
-                                    <%# form_for([:seller, @advert, @advert_category], :multipart => true ) do |f| %>
-                                    <%= form_for([:seller, @advert, @advert_category] ) do |f| %>
-                                    <tr>
-                                        <th class="uk-width-large-5-10">
-                                            <%= f.select :product_category_id ,options_for_select(@product_categories), {include_blank: 'Не выбрано'},{"data-md-selectize": true }    %>
-                                        </th>
-                                        <th class="uk-width-large-2-10"><%= f.select(:show_in_products, options_for_select([['Да', true], ['Нет', false]], selected: nil), {include_blank: 'Не выбрано'},{"data-md-selectize": true }) %></th>
-                                        <th class="uk-width-large-1-10"><%= f.text_field :total_views %></th>
-                                        
-                                        <th class="uk-width-large-1-10"><%= f.text_field :time_days %></th>
-                                        
-                                        <%# f.text_field :time_days, class: "md-input" %>
-                                        
-                                        <th class="uk-width-large-1-10"><%= f.submit(class: "md-btn md-btn-success", value: "Добавить") %>
-                                            
-                                        </th>
-                                    </tr>
-                                    <% end %>
-                                </tbody>
-                            </table>
-                            
-                        </div>
-                    </div>
+
+                    <% if @advert.active == false %>
+                     <%= render '/seller/adverts/edit/add_category' %>
+                    <% end %>
+                   
+
                     <% if @advert.advert_categories.count > 0 %>
                     <%= render '/seller/adverts/edit/advert_categories_list' %>
                     <% end %>

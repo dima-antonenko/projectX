@@ -68,7 +68,7 @@
       if SetAdvertStatus.new(@advert.id).set_active == true
         format.html { redirect_to :back, notice: 'Объявление поставлено в очередь' }
       else
-        format.html { redirect_to :back, notice: 'Ошибка' }
+        format.html { redirect_to :back, notice: 'Ошибка, на Вашем счету не достаточно средств' }
       end  
     end
   end

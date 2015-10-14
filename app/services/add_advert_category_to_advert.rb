@@ -9,6 +9,8 @@ class AddAdvertCategoryToAdvert
     @margin_in_product_page = @product_category.margin_product_one_view
   end
 
+
+
   def update_params
     self.copy_category_price
     self.calc_views

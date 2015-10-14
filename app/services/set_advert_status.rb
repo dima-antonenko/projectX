@@ -6,7 +6,7 @@ class SetAdvertStatus
   end
 
   def set_active
-    if @advert.total_price > @seller.score
+    if @advert.total_price < @seller.score
       @seller.score -= @advert.total_price
       @seller.save
       @advert.active = true

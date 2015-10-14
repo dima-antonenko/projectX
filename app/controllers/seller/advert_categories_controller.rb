@@ -1,5 +1,6 @@
 class Seller::AdvertCategoriesController < SellerController
-  before_action :set_advert_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_advert_category, only: [:destroy, :set_advert]
+  before_action :set_advert, only: [:destroy]
 
 
   def new
@@ -23,17 +24,26 @@ class Seller::AdvertCategoriesController < SellerController
   
 
   def destroy
-    UpdateAdvertForAddAdvertCategory.new(@advert_category).remove_advert_category
-    @advert_category.destroy
+    
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Позиция удалена' }
+      if @advert.active == false
+        UpdateAdvertForAddAdvertCategory.new(@advert_category.id).remove_advert_category
+        @advert_category.destroy
+        format.html { redirect_to :back, notice: 'Позиция удалена' }
+      else
+        format.html { redirect_to :back, notice: 'Ошибка, нельзя редактировать активное объявление' }
+      end  
     end
+    
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_advert_category
       @advert_category = AdvertCategory.find(params[:id])
+    end
+
+    def set_advert
+      @advert = Advert.find(@advert_category.advert_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

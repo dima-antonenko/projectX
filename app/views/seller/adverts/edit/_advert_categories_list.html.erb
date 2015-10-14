@@ -15,7 +15,9 @@
                                         <th>Показано <br/> всего / сегодня</th>
                                         <th>Остаток показов <br/> всего <br/> категория / карточка</th>
                                         <th>Дата завершения</th>
-                                        <th>Действие</th>
+                                        <% if @advert.active == false %>
+                                            <th>Действие</th>
+                                        <% end %>    
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,8 +37,9 @@
                                         <td><%= category.current_views %> / <%= category.views_today %></td>
                                         <td><%= category.residue_views %> <br/> <%= category.residue_views_in_category %> / <%= category.residue_views_in_product %> </td>
                                         <td> <%= category.created_at.to_date + category.time_days.days %></td>
-                                        <td><%= link_to 'Удалить', seller_advert_advert_category_path(category.advert, category), method: :delete %>
-
+                                        <% if @advert.active == false %>
+                                            <td><%= link_to 'Удалить', seller_advert_advert_category_path(category.advert, category), method: :delete %>
+                                        <% end %>    
                                         </td>
                                     </tr>
                                     <% end %>
