@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002180546) do
+ActiveRecord::Schema.define(version: 20151014135205) do
 
   create_table "advert_categories", force: :cascade do |t|
     t.integer  "advert_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20151002180546) do
     t.boolean  "active",                          default: false
     t.integer  "views_today",                     default: 0
     t.integer  "views_in_day",                    default: 0
+    t.boolean  "archive",                         default: false
   end
 
   add_index "advert_categories", ["active_today"], name: "index_advert_categories_on_active_today"
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 20151002180546) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "active",      default: false
+    t.boolean  "archive",     default: false
   end
 
   add_index "adverts", ["product_id"], name: "index_adverts_on_product_id"

@@ -7,7 +7,8 @@
   def index
     @adverts            = Advert.all
     @active_adverts     = Advert.where(active: true)
-    @arhive_adverts     = Advert.where(active: false)
+    @no_active_adverts  = Advert.where(active: false)
+    @archive_adverts     = Advert.where(archive: true)
     @advert             = Advert.new
 
     @product_categories = ProductCategory.all

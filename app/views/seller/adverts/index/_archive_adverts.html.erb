@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            <% @arhive_adverts.each do |advert| %>
+            <% @archive_adverts.each do |advert| %>
             <tr>
                 <td><%= advert.id %></td>
                 <td class="uk-text-large uk-text-nowrap"><%= link_to advert.product.name, seller_product_path(advert.product) %></td>

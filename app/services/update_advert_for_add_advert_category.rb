@@ -9,7 +9,6 @@ class UpdateAdvertForAddAdvertCategory
   def add_advert_category
     @advert.total_views +=  @advert_category.total_views
     @advert.total_price +=  @advert_category.total_price
-    #@advert.total_price +=  20
     @advert.save
   end
 
