@@ -6,9 +6,15 @@ class DialyUpdateAdverts
   end
 
 
+  def recalculation_views
+    @active_advert_categories.each do |advert_category|
+      
+    end  
+  end
+
   def check_empty_categories
     @active_advert_categories.each do |advert_category|
-      if @advert_category.residue_views_in_category > 0 && @advert_category.show_in_products == true and @advert_category.residue_views_in_product > 0
+      if advert_category.residue_views_in_category == 0 && advert_category.show_in_products == true and advert_category.residue_views_in_product == 0
         advert_category.archive = true
         advert_category.active  = false
         advert_category.save
@@ -37,11 +43,7 @@ class DialyUpdateAdverts
     end
   end
 
-  def upadate_all
-    self.check_empty_categories
-    self.check_empty_adverts
-    self.dialy_calc_views_advert_categories
-  end
+  
 
 
   protected

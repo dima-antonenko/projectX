@@ -15,7 +15,6 @@ class AddAdvertCategoryToAdvert
     self.copy_category_price
     self.calc_views
     self.set_residue_views
-    self.calc_views_one_day
     self.calc_advert_category_price
     @advert_category.save
     UpdateAdvertForAddAdvertCategory.new(@advert_category).add_advert_category
@@ -44,13 +43,7 @@ class AddAdvertCategoryToAdvert
     @advert_category.residue_views_in_product  = @advert_category.views_in_product
   end
 
-  def calc_views_one_day
-    @advert_category.views_in_day = @advert_category.total_views / @advert_category.time_days
-    @advert_category.views_in_category_in_one_day = @advert_category.views_in_category / @advert_category.time_days
-    if @advert_category.show_in_products == true
-      @advert_category.views_in_product_in_one_day = @advert_category.views_in_product / @advert_category.time_days
-    end
-  end
+  
 
   def calc_advert_category_price
     @advert_category.total_price = @product_category_price * @advert_category.total_views

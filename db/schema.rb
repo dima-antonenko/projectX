@@ -11,28 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014135205) do
+ActiveRecord::Schema.define(version: 20151017064849) do
 
   create_table "advert_categories", force: :cascade do |t|
     t.integer  "advert_id"
     t.integer  "product_category_id"
     t.boolean  "show_in_products"
     t.integer  "total_views"
-    t.integer  "current_views",                   default: 0
     t.integer  "residue_views",                   default: 0
     t.integer  "views_in_category",               default: 0
-    t.integer  "current_views_in_category",       default: 0
     t.integer  "residue_views_in_category",       default: 0
     t.integer  "views_in_category_today",         default: 0
-    t.integer  "views_in_category_in_one_day",    default: 0
-    t.integer  "current_views_in_category_today", default: 0
     t.integer  "residue_views_in_category_today", default: 0
     t.integer  "views_in_product",                default: 0
-    t.integer  "current_views_in_product",        default: 0
     t.integer  "residue_views_in_product",        default: 0
-    t.integer  "views_in_product_in_one_day",     default: 0
     t.integer  "views_in_product_today",          default: 0
-    t.integer  "current_views_in_product_today",  default: 0
     t.integer  "residue_views_in_product_today",  default: 0
     t.decimal  "category_price"
     t.decimal  "total_price"
@@ -41,18 +34,12 @@ ActiveRecord::Schema.define(version: 20151014135205) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.boolean  "active",                          default: false
-    t.integer  "views_today",                     default: 0
-    t.integer  "views_in_day",                    default: 0
     t.boolean  "archive",                         default: false
+    t.integer  "residue_time_days",               default: 0
   end
 
   add_index "advert_categories", ["active_today"], name: "index_advert_categories_on_active_today"
   add_index "advert_categories", ["advert_id"], name: "index_advert_categories_on_advert_id"
-  add_index "advert_categories", ["current_views"], name: "index_advert_categories_on_current_views"
-  add_index "advert_categories", ["current_views_in_category"], name: "index_advert_categories_on_current_views_in_category"
-  add_index "advert_categories", ["current_views_in_category_today"], name: "index_advert_categories_on_current_views_in_category_today"
-  add_index "advert_categories", ["current_views_in_product"], name: "index_advert_categories_on_current_views_in_product"
-  add_index "advert_categories", ["current_views_in_product_today"], name: "index_advert_categories_on_current_views_in_product_today"
   add_index "advert_categories", ["product_category_id"], name: "index_advert_categories_on_product_category_id"
   add_index "advert_categories", ["residue_views"], name: "index_advert_categories_on_residue_views"
   add_index "advert_categories", ["residue_views_in_category"], name: "index_advert_categories_on_residue_views_in_category"
@@ -63,10 +50,8 @@ ActiveRecord::Schema.define(version: 20151014135205) do
   add_index "advert_categories", ["time_days"], name: "index_advert_categories_on_time_days"
   add_index "advert_categories", ["total_views"], name: "index_advert_categories_on_total_views"
   add_index "advert_categories", ["views_in_category"], name: "index_advert_categories_on_views_in_category"
-  add_index "advert_categories", ["views_in_category_in_one_day"], name: "index_advert_categories_on_views_in_category_in_one_day"
   add_index "advert_categories", ["views_in_category_today"], name: "index_advert_categories_on_views_in_category_today"
   add_index "advert_categories", ["views_in_product"], name: "index_advert_categories_on_views_in_product"
-  add_index "advert_categories", ["views_in_product_in_one_day"], name: "index_advert_categories_on_views_in_product_in_one_day"
   add_index "advert_categories", ["views_in_product_today"], name: "index_advert_categories_on_views_in_product_today"
 
   create_table "adverts", force: :cascade do |t|
