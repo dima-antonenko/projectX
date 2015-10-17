@@ -41,6 +41,7 @@ class AddAdvertCategoryToAdvert
     @advert_category.residue_views             = @advert_category.total_views
     @advert_category.residue_views_in_category = @advert_category.views_in_category
     @advert_category.residue_views_in_product  = @advert_category.views_in_product
+    @advert_category.residue_time_days         = @advert_category.time_days
   end
 
   
