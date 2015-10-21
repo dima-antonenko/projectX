@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017064849) do
+ActiveRecord::Schema.define(version: 20151021013741) do
 
   create_table "advert_categories", force: :cascade do |t|
     t.integer  "advert_id"
@@ -29,16 +29,18 @@ ActiveRecord::Schema.define(version: 20151017064849) do
     t.integer  "residue_views_in_product_today",  default: 0
     t.decimal  "category_price"
     t.decimal  "total_price"
-    t.boolean  "active_today",                    default: false
     t.integer  "time_days"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.boolean  "active",                          default: false
     t.boolean  "archive",                         default: false
     t.integer  "residue_time_days",               default: 0
+    t.boolean  "active_today_in_category",        default: false
+    t.boolean  "active_today_in_product",         default: false
+    t.boolean  "active_in_category",              default: false
+    t.boolean  "active_in_product",               default: false
   end
 
-  add_index "advert_categories", ["active_today"], name: "index_advert_categories_on_active_today"
   add_index "advert_categories", ["advert_id"], name: "index_advert_categories_on_advert_id"
   add_index "advert_categories", ["product_category_id"], name: "index_advert_categories_on_product_category_id"
   add_index "advert_categories", ["residue_views"], name: "index_advert_categories_on_residue_views"
