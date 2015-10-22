@@ -25,7 +25,7 @@ class GetAdvertisingProductsInProductCategory
     @advert_categories.each do |advert_category|
       self.update_views_advert_category(advert_category)
       self.check_status(advert_category)
-      @sidebar_products_keys << advert_category.id
+      @sidebar_products_keys << advert_category.advert.product_id
     end
     return @sidebar_products_keys  
   end

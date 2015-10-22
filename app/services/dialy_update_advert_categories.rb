@@ -20,7 +20,7 @@ class DialyUpdateAdvertCategories
     @advert_categories.each do |advert_category|
       self.calc_views_today_category(advert_category)
       self.set_active_today_in_category(advert_category)
-      self.calc_residue_views(advert_category)
+      self.calc_residue_time_days(advert_category)
       advert_category.save
     end
   end
@@ -31,7 +31,7 @@ class DialyUpdateAdvertCategories
     @advert_categories.each do |advert_category|
       self.calc_views_today_product(advert_category)
       self.set_active_today_in_product(advert_category)
-      self.calc_residue_views(advert_category)
+      self.calc_residue_time_days(advert_category)
       advert_category.save
     end
   end
@@ -121,7 +121,7 @@ class DialyUpdateAdvertCategories
 
   #обновления счетчика остатка дней
   #если есть активные просмотры, но заканчивается время -- остаток времени 1 день
-  def calc_residue_views(advert_category)
+  def calc_residue_time_days(advert_category)
     if advert_category.residue_time_days > 1
       advert_category.residue_time_days -= 1
     elsif advert_category.residue_time_days == 1
@@ -130,5 +130,7 @@ class DialyUpdateAdvertCategories
       end
     end
   end
+
+
 
 end
