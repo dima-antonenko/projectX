@@ -18,11 +18,11 @@
 
   def edit
     @advert = Advert.find(params[:id])
-    @product_categories = ProductCategory.all.collect {|category| ["#{category.name}    цена: #{category.price_advert}$, надбавка за показ в товарах: #{category.price_advert}$", category.id ]}
-    @advert_categories = AdvertCategory.where(advert_id: @advert.id)
+    @product_categories = ProductCategory.all.collect {|category| ["#{category.name}    цена показа в категории: #{category.price_show_advert_in_category}$, цена за показ в товарах: #{category.price_show_advert_in_product}$", category.id ]}
+    @advert_positions = AdvertPosition.where(advert_id: @advert.id)
     @product = Product.find(@advert.product_id)
     @product_category = @product.product_category
-    @advert_category = AdvertCategory.new
+    @advert_position = AdvertPosition.new
 
     @current_seller = Seller.find(@advert.seller_id)
 
@@ -46,27 +46,10 @@
     end
   end
 
-  def update
-    #@advert.assign_attributes(advert_params)
-    respond_to do |format|
-    if @advert.save
-        format.html { redirect_to :back, notice: 'Информация обновлена' }
-      else
-        format.html { redirect_to :back, notice: 'Заполнены не все данные'}
-      end
-    end
-  end
-
-  def destroy
-    @advert.destroy
-    respond_to do |format|
-      format.html { redirect_to '/seller/adverts', notice: 'Объявление удалено' }
-    end
-  end
 
   def set_active
     respond_to do |format|
-      if SetAdvertStatus.new(@advert.id).set_active == true
+      if SetAdvertStatus.new(@advert).set_active == true
         format.html { redirect_to :back, notice: 'Объявление поставлено в очередь' }
       else
         format.html { redirect_to :back, notice: 'Ошибка, на Вашем счету не достаточно средств' }

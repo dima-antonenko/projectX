@@ -5,7 +5,7 @@
             <thead>
                 <tr>
                     <th class="uk-width-large-5-10">Категория</th>
-                    <th class="uk-width-large-2-10">Показывать в товарах </th>
+                    <th class="uk-width-large-2-10">Место показа</th>
                     <th class="uk-width-large-1-10">Количество <br/> показов</th>
                     <th class="uk-width-large-1-10">Время действия <br/> дней</th>
                     <th class="uk-width-large-1-10"></th>
@@ -14,13 +14,13 @@
             <tbody>
                 <%# form_for ([@advert, @advert.advert_categories.build]) do |f| %>
                 <%# form_for([:seller, @advert, @advert_category], :multipart => true ) do |f| %>
-                <%= form_for([:seller, @advert, @advert_category] ) do |f| %>
+                <%= form_for([:seller, @advert, @advert_position] ) do |f| %>
                 <tr>
                     <th class="uk-width-large-5-10">
-                        <%= f.select :product_category_id ,options_for_select(@product_categories), {include_blank: 'Не выбрано'},{"data-md-selectize": true }    %>
+                        <%= f.select :product_category_id, options_for_select(@product_categories), {include_blank: 'Не выбрано'},{"data-md-selectize": true }    %>
                     </th>
-                    <th class="uk-width-large-2-10"><%= f.select(:show_in_products, options_for_select([['Да', true], ['Нет', false]], selected: nil), {include_blank: 'Не выбрано'},{"data-md-selectize": true }) %></th>
-                    <th class="uk-width-large-1-10"><%= f.text_field :total_views %></th>
+                    <th class="uk-width-large-2-10"><%= f.select(:place, options_for_select([['Страница категории', 'product_category'], ['Товары категории', 'product']], selected: nil), {include_blank: 'Не выбрано'},{"data-md-selectize": true }) %></th>
+                    <th class="uk-width-large-1-10"><%= f.text_field :views %></th>
                     
                     <th class="uk-width-large-1-10"><%= f.text_field :time_days %></th>
                     

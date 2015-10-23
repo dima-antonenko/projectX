@@ -1,52 +1,54 @@
 class SetAdvertStatus
 
-  def initialize(advert_id)
-    @advert = Advert.find(advert_id)
+  def initialize(advert)
+    @advert = advert
     @seller = Seller.find(@advert.seller_id)
   end
 
   def set_active
-    if @advert.total_price < @seller.score
-      @seller.score -= @advert.total_price
-      @seller.save
-      @advert.active = true
-      @advert.save
-      self.set_active_advert_categories
+    if @seller.score > @advert.total_price
+        self.set_active_advert_positions
+        self.update_seller_data_for_set_active_advert
+        @advert.update_attribute(:active, true)
       return true
     else
       return false
-    end  
+    end
   end
 
-  def remove_advert
-
+  def set_archive
+    self.set_archive_advert_positions
+    self.update_seller_data_for_set_archive_advert
   end
+
 
   protected
 
-  def set_active_advert_categories
-    @advert.advert_categories.each do |category|
-      category.active = true
-      category.save
+  #set status active
+
+  def set_active_advert_positions
+    @advert.advert_positions.each do |advert_position|
+      advert_position.update_attribute(:active, true)
     end
   end
 
-  def set_no_active_advert_categories
-    @advert.advert_categories.each do |category|
-      category.active = false
-      category.save
-    end
+  def update_seller_data_for_set_active_advert
+    @seller.score -= @advert.total_price
+    @seller.save
   end
 
+  #set status archive
 
+  def set_archive_advert_positions
+    @advert.advert_positions.each do |advert_position|
+      advert_position.update_attribute(:active, false)
+      advert_position.update_attribute(:achive, true)     
+    end 
+  end
+
+  def update_seller_data_for_set_archive_advert
+    @seller.score += @advert.total_price
+    @seller.save
+  end
 
 end
-
-=begin
-  установка статуса объявления продавцом
-  
-  set_active
-  если у продавца достаточно денег на счету то объявление становится активным
-
-  
-=end

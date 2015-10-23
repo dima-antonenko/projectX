@@ -3,7 +3,7 @@
 <head>
   <title>ProjectX</title>
 
-  
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/option.css" />
     <link rel="stylesheet" type="text/css" href="/main/assets/css/option2.css" />
     <link rel="stylesheet" type="text/css" href="/main/assets/css/option3.css" />
     <link rel="stylesheet" type="text/css" href="/main/assets/css/option4.css" />
@@ -28,14 +28,14 @@
     <link rel="stylesheet" type="text/css" href="/main/assets/css/responsive.css" />
 
     
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'site', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'site', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= yield(:class) %>">
 <%= render '/layouts/main/header' %>
 <% if yield(:class) == "home option6" %>
-<%= render '/static/home/search_area.html.erb' %>
+<%= render '/site/static/home/search_area.html.erb' %>
 <% end %>
 <div class="columns-container">
     <div class="container" id="columns">

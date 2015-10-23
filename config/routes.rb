@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :advert_positions
+
   scope module: 'site' do
     resources :adverts
     resources :advert_categories
@@ -39,7 +41,7 @@ Rails.application.routes.draw do
     resources :site_variables
   end
 
-  root 'static#home'
+  root 'site/static#home'
 
 
 
@@ -50,7 +52,8 @@ Rails.application.routes.draw do
 
     resources :adverts do
       post 'set_active', on: :member
-      resources :advert_categories 
+      post 'set_archive', on: :member
+      resources :advert_positions
     end
   end
 
@@ -61,7 +64,7 @@ Rails.application.routes.draw do
   get '/seller', to: 'seller#dashboard'
   get '/seller/seller_edit', to: 'seller#seller_edit'
 
-  match "/search" => "products#search", via: [ :get, :post ]
+  match "/search" => "site/products#search", via: [ :get, :post ]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

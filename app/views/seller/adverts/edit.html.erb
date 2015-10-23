@@ -13,7 +13,7 @@
                         <%= render '/seller/adverts/edit/avatar' %>
                         <%= render '/seller/adverts/edit/product_info' %>
                         
-                        <% if @advert.advert_categories.count > 0 %>
+                        <% if @advert.advert_positions.count > 0 %>
                         <%= render '/seller/adverts/edit/advert_info' %>
                         <% end %>
                     </div>
@@ -24,7 +24,7 @@
                     <% end %>
                    
 
-                    <% if @advert.advert_categories.count > 0 %>
+                    <% if @advert.advert_positions.count > 0 %>
                     <%= render '/seller/adverts/edit/advert_categories_list' %>
                     <% end %>
                 </div>

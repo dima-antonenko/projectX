@@ -1,0 +1,300 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+
+
+ */
+/* line 16, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.cart_page .next-btn {
+  float: right;
+  background: #f96d10;
+  color: #fff;
+  border: 1px solid #f96d10;
+  padding: 10px 20px;
+  text-decoration: none;
+  outline: none !important;
+}
+
+/* line 30, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.option2 .div-1 .cate-tit .cate-name {
+  padding-left: 10px;
+}
+/* line 35, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.option2 .div-2 {
+  padding-top: 0px;
+}
+/* line 37, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.option2 .div-2 .hot-cate-img {
+  height: 109px;
+}
+
+/* line 42, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.cate-name {
+  font-size: 10px !important;
+}
+
+/* line 45, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.option2 .content-page {
+  background: none;
+}
+
+/* line 49, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.option2 .product-featured .product-list {
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* line 53, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+#footer .introduce-title {
+  font-size: 14px;
+}
+
+/* line 57, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.option6 .main-header .header-search-box .form-inline {
+  min-width: 645px;
+}
+
+/* line 61, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.header-search-box {
+  float: none;
+  position: relative;
+  margin: 150px auto !important;
+  padding: 0px !important;
+}
+
+/* line 69, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.product-list li .old-price {
+  line-height: 14px;
+}
+
+/* line 73, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.product-list ul {
+  margin-bottom: 10px !important;
+}
+
+/* line 77, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.home .product-list {
+  margin-bottom: 10px !important;
+}
+
+/* line 80, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.submit_minicart {
+  margin-top: 20px;
+}
+
+/* line 86, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.sidebar_product_list ul li {
+  width: 100%;
+  float: left;
+  clear: both;
+  position: relative;
+}
+
+/* line 97, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.product-page .ask_link {
+  width: 60%;
+  float: left;
+  position: relative;
+  margin: 5px 0 0 10px;
+}
+/* line 104, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.product-page .btn-add-cart {
+  width: 20%;
+  float: left;
+  position: relative;
+}
+
+/* line 114, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.product-page .mini_cart {
+  background-color: #666;
+  margin: 0 0 0 5px;
+  color: white;
+  border-radius: 0px;
+  line-height: 21px;
+}
+/* line 122, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.product-page .question_form {
+  line-height: 35px;
+  margin-left: 5px;
+}
+
+/* line 129, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.header {
+  background: #f6d654 url(/main/assets/images/search_bg.jpg) no-repeat center !important;
+}
+/* line 131, /home/dima/Rails/project_x/app/assets/stylesheets/application.css.scss */
+.header .header-search-box {
+  width: 53% !important;
+}
+/* line 1, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #000;
+}
+/* line 24, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+a:visited {
+  color: #666;
+}
+/* line 28, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 35, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 40, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 44, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 50, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 58, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 69, /home/dima/Rails/project_x/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+
+
+ */
+/* line 16, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.cart_page .next-btn {
+  float: right;
+  background: #007176;
+  color: #fff;
+  border: 1px solid #007176;
+  padding: 10px 20px;
+  text-decoration: none;
+  outline: none !important;
+}
+
+/* line 30, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.option2 .div-1 .cate-tit .cate-name {
+  padding-left: 10px;
+}
+/* line 35, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.option2 .div-2 {
+  padding-top: 0px;
+}
+/* line 37, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.option2 .div-2 .hot-cate-img {
+  height: 109px;
+}
+
+/* line 42, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.cate-name {
+  font-size: 10px !important;
+}
+
+/* line 45, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.option2 .content-page {
+  background: none;
+}
+
+/* line 49, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.option2 .product-featured .product-list {
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* line 53, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+#footer .introduce-title {
+  font-size: 14px;
+}
+
+/* line 57, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.option6 .main-header .header-search-box .form-inline {
+  min-width: 645px;
+}
+
+/* line 61, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.header-search-box {
+  float: none;
+  position: relative;
+  margin: 150px auto !important;
+  padding: 0px !important;
+}
+
+/* line 69, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.product-list li .old-price {
+  line-height: 14px;
+}
+
+/* line 73, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.product-list ul {
+  margin-bottom: 10px !important;
+}
+
+/* line 77, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.home .product-list {
+  margin-bottom: 10px !important;
+}
+
+/* line 80, /home/dima/Rails/project_x/app/assets/stylesheets/administrator.css.scss */
+.submit_minicart {
+  margin-top: 20px;
+}

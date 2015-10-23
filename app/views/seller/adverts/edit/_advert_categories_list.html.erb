@@ -21,24 +21,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% @advert_categories.each do |category| %>
+                                    <% @advert_positions.each do |position| %>
                                     <tr>
-                                        <td><%= category.product_category.name %></td>
-                                        <% if category.show_in_products == true %>
-                                        <td><i class="material-icons uk-text-success md-24"></i></td>
-                                        <% else %>
-                                        <td><i class="material-icons uk-text-success md-24">&#xE835;</i></td>
-                                        <% end %>
-                                        <td><%= category.total_views %></td>
-                                        <td><%= category.category_price %> $ </td>
-                                        <td><%= category.product_category.margin_product_one_view %> $</td>
-                                        <td><%= category.total_price %> $</td>
-                                        <td><%= category.time_days %></td>
-                                        <td><%= category.residue_views %> <br/> <%= category.residue_views_in_category %> / <%= category.residue_views_in_product %> </td>
+                                        <td><%= position.product_category.name %></td>
+                                        <td></td>
+                                        <td><%= position.views %></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td> </td>
-                                        <td> <%= category.created_at.to_date + category.time_days.days %></td>
+                                        <td> </td>
+                                        <td> </td>
                                         <% if @advert.active == false %>
-                                            <td><%= link_to 'Удалить', seller_advert_advert_category_path(category.advert, category), method: :delete %>
+                                            <td><%= link_to 'Удалить', seller_advert_advert_position_path(position.advert, position), method: :delete %>
                                         <% end %>    
                                         </td>
                                     </tr>

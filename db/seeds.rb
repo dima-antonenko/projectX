@@ -28,7 +28,7 @@ ProductQuestion.destroy_all
 
 
 @seller = Seller.create(name: "Иван", surname: "Иванов", email: "ivanov@mail.ru", skype: "skype_ivanov", zip: 12345, phone: "+7-12-34-567",
- sity: "Москва", sales: 10, score: 100.0, good_reviews: 90)
+ sity: "Москва", sales: 10, score: 10000.0, good_reviews: 90)
 
 #create seller reviews
 5.times do |i|
@@ -188,8 +188,8 @@ end
 
   category.description = @text_lorem
   category.count_views = 1
-  category.price_advert = 0.5
-  category.margin_product_one_view = 2.0
+  category.price_show_advert_in_category = 2.0
+  category.price_show_advert_in_product = 4.0
   category.save
 end
 

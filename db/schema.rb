@@ -11,50 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021013741) do
+ActiveRecord::Schema.define(version: 20151023005541) do
 
-  create_table "advert_categories", force: :cascade do |t|
+  create_table "advert_positions", force: :cascade do |t|
     t.integer  "advert_id"
     t.integer  "product_category_id"
-    t.boolean  "show_in_products"
-    t.integer  "total_views"
-    t.integer  "residue_views",                   default: 0
-    t.integer  "views_in_category",               default: 0
-    t.integer  "residue_views_in_category",       default: 0
-    t.integer  "views_in_category_today",         default: 0
-    t.integer  "residue_views_in_category_today", default: 0
-    t.integer  "views_in_product",                default: 0
-    t.integer  "residue_views_in_product",        default: 0
-    t.integer  "views_in_product_today",          default: 0
-    t.integer  "residue_views_in_product_today",  default: 0
-    t.decimal  "category_price"
-    t.decimal  "total_price"
-    t.integer  "time_days"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.boolean  "active",                          default: false
-    t.boolean  "archive",                         default: false
-    t.integer  "residue_time_days",               default: 0
-    t.boolean  "active_today_in_category",        default: false
-    t.boolean  "active_today_in_product",         default: false
-    t.boolean  "active_in_category",              default: false
-    t.boolean  "active_in_product",               default: false
+    t.integer  "product_id"
+    t.string   "place",               default: "product_category"
+    t.decimal  "place_price",         default: 0.0
+    t.integer  "views",               default: 0
+    t.integer  "time_days",           default: 1
+    t.decimal  "total_price",         default: 0.0
+    t.integer  "views_today",         default: 0
+    t.boolean  "active",              default: false
+    t.boolean  "active_today",        default: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.boolean  "archive",             default: false
   end
 
-  add_index "advert_categories", ["advert_id"], name: "index_advert_categories_on_advert_id"
-  add_index "advert_categories", ["product_category_id"], name: "index_advert_categories_on_product_category_id"
-  add_index "advert_categories", ["residue_views"], name: "index_advert_categories_on_residue_views"
-  add_index "advert_categories", ["residue_views_in_category"], name: "index_advert_categories_on_residue_views_in_category"
-  add_index "advert_categories", ["residue_views_in_category_today"], name: "index_advert_categories_on_residue_views_in_category_today"
-  add_index "advert_categories", ["residue_views_in_product"], name: "index_advert_categories_on_residue_views_in_product"
-  add_index "advert_categories", ["residue_views_in_product_today"], name: "index_advert_categories_on_residue_views_in_product_today"
-  add_index "advert_categories", ["show_in_products"], name: "index_advert_categories_on_show_in_products"
-  add_index "advert_categories", ["time_days"], name: "index_advert_categories_on_time_days"
-  add_index "advert_categories", ["total_views"], name: "index_advert_categories_on_total_views"
-  add_index "advert_categories", ["views_in_category"], name: "index_advert_categories_on_views_in_category"
-  add_index "advert_categories", ["views_in_category_today"], name: "index_advert_categories_on_views_in_category_today"
-  add_index "advert_categories", ["views_in_product"], name: "index_advert_categories_on_views_in_product"
-  add_index "advert_categories", ["views_in_product_today"], name: "index_advert_categories_on_views_in_product_today"
+  add_index "advert_positions", ["place"], name: "index_advert_positions_on_place"
+  add_index "advert_positions", ["product_category_id"], name: "index_advert_positions_on_product_category_id"
+  add_index "advert_positions", ["product_id"], name: "index_advert_positions_on_product_id"
 
   create_table "adverts", force: :cascade do |t|
     t.integer  "seller_id"
@@ -231,8 +209,8 @@ ActiveRecord::Schema.define(version: 20151021013741) do
     t.boolean  "to_category_sidebar"
     t.string   "slug"
     t.integer  "count_views"
-    t.decimal  "price_advert"
-    t.decimal  "margin_product_one_view"
+    t.decimal  "price_show_advert_in_category",              default: 1.0
+    t.decimal  "price_show_advert_in_product",               default: 1.0
   end
 
   add_index "product_categories", ["avatar"], name: "index_product_categories_on_avatar"

@@ -7,6 +7,9 @@ Rails.application.config.assets.precompile += %w( administrator.css )
 Rails.application.config.assets.precompile += %w( administrator.js )
 Rails.application.config.assets.precompile += %w( seller.css )
 Rails.application.config.assets.precompile += %w( seller.js )
+
+Rails.application.config.assets.precompile += %w( site.css )
+Rails.application.config.assets.precompile += %w( site.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

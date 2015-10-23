@@ -16,7 +16,7 @@
             <tr>
                 <td><%= advert.id %></td>
                 <td class="uk-text-large uk-text-nowrap"><%= link_to advert.product.name, edit_seller_advert_path(advert) %></td>
-                <td class="uk-text-nowrap"><%= advert.advert_categories.count %></td>
+                <td class="uk-text-nowrap"><%= advert.advert_prositions.count %></td>
                 <td class="uk-text-nowrap"><%= advert.total_views %>$</td>
                 <td class="uk-text-nowrap"> <%= advert.total_price %> </td>
                 <% if advert.active == true %>
