@@ -11,20 +11,21 @@
             </tr>
         </thead>
         <tbody>
-            <% @active_adverts.each do |advert| %>
+            <%# @active_adverts.each do |advert| %>
+            <% @adverts.each do |advert| %>
             <tr>
                 <td><%= advert.id %></td>
-                <td class="uk-text-large uk-text-nowrap"><%= link_to advert.product.name, seller_product_path(advert.product) %></td>
-                <td class="uk-text-nowrap"><%= advert.advert_categories.count %></td>
-                <td class="uk-text-nowrap"><%= advert.total_views %>$</td>
-                <td class="uk-text-nowrap"> <%= advert.total_price %> </td>
+                <td class="uk-text-large uk-text-nowrap"><%= link_to advert.product.name, edit_seller_advert_path(advert) %></td>
+                <td class="uk-text-nowrap"><%= advert.advert_positions.size %></td>
+                <td class="uk-text-nowrap"><%= advert.total_views %></td>
+                <td class="uk-text-nowrap"> <%= advert.total_price %>$</td>
                 
                 <td class="uk-text-nowrap">
-                    <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, seller_advert_path(advert), method: :delete, data: { confirm: 'Удалить ?' } %>
+                    <a>Удалить</a>
                     
                 </td>
             </tr>
             <% end %>
         </tbody>
-    </table>   
+    </table>
 </li>

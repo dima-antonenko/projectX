@@ -8,7 +8,7 @@
                 <th>Показов  </th>
                 <th>Стоимость</th>
                 <th>Статус</th>
-                <th></th>
+                <th>Действие</th>
             </tr>
         </thead>
         <tbody>
@@ -16,18 +16,26 @@
             <tr>
                 <td><%= advert.id %></td>
                 <td class="uk-text-large uk-text-nowrap"><%= link_to advert.product.name, edit_seller_advert_path(advert) %></td>
-                <td class="uk-text-nowrap"><%= advert.advert_prositions.count %></td>
-                <td class="uk-text-nowrap"><%= advert.total_views %>$</td>
-                <td class="uk-text-nowrap"> <%= advert.total_price %> </td>
+                <td class="uk-text-nowrap"><%= advert.advert_positions.size %></td>
+                <td class="uk-text-nowrap"><%= advert.total_views %></td>
+                <td class="uk-text-nowrap"> <%= advert.total_price %>$</td>
                 <% if advert.active == true %>
                 <td class="uk-text-nowrap">Активное</td>
-                <% else %>
+                <% elsif advert.active == false and advert.archive == false %>
+                <td class="uk-text-nowrap">Не активное</td>
+                <% elsif advert.active == false and advert.archive == true %>
                 <td class="uk-text-nowrap">Архивное</td>
                 <% end %>
-                <td class="uk-text-nowrap">
-                    <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, seller_advert_path(advert), method: :delete, data: { confirm: 'Удалить ?' } %>
-                    
-                </td>
+                
+
+
+                <% if advert.active == true %>
+                <td class="uk-text-nowrap"><a>Удалить</a></td>
+                <% elsif advert.active == false and advert.archive == false %>
+                <td class="uk-text-nowrap"><a>Активировать</a></td>
+                <% elsif advert.active == false and advert.archive == true %>
+                <td class="uk-text-nowrap"> </td>
+                <% end %>
             </tr>
             <% end %>
         </tbody>
