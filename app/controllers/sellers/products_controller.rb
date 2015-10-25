@@ -1,11 +1,12 @@
-class Seller::ProductsController < SellerController
+class Sellers::ProductsController < SellersController
 
   before_action :set_product, only: [:edit, :update, :destroy, :delete]
 
 
   def index
-    #@products = Product.where(seller_id: @seller.id).paginate(:page => params[:page], :per_page => 10)
+   # @products = Product.where(seller_id: @seller.id).paginate(:page => params[:page], :per_page => 10)
     @products = Product.all
+
     
   end
 

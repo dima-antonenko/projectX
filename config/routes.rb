@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :advert_positions
+  devise_for :sellers
+  root 'site/static#home'
+  get 'sellers/dashboard', as: 'seller_root'
+
 
   scope module: 'site' do
     resources :adverts
@@ -16,7 +19,7 @@ Rails.application.routes.draw do
     resources :line_items
     resources :carts
     resources :product_category_attacments
-    resources :sellers
+    #resources :sellers
     resources :post_categories
     resources :posts
     resources :product_attacments
@@ -41,12 +44,12 @@ Rails.application.routes.draw do
     resources :site_variables
   end
 
-  root 'site/static#home'
+  
 
 
 
 
-  namespace :seller do
+  namespace :sellers do
     resources :products
     resources :orders
 
@@ -61,8 +64,7 @@ Rails.application.routes.draw do
 
   get '/administrator', to: 'administrator#dashboard'
 
-  get '/seller', to: 'seller#dashboard'
-  get '/seller/seller_edit', to: 'seller#seller_edit'
+ 
 
   match "/search" => "site/products#search", via: [ :get, :post ]
 

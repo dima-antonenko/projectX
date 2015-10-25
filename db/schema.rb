@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023161525) do
+ActiveRecord::Schema.define(version: 20151025011836) do
 
   create_table "advert_positions", force: :cascade do |t|
     t.integer  "advert_id"
@@ -282,33 +282,20 @@ ActiveRecord::Schema.define(version: 20151023161525) do
   add_index "seller_reviews", ["skype"], name: "index_seller_reviews_on_skype"
 
   create_table "sellers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "surname"
-    t.string   "email"
-    t.string   "skype"
-    t.string   "phone"
-    t.string   "zip"
-    t.string   "sity"
-    t.string   "avatar"
-    t.string   "status"
-    t.text     "info"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "sales",        default: 0
-    t.decimal  "score",        default: 0.0
-    t.integer  "good_reviews", default: 0
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
-  add_index "sellers", ["avatar"], name: "index_sellers_on_avatar"
-  add_index "sellers", ["email"], name: "index_sellers_on_email"
-  add_index "sellers", ["info"], name: "index_sellers_on_info"
-  add_index "sellers", ["name"], name: "index_sellers_on_name"
-  add_index "sellers", ["phone"], name: "index_sellers_on_phone"
-  add_index "sellers", ["sity"], name: "index_sellers_on_sity"
-  add_index "sellers", ["skype"], name: "index_sellers_on_skype"
-  add_index "sellers", ["status"], name: "index_sellers_on_status"
-  add_index "sellers", ["surname"], name: "index_sellers_on_surname"
-  add_index "sellers", ["zip"], name: "index_sellers_on_zip"
+  add_index "sellers", ["email"], name: "index_sellers_on_email", unique: true
+  add_index "sellers", ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
 
   create_table "site_variables", force: :cascade do |t|
     t.integer "static_page_id"

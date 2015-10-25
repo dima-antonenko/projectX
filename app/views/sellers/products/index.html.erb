@@ -54,7 +54,7 @@
                                       <% @products.each do |product| %>
                                         <tr>
                                             <td><img class="img_thumb" src="<%= product.avatar.admin %>" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="<%= edit_seller_product_path(product.id) %>"><%= product.name %></a></td>
+                                            <td class="uk-text-large uk-text-nowrap"><a href="<%= edit_sellers_product_path(product.id) %>"><%= product.name %></a></td>
                                             <td class="uk-text-nowrap">$ <%= product.price %></td>
                                             <td class="uk-text-nowrap">
                                             <% if product.avability == 'in_stock' %>
@@ -73,7 +73,7 @@
                                             </td>
                                             <td class="uk-text-nowrap">
                                                 <% # link_to "<i class=\"material-icons md-24\">&#xE8F4;</i>".html_safe, administrator_product_path(product) %>
-                                                <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, seller_product_path(product), method: :delete, data: { confirm: 'Удалить товар ?' } %>
+                                                <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, sellers_product_path(product), method: :delete, data: { confirm: 'Удалить товар ?' } %>
                                             
                                             </td>
                                         </tr>
