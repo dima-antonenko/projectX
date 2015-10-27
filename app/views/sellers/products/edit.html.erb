@@ -4,7 +4,7 @@
         <span class="uk-text-muted uk-text-upper uk-text-small" id="product_edit_sn">ID: <%= @product.id %></span>
     </div>
     <div id="page_content_inner">
-        <%= form_for([:seller, @product], class: "uk-form-stacked", id: "product_edit_form", :multipart => true ) do |f| %>
+        <%= form_for([:sellers, @product], class: "uk-form-stacked", id: "product_edit_form", :multipart => true ) do |f| %>
         <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
             <div class="uk-width-xLarge-2-10 uk-width-large-3-10">
                 <div class="md-card">
@@ -59,6 +59,42 @@
                         </ul>
                     </div>
                 </div>
+                
+                <div class="md-card">
+                <div class="md-card-content">
+                    <h3 class="heading_a">Теги товара</h3>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-large-3-3 uk-width-medium-2-2">
+                           
+                        <%= f.select(:tags_list, options_for_select(Tag.all.collect {|tag| [tag.title, tag.id ]}, selected: @product.tags.all.collect {|tag| [tag.title, tag.id ]}), {},{"multiple": true, id: "selec_adv_1" }) %>
+                        </div>
+
+                       
+                        
+                      
+
+                    </div>
+                     <div class="uk-width-large-2-3 uk-width-medium-1-2">
+                         <ul class="md-list md-list-addon">
+                       <% @product.tags.each do |tag| %>
+                                <li>
+                                    <div class="md-list-addon-element">
+                                        <i class="md-list-addon-icon material-icons">&#xE0B9;</i>
+                                    </div>
+                                    <div class="md-list-content">
+                                        <span class="md-list-heading"> <%= tag.title %></span>
+                                        <span class="uk-text-small uk-text-muted"><%= link_to 'Удалить', tag, method: :delete %>
+</span>
+                                                                            </div>
+                                </li>
+                                 <% end %>
+                            </ul>
+                     </div>
+
+
+                     
+                </div>
+            </div>
                 
                 
             </div>

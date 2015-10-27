@@ -4,74 +4,48 @@ class Sellers::ProductsController < SellersController
 
 
   def index
-   # @products = Product.where(seller_id: @seller.id).paginate(:page => params[:page], :per_page => 10)
-    @products = Product.all
+    @products = Product.where(seller_id: current_seller.id).paginate(:page => params[:page], :per_page => 20)
 
-    
   end
 
   def edit
     @product = Product.find(params[:id])
     @product_attachments = ProductAttacment.where(product_id: @product.id)
-   
+    @product_tags = @product.tags.all
   end
 
   # GET /products/new
   def new
-    @product = Product.new
-    
+    @product = Product.new  
    # @product_attachments = @product.product_attachments.build
   end
 
-
-
-  # POST /products
-  # POST /products.json
   def create
     @product = Product.new(product_params)
-    @product.seller_id = @seller.id
-    @product.assign_attributes(product_params)
+    SellerProduct.new(@product, params, current_seller).create_product
 
     respond_to do |format|
       if @product.save
-
-        if params[:images] != nil
-          params[:images].each do |image|
-            ProductAttacment.create(product_id: @product.id, image: image)
-          end
-        end
-        format.html { redirect_to edit_seller_product_path(@product) , notice: 'Товар добавлен' }
-        format.json { render :show, status: :created, location: @product }
+        format.html { redirect_to edit_sellers_product_path(@product) , notice: 'Товар добавлен' }
       else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back , notice: 'Произошла ошибка' }
       end
-    end
+    end  
   end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
     @product.assign_attributes(product_params)
-
+    SellerProduct.new(@product, params, current_seller).update_product
      
-
     respond_to do |format|
       if @product.save
-        if params[:images] != nil
-          params[:images].each do |image|
-            ProductAttacment.create(product_id: @product.id, image: image)
-          end
-        end
-
         format.html { redirect_to :back , notice: 'Информация обновлена' }
-        format.json { render :index, status: :ok, location: @product }
       else
-        format.html { render :update }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back , notice: 'Произошла ошибка' }
       end
-    end
+    end  
   end
 
   # DELETE /products/1
@@ -93,7 +67,7 @@ class Sellers::ProductsController < SellersController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
   end
 
 end
