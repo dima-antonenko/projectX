@@ -12,7 +12,7 @@ class SellersController < ApplicationController
   end
 
   def dashboard
-  	render "layouts/seller/dashboard"
+  	render "layouts/sellers/dashboard"
   end
   
 end

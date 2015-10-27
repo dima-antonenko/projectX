@@ -9,9 +9,10 @@ Banner.destroy_all
 ProductCategoryAttacment.destroy_all
 ProductAttacment.destroy_all
 StaticPage.destroy_all
-Seller.destroy_all
 SellerReview.destroy_all
 ProductQuestion.destroy_all
+AdvertPosition.destroy_all
+Advert.destroy_all
 
 @text_lorem = "Довольно часто, планируя купить тюльпаны оптом, мы сталкиваемся с недобросовестной деятельностью многих магазинов, приобретая некачественный и неоригинальный товар. Увы, предугадать, что вырастет из луковиц, невозможно. Именно поэтому осуществлять заказ тюльпанов лучше в специализированных магазинах, таких, как Флориум. У нас вы можете выбрать интересующий вас сорт из богатого ассортимента, приобрести красивые цветы и выращивать на радость себе и окружающим.
 
@@ -27,8 +28,7 @@ ProductQuestion.destroy_all
 ### seller
 
 
-@seller = Seller.create(name: "Иван", surname: "Иванов", email: "ivanov@mail.ru", skype: "skype_ivanov", zip: 12345, phone: "+7-12-34-567",
- sity: "Москва", sales: 10, score: 10000.0, good_reviews: 90)
+@seller = Seller.first
 
 #create seller reviews
 5.times do |i|

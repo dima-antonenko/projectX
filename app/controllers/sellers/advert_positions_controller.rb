@@ -1,4 +1,4 @@
-class Seller::AdvertPositionsController < SellerController
+class Sellers::AdvertPositionsController < SellersController
   before_action :set_advert_position, only: [:destroy, :set_advert]
   before_action :set_advert, only: [:destroy]
 

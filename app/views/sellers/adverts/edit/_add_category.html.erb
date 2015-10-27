@@ -14,7 +14,7 @@
             <tbody>
                 <%# form_for ([@advert, @advert.advert_categories.build]) do |f| %>
                 <%# form_for([:seller, @advert, @advert_category], :multipart => true ) do |f| %>
-                <%= form_for([:seller, @advert, @advert_position] ) do |f| %>
+                <%= form_for([:sellers, @advert, @advert_position] ) do |f| %>
                 <tr>
                     <th class="uk-width-large-5-10">
                         <%= f.select :product_category_id, options_for_select(@product_categories), {include_blank: 'Не выбрано'},{"data-md-selectize": true }    %>

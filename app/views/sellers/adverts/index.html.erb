@@ -16,10 +16,10 @@
                                 </div>
                                 <div class="uk-width-8-10">
                                     <ul id="tabs_6" class="uk-switcher uk-margin-small-top">
-                                        <%= render '/seller/adverts/index/all_adverts' %>
-                                        <%= render '/seller/adverts/index/active_adverts' %>
-                                        <%= render '/seller/adverts/index/no_active_adverts' %>
-                                        <%= render '/seller/adverts/index/archive_adverts' %>                                                                                    </ul>
+                                        <%= render '/sellers/adverts/index/all_adverts' %>
+                                        <%= render '/sellers/adverts/index/active_adverts' %>
+                                        <%= render '/sellers/adverts/index/no_active_adverts' %>
+                                        <%= render '/sellers/adverts/index/archive_adverts' %>                                                                                    </ul>
                         
                                 </div>                               
                             </div>
@@ -44,7 +44,7 @@
                 <div class="md-card-content">
                     <h3 class="heading_a">Новое объявление</h3>
                     <!-- start form -->
-                    <%= form_for([:seller, @advert], class: "uk-form-stacked", id: "product_edit_form", :multipart => true ) do |f| %>
+                    <%= form_for([:sellers, @advert], class: "uk-form-stacked", id: "product_edit_form", :multipart => true ) do |f| %>
                     <div class="uk-grid" data-uk-grid-margin>
                         <div class="uk-width-medium-2-2">
                             <div class="uk-form-row">

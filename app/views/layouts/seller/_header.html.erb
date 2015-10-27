@@ -3,10 +3,10 @@
             <nav class="uk-navbar">
                 <div class="uk-navbar-flip" style="float:left;">
                     <ul class="uk-navbar-nav">
-                        <li><a href="/seller/products/">Товары</a></li>
-                        <li><a href="/seller/orders/">Заказы <span class="uk-badge">1</span></a></li>
-                        <li><a href="/seller/seller_edit/">Профиль </a></li>
-                        <li><a href="/seller/adverts/">Объявления </a></li>
+                        <li><a href="/sellers/products/">Товары</a></li>
+                        <li><a href="/sellers/orders/">Заказы <span class="uk-badge">1</span></a></li>
+                        <li><a href="/sellers/adverts/">Объявления </a></li>
+                        <li><a href="/sellers/seller_edit/">Профиль </a></li>
 
                     </ul>
                 </div>    
@@ -14,6 +14,8 @@
                    
                     <ul class="uk-navbar-nav user_actions">
                         <li><a href="#" id="main_search_btn" class="user_action_icon"><i class="material-icons md-24 md-light">&#xE8B6;</i></a></li>
+                         <li><%= current_seller.id %></li>
+                         <li><%= seller_session %></li>
                         <li data-uk-dropdown="{mode:'click'}" class="uk-hidden-small">
                             <a href="#" class="user_action_icon"><i class="material-icons md-24 md-light">&#xE0BE;</i><span class="uk-badge">1</span></a>
                             <div class="uk-dropdown uk-dropdown-xlarge uk-dropdown-flip uk-dropdown-scrollable">

@@ -1,7 +1,6 @@
-  class Seller::AdvertsController < SellerController
+  class Sellers::AdvertsController < SellersController
 
   before_action :set_advert, only: [:show, :edit, :update, :destroy, :set_active]
-  before_action :set_seller, only: [:index, :edit, :update]
 
 
   def index
@@ -12,7 +11,7 @@
     @advert             = Advert.new
 
     @product_categories = ProductCategory.all
-    @products           = @seller.products.all
+    @products           = current_seller.products.all
 
   end
 
@@ -24,9 +23,9 @@
     @product_category = @product.product_category
     @advert_position = AdvertPosition.new
 
-    @current_seller = Seller.find(@advert.seller_id)
+    @current_seller = current_seller
 
-    render 'seller/adverts/edit'
+    render 'sellers/adverts/edit'
   end
 
   def new
@@ -34,12 +33,11 @@
   end
 
   def create
-    @seller = Seller.first
-    @advert = Advert.create(product_id: params[:advert][:product_id], seller_id: @seller.id)
+    @advert = Advert.create(product_id: params[:advert][:product_id], seller_id: current_seller.id)
 
     respond_to do |format|
       if @advert.save
-        format.html { redirect_to edit_seller_advert_path(@advert), notice: 'Информация обновлена' }
+        format.html { redirect_to edit_sellers_advert_path(@advert), notice: 'Информация обновлена' }
       else
         format.html { render :new }
       end
@@ -66,10 +64,6 @@
 
   def set_advert
     @advert = Advert.find(params[:id])
-  end
-
-  def set_seller
-    @seller = Seller.first
   end
 
 end

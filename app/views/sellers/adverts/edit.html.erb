@@ -10,28 +10,28 @@
                 
                 <div class="uk-width-xLarge-10-10  uk-width-large-10-10">
                     <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
-                        <%= render '/seller/adverts/edit/avatar' %>
-                        <%= render '/seller/adverts/edit/product_info' %>
+                        <%= render '/sellers/adverts/edit/avatar' %>
+                        <%= render '/sellers/adverts/edit/product_info' %>
                         
                         <% if @advert.advert_positions.count > 0 %>
-                        <%= render '/seller/adverts/edit/advert_info' %>
+                        <%= render '/sellers/adverts/edit/advert_info' %>
                         <% end %>
                     </div>
                     
 
                     <% if @advert.active == false %>
-                     <%= render '/seller/adverts/edit/add_category' %>
+                     <%= render '/sellers/adverts/edit/add_category' %>
                     <% end %>
                    
 
                     <% if @advert.advert_positions.count > 0 %>
-                    <%= render '/seller/adverts/edit/advert_categories_list' %>
+                    <%= render '/sellers/adverts/edit/advert_categories_list' %>
                     <% end %>
                 </div>
             </div>
             <div class="md-fab-wrapper">
-                <a class="md-btn" href="/seller/adverts/">Назад</a>
-                <a class="md-btn md-btn-danger" href="/seller/adverts/">Удалить</a>
+                <a class="md-btn" href="/sellers/adverts/">Назад</a>
+                <a class="md-btn md-btn-danger" href="/sellers/adverts/">Удалить</a>
             </div>
         </div>
     </div>

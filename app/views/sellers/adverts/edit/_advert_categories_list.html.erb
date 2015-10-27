@@ -1,42 +1,59 @@
 <div class="md-card">
                         <div class="md-card-content">
-                            <h3 class="heading_a">Категории для показа</h3>
+                            <h3 class="heading_a">Позиции для показа</h3>
                             
                             <table class="uk-table uk-table-hover">
                                 <thead>
                                     <tr>
-                                        <th >Категория</th>
-                                        <th>Показывать <br/> в товарах <br/> категории</th>
-                                        <th>Показов <br/> всего / в день</th>
-                                        <th>Цена <br/>за показ <br/> в категории</th>
-                                        <th>Надбавка <br/> за показ <br/> в товарах</th>
-                                        <th>Стоимость <br/> позиции</th>
-                                        <th>Время<br/> действия <br/> (дней)</th>
-                                        <th>Показано <br/> всего / сегодня</th>
-                                        <th>Остаток показов <br/> всего <br/> категория / карточка</th>
-                                        <th>Дата завершения</th>
+                                        <th>Категория</th>
+                                        <th>Место показа <br/> категория / товары</th>
+                                        <th>Количество показов</th>
+                                        <th>Стоимость<br/>одного показа</th>
+                                        <th>Стоимость позиции</th>
+                                        <th>Время действия </th>
+                                        <th>Статус</th>
+                                        <th>Активна сегодня</th>
+                                        <th>Показов сегодня</th>
                                         <% if @advert.active == false %>
                                             <th>Действие</th>
-                                        <% end %>    
+                                        <% end %>
+
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="align_center">
                                     <% @advert_positions.each do |position| %>
                                     <tr>
                                         <td><%= position.product_category.name %></td>
-                                        <td></td>
+
+                                        <% if position.place == 'product_category' %>
+                                            <td>Страница категории</td>
+                                        <% elsif position.place == 'products' %>    
+                                            <td>Товары категории</td>
+                                        <% end %>
+
                                         <td><%= position.views %></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td> </td>
-                                        <td> </td>
-                                        <td> </td>
+                                        <td><%= position.place_price %> $</td>
+                                        <td><%= position.total_price %> $</td> 
+                                        <td><%= position.time_days %>(дней)</td>
+
+                                        <% if position.active == false and position.archive == false %>
+                                          <td>Не активна</td>
+                                        <% elsif position.active == true %>
+                                          <td>Активна</td>    
+                                        <% elsif position.archive == true %>
+                                          <td>Архивна</td>    
+                                        <% end %>
+
+                                        <% if position.active_today == true %>
+                                          <td> <i class="material-icons uk-text-success md-24"></i> </td>
+                                        <% else %>
+                                        <td>  <i class="material-icons uk-text-muted md-24">&#xE835;</i>   </td>
+                                        <% end %>
+                                        <td><%= position.views_today %><td>
                                         <% if @advert.active == false %>
-                                            <td><%= link_to 'Удалить', seller_advert_advert_position_path(position.advert, position), method: :delete %>
+                                            <td><%= link_to 'Удалить', sellers_advert_advert_position_path(position.advert, position), method: :delete %></td>
                                         <% end %>    
-                                        </td>
+                                        
                                     </tr>
                                     <% end %>
                                 </tbody>
