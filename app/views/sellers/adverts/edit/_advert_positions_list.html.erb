@@ -14,6 +14,7 @@
                                         <th>Статус</th>
                                         <th>Активна сегодня</th>
                                         <th>Показов сегодня</th>
+
                                         <% if @advert.active == false %>
                                             <th>Действие</th>
                                         <% end %>
@@ -37,19 +38,21 @@
                                         <td><%= position.time_days %>(дней)</td>
 
                                         <% if position.active == false and position.archive == false %>
-                                          <td>Не активна</td>
+                                          <td>Не активная</td>
                                         <% elsif position.active == true %>
-                                          <td>Активна</td>    
+                                          <td>Активная</td>    
                                         <% elsif position.archive == true %>
-                                          <td>Архивна</td>    
+                                          <td>Архивная</td>    
                                         <% end %>
 
                                         <% if position.active_today == true %>
                                           <td> <i class="material-icons uk-text-success md-24"></i> </td>
                                         <% else %>
-                                        <td>  <i class="material-icons uk-text-muted md-24">&#xE835;</i>   </td>
+                                          <td>  <i class="material-icons uk-text-muted md-24">&#xE835;</i>   </td>
                                         <% end %>
-                                        <td><%= position.views_today %><td>
+
+                                        <td><%= position.views_today %></td>
+
                                         <% if @advert.active == false %>
                                             <td><%= link_to 'Удалить', sellers_advert_advert_position_path(position.advert, position), method: :delete %></td>
                                         <% end %>    

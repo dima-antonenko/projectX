@@ -11,8 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <%# @active_adverts.each do |advert| %>
-            <% @adverts.each do |advert| %>
+            <%= @active_adverts.each do |advert| %>
             <tr>
                 <td><%= advert.id %></td>
                 <td class="uk-text-large uk-text-nowrap"><%= link_to advert.product.name, edit_sellers_advert_path(advert) %></td>

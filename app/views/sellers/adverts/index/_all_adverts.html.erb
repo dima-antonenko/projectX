@@ -1,5 +1,6 @@
 <li>
     <table class="uk-table">
+    <% if @adverts.count > 0  %>
         <thead>
             <tr>
                 <th>id</th>
@@ -12,6 +13,9 @@
             </tr>
         </thead>
         <tbody>
+
+        
+
             <% @adverts.each do |advert| %>
             <tr>
                 <td><%= advert.id %></td>
@@ -38,6 +42,12 @@
                 <% end %>
             </tr>
             <% end %>
+
+        <% else %>
+            <tr>
+                <td class="align_center">Объявления отсутствуют</td>
+            </tr>
+        <% end %>    
         </tbody>
     </table>
 </li>

@@ -9,17 +9,37 @@
                                 <div class="uk-width-2-10">
                                     <ul class="uk-tab uk-tab-left" data-uk-tab="{connect:'#tabs_6'}">
                                         <li class="uk-active"><a href="#">Все</a></li>
-                                        <li><a href="#">Активные</a></li>
-                                        <li><a href="#">Не активные</a></li>
-                                        <li><a href="#">Архивные</a></li>
+
+                                        <% if @active_adverts.count > 0  %>
+                                            <li><a href="#">Активные</a></li>
+                                        <% end %>
+
+                                        <% if @no_active_adverts.count > 0  %>
+                                             <li><a href="#">Не активные</a></li>
+                                        <% end %> 
+
+                                        <% if @archive_adverts.count > 0  %>
+                                             <li><a href="#">Архивные</a></li>
+                                        <% end %> 
                                     </ul>
                                 </div>
                                 <div class="uk-width-8-10">
                                     <ul id="tabs_6" class="uk-switcher uk-margin-small-top">
                                         <%= render '/sellers/adverts/index/all_adverts' %>
-                                        <%= render '/sellers/adverts/index/active_adverts' %>
-                                        <%= render '/sellers/adverts/index/no_active_adverts' %>
-                                        <%= render '/sellers/adverts/index/archive_adverts' %>                                                                                    </ul>
+
+                                        <% if @active_adverts.count > 0  %>
+                                            <%= render '/sellers/adverts/index/active_adverts' %>
+                                        <% end %>
+
+                                        <% if @no_active_adverts.count > 0  %>
+                                             <%= render '/sellers/adverts/index/no_active_adverts' %>
+                                        <% end %> 
+
+                                        <% if @archive_adverts.count > 0  %>
+                                            <%= render '/sellers/adverts/index/archive_adverts' %>
+                                        <% end %>  
+
+                                    </ul>
                         
                                 </div>                               
                             </div>
@@ -34,7 +54,7 @@
         </div>
     </div>
 </div>
-<div class="uk-width-medium-3-3">
+<div class="uk-width-3-10" >
     <div id="modal_overflow" class="uk-modal">
         <div class="uk-modal-dialog uk-modal-dialog-large">
             <button type="button" class="uk-modal-close uk-close"></button>

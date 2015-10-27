@@ -20,18 +20,18 @@
                     
 
                     <% if @advert.active == false %>
-                     <%= render '/sellers/adverts/edit/add_category' %>
+                     <%= render '/sellers/adverts/edit/add_position' %>
                     <% end %>
                    
 
                     <% if @advert.advert_positions.count > 0 %>
-                    <%= render '/sellers/adverts/edit/advert_categories_list' %>
+                    <%= render '/sellers/adverts/edit/advert_positions_list' %>
                     <% end %>
                 </div>
             </div>
             <div class="md-fab-wrapper">
                 <a class="md-btn" href="/sellers/adverts/">Назад</a>
-                <a class="md-btn md-btn-danger" href="/sellers/adverts/">Удалить</a>
+                <%= link_to 'Удалить', sellers_advert_path(@advert), method: :delete, class: "md-btn md-btn-danger" %>
             </div>
         </div>
     </div>
