@@ -16,10 +16,15 @@ Rails.application.routes.draw do
     resources :slides
     resources :sliders
     resources :orders
-    resources :line_items
+
+    resources :line_items do
+      get 'increment_count', on: :member
+      get 'decrement_count', on: :member 
+    end 
+
     resources :carts
     resources :product_category_attacments
-    #resources :sellers
+    resources :sellers
     resources :post_categories
     resources :posts
     resources :product_attacments

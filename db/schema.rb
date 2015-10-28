@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025195141) do
+ActiveRecord::Schema.define(version: 20151028215850) do
 
   create_table "advert_positions", force: :cascade do |t|
     t.integer  "advert_id"
@@ -71,10 +71,11 @@ ActiveRecord::Schema.define(version: 20151025195141) do
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "quantity",   default: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "quantity",    default: 1
     t.integer  "order_id"
+    t.decimal  "total_price", default: 0.0
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
@@ -130,15 +131,15 @@ ActiveRecord::Schema.define(version: 20151025195141) do
     t.text     "address"
     t.string   "email"
     t.string   "pay_type"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "surname"
     t.string   "skype"
     t.string   "phone"
-    t.string   "adress"
     t.text     "additional_info"
-    t.string   "responcse_status", default: "data_processing"
-    t.boolean  "viewed_seller",    default: false
+    t.boolean  "viewed_seller",   default: false
+    t.decimal  "total_price",     default: 0.0
+    t.string   "responce_status", default: "data_processing"
   end
 
   create_table "post_categories", force: :cascade do |t|
@@ -301,6 +302,7 @@ ActiveRecord::Schema.define(version: 20151025195141) do
     t.integer  "count_reviews"
     t.integer  "count_good_reviews"
     t.decimal  "score",                  default: 1.0
+    t.integer  "count_sales",            default: 0
   end
 
   add_index "sellers", ["email"], name: "index_sellers_on_email", unique: true

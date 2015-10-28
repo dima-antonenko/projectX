@@ -115,17 +115,14 @@
                                             <td>Город</td>
                                             <td><%= @seller.sity %></td>
                                         </tr>
-                                        <tr>
-                                            <td>Дата регистрации</td>
-                                            <td><%= @seller.created_at.to_date %></td>
-                                        </tr>
+
                                         <tr>
                                             <td>Количество продаж</td>
-                                            <td><%= @seller.sales %></td>
+                                            <td><%= @seller.count_sales %></td>
                                         </tr>
                                         <tr>
                                             <td>Процент положительных отзывов</td>
-                                            <td><%= @seller.good_reviews %>%</td>
+                                            <td><%= @seller.count_good_reviews %>%</td>
                                         </tr>
                                     </table>
                                 </div>

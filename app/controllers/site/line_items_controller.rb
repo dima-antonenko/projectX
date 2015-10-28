@@ -2,7 +2,7 @@ class Site::LineItemsController < SiteController
   include CurrentCart
 
   before_action :set_cart, only: [:create,:update, :destroy]
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_line_item, only: [:show, :edit, :update, :destroy, :increment_count, :decrement_count]
 
   # GET /line_items
   # GET /line_items.json
@@ -33,14 +33,14 @@ class Site::LineItemsController < SiteController
   def create
     product = Product.friendly.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
-
+    SiteCalcLineItemTotalPrice.new(@line_item).calc_total_price
     respond_to do |format|
       if @line_item.save
+
         format.html { redirect_to @line_item.cart  }
-        format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        
       end
     end
   end
@@ -68,6 +68,20 @@ class Site::LineItemsController < SiteController
       format.json { head :no_content }
     end
   end
+
+  def increment_count
+    SiteChangeLineItemQuantity.new(@line_item).increment
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Количество товаров обновлено' }
+    end  
+  end
+  
+  def decrement_count
+    SiteChangeLineItemQuantity.new(@line_item).decrement
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Количество товаров обновлено' }
+    end
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

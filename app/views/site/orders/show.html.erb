@@ -35,7 +35,7 @@
                                 <a href="#"><img src="<%= item.product.avatar.cart_thumb %>" alt="Product"></a>
                             </td>
                             <td class="cart_description">
-                                <p class="product-name"><%= link_to item.product.name, product_category_product_path(item.product.product_category.id, item.product.id) %></p>
+                                <p class="product-name"><%= link_to item.product.name, product_path(item.product.id) %></p>
                                 <small class="cart_ref">Артикул : <%= item.product.sku %></small><br>
                                 <small><a href="#">Атрибут : значение</a></small><br>   
                                 <small><a href="#">Атрибут 2 : значение</a></small>
@@ -44,8 +44,10 @@
                             <td class="price"><span><%= item.product.price %>$</span></td>
                             <td class="qty">
                                 <input class="form-control input-sm" type="text" value="<%= item.quantity %>">
+                                <!--
                                 <a href="#"><i class="fa fa-caret-up"></i></a>
                                 <a href="#"><i class="fa fa-caret-down"></i></a>
+                                -->
                             </td>
                             <td class="price">
                                 <span><%= item.quantity * item.product.price  %> $</span>
@@ -57,7 +59,7 @@
                        
                         <tr>
                             <td colspan="5"><strong>Всего</strong></td>
-                            <td colspan="2"><strong>1 000 $</strong></td>
+                            <td colspan="2"><strong><%= @order.total_price %> $</strong></td>
                         </tr>
                         <tr>
                             <td colspan="5"><strong>Имя</strong></td>
@@ -73,15 +75,31 @@
                         </tr>
                         <tr>
                             <td colspan="5"><strong>Адрес</strong></td>
-                            <td colspan="2"><strong><%= @order.adress %></strong></td>
+                            <td colspan="2"><strong><%= @order.address %></strong></td>
                         </tr>
-                         <tr>
+                         
+                        <tr>
                             <td colspan="5"><strong>Статус</strong></td>
-                            <td colspan="2"><strong>В обработке</strong></td>
+
+                            <td colspan="2">
+                            <% if @order.responce_status == 'data_processing' %>
+                                <strong>В обработке</strong>
+                            <% elsif @order.status == 'done' %>
+                               <strong>Отправлен</strong>
+                            <% end %>    
+                            </td>
                         </tr>
+
                         <tr>
                             <td colspan="5"><strong>Просмотрено продавцом</strong></td>
-                            <td colspan="2"><strong>Да</strong></td>
+
+                            <td colspan="2">
+                            <% if @order.viewed_seller == true %>
+                                <strong>Да</strong>
+                            <% elsif @order.viewed_seller == false %>
+                               <strong>Нет</strong>
+                            <% end %>    
+                            </td>
                         </tr>
 
                     </tfoot>    

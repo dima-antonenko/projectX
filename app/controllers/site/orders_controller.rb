@@ -25,29 +25,16 @@ class Site::OrdersController < SiteController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
-
-    @total_price = 0
-
-    @order.line_items.each do |item|
-      @total_price += item.product.price
-      
-    end
-
-    #@order.products = @products_in_order
-    # @order.total_price = @total_price
-
-
+    
+    SiteCalcOrderTotalPrice.new(@order).calc_price
 
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         format.html { redirect_to @order, notice: 'Спасибо за Ваш заказ' }
-        format.json { render :show, status: :created, location: @order }
       else
-
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back }
       end
     end
   end
@@ -84,7 +71,7 @@ class Site::OrdersController < SiteController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :adress, :surname, :skype, :phone, :additional_info )
+      params.require(:order).permit(:name, :address, :surname, :skype, :phone, :additional_info )
     end
 
     

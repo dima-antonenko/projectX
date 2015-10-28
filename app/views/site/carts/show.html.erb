@@ -46,12 +46,12 @@
                             <td class="cart_avail"><span class="label label-success">В наличии</span></td>
                             <td class="price"><span><%= item.product.price %>$</span></td>
                             <td class="qty">
-                                <input class="form-control input-sm" type="text" value="<%= item.quantity %>">
-                                <a href="#"><i class="fa fa-caret-up"></i></a>
-                                <a href="#"><i class="fa fa-caret-down"></i></a>
+                                <input class="form-control input-sm" type="text" value="<%= item.quantity %>" readonly>
+                                <%= link_to '<i class="fa fa-caret-up"></i>'.html_safe, increment_count_line_item_path(item) %> 
+                                <%= link_to '<i class="fa fa-caret-down"></i>'.html_safe, decrement_count_line_item_path(item)  %> 
                             </td>
                             <td class="price">
-                                <span><%= item.quantity * item.product.price  %></span>
+                                <span><%= item.total_price %> $</span>
                             </td>
                             <td class="action">
                                 <%= link_to 'Удалить', line_item_path(item), method: :delete, data: { confirm: 'Удалить товар из корзины ?' } %>
@@ -77,7 +77,7 @@
                         
                         <div class="col-sm-6">
                             
-                            <label for="first_name_1" class="required">Имя</label>
+                            <label for="first_name_1" class="required">Имя</label> <i>(обязательно)</i>
                              <%= f.text_field :name, size: 40, class: "input form-control", id: "first_name_1" %>
                         </div><!--/ [col] -->
 
@@ -94,7 +94,7 @@
                         
                         <div class="col-sm-6">
                             
-                            <label for="company_name_1">Телефон</label>
+                            <label for="company_name_1">Телефон</label> <i>(обязательно)</i>
                             <%= f.text_field :phone, size: 40, class: "input form-control" %>
                         </div><!--/ [col] -->
 
@@ -112,7 +112,7 @@
                         <div class="col-xs-12">
 
                             <label for="address_1" class="required">Адрес</label>
-                             <%= f.text_area :adress, size: 40, class: "input form-control" %>
+                             <%= f.text_area :address, size: 40, class: "input form-control" %>
 
                         </div><!--/ [col] -->
                         <div class="col-xs-12">

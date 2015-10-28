@@ -68,15 +68,10 @@
                            
                         <%= f.select(:tags_list, options_for_select(Tag.all.collect {|tag| [tag.title, tag.id ]}, selected: @product.tags.all.collect {|tag| [tag.title, tag.id ]}), {},{"multiple": true, id: "selec_adv_1" }) %>
                         </div>
-
-                       
-                        
-                      
-
                     </div>
                      <div class="uk-width-large-2-3 uk-width-medium-1-2">
                          <ul class="md-list md-list-addon">
-                       <% @product.tags.each do |tag| %>
+                       <% @product_tags.each do |tag| %>
                                 <li>
                                     <div class="md-list-addon-element">
                                         <i class="md-list-addon-icon material-icons">&#xE0B9;</i>
