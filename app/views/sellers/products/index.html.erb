@@ -3,39 +3,6 @@
 
             <div class="md-card">
                 <div class="md-card-content">
-                    <div class="uk-grid" data-uk-grid-margin="">
-                        <div class="uk-width-medium-3-10">
-                            <label for="product_search_name">Название</label>
-                            <input type="text" class="md-input" id="product_search_name">
-                        </div>
-                        <div class="uk-width-medium-1-10">
-                            <label for="product_search_price">Цена</label>
-                            <input type="text" class="md-input" id="product_search_price">
-                        </div>
-                        <div class="uk-width-medium-3-10">
-                            <div class="uk-margin-small-top">
-                                <select id="product_search_status" data-md-selectize multiple data-md-selectize-bottom>
-                                    <option value="">Статус</option>
-                                    <option value="1">В наличии</option>
-                                    <option value="2">Под заказ</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="uk-width-medium-1-10">
-                            <div class="uk-margin-top uk-text-nowrap">
-                                <input type="checkbox" name="product_search_active" id="product_search_active" data-md-icheck/>
-                                <label for="product_search_active" class="inline-label">Опубликован</label>
-                            </div>
-                        </div>
-                        <div class="uk-width-medium-2-10 uk-text-center">
-                            <a href="#" class="md-btn md-btn-primary uk-margin-small-top">Искать</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="md-card">
-                <div class="md-card-content">
                     <div class="uk-grid" data-uk-grid-margin>
                         <div class="uk-width-1-1">
                             <div class="uk-overflow-container">
@@ -54,7 +21,11 @@
                                       <% @products.each do |product| %>
                                         <tr>
                                             <td><img class="img_thumb" src="<%= product.avatar.admin %>" alt=""></td>
-                                            <td class="uk-text-large uk-text-nowrap"><a href="<%= edit_sellers_product_path(product.id) %>"><%= product.name %></a></td>
+                                            <td class="uk-text-large uk-text-nowrap"><a href="<%= edit_sellers_product_path(product.id) %>"><%= product.name %></a>
+                                            <% if product.adverts.where(active: true).size > 0 %>
+                                                <br/><span class="uk-badge uk-badge-success">Рекламируется</span>
+                                            <% end %>    
+                                            </td>
                                             <td class="uk-text-nowrap">$ <%= product.price %></td>
                                             <td class="uk-text-nowrap">
                                             <% if product.avability == 'in_stock' %>
@@ -73,7 +44,7 @@
                                             </td>
                                             <td class="uk-text-nowrap">
                                                 <% # link_to "<i class=\"material-icons md-24\">&#xE8F4;</i>".html_safe, administrator_product_path(product) %>
-                                                <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, sellers_product_path(product), method: :delete, data: { confirm: 'Удалить товар ?' } %>
+                                                <%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, sellers_product_path(product), method: :delete %>
                                             
                                             </td>
                                         </tr>

@@ -9,7 +9,7 @@ class Site::ProductQuestionsController < SiteController
 
   def create
     @product_question = ProductQuestion.new(product_question_params)
-    @product_question.product_id = params[:product_id]
+    SiteCreateProductQuestion.new(@product_question, params[:product_id]).change_question
     respond_to do |format|
       if @product_question.save
         format.html { redirect_to :back, notice: 'Спасибо за Ваш вопрос' }

@@ -4,7 +4,7 @@ class Sellers::ProductsController < SellersController
 
 
   def index
-    @products = Product.where(seller_id: current_seller.id).paginate(:page => params[:page], :per_page => 20)
+    @products = Product.where(seller_id: current_seller.id, archive: false).paginate(:page => params[:page], :per_page => 20)
 
   end
 
@@ -33,8 +33,6 @@ class Sellers::ProductsController < SellersController
     end  
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
     @product.assign_attributes(product_params)
     SellerProduct.new(@product, params, current_seller).update_product
@@ -51,10 +49,9 @@ class Sellers::ProductsController < SellersController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
+    SellerProductDestroy.new(@product).destroy_product
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Проект удален' }
-      format.json { head :no_content }
+      format.html { redirect_to :back, notice: 'Товар удален' }
     end
   end
 

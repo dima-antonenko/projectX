@@ -19,6 +19,8 @@ class SetAdvertStatus
   def set_archive
     self.set_archive_advert_positions
     self.update_seller_data_for_set_archive_advert
+    @advert.update_attribute(:active, false)
+    @advert.update_attribute(:archive, true)  
   end
 
 
@@ -42,7 +44,7 @@ class SetAdvertStatus
   def set_archive_advert_positions
     @advert.advert_positions.each do |advert_position|
       advert_position.update_attribute(:active, false)
-      advert_position.update_attribute(:achive, true)     
+      advert_position.update_attribute(:archive, true)     
     end 
   end
 

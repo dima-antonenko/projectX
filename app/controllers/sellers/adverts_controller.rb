@@ -11,7 +11,7 @@
     @advert             = Advert.new
 
     @product_categories = ProductCategory.all
-    @products           = current_seller.products.all
+    @products           = current_seller.products.where(archive: false)
 
   end
 

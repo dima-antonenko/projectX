@@ -1,5 +1,6 @@
 class SellersController < ApplicationController
   before_filter :authenticate_seller!
+  before_action :widespread_info
 
   layout "seller"
 
@@ -12,7 +13,11 @@ class SellersController < ApplicationController
   end
 
   def dashboard
-  	render "layouts/sellers/dashboard"
+  	render "layouts/seller/dashboard"
+  end
+
+  def widespread_info
+    @unread_questions = ProductQuestion.where(seller_id: current_seller.id, viewed: false)
   end
   
 end

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
     resources :carts
     resources :product_category_attacments
-    resources :sellers
+    #resources :sellers
     resources :post_categories
     resources :posts
     resources :product_attacments
