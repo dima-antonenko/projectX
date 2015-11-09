@@ -11,7 +11,9 @@ class Sellers::ProductsController < SellersController
   def edit
     @product = Product.find(params[:id])
     @product_attachments = ProductAttacment.where(product_id: @product.id)
-    @product_tags = @product.tags.all
+    #@product_tags = @product.tags.all
+    @product_tags = ProductTag.where(product_id: @product.id)
+
   end
 
   # GET /products/new

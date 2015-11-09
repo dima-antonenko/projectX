@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/altair/assets/css/main.min.css" media="all">
 
   <%= stylesheet_link_tag    'seller', media: 'all', 'data-turbolinks-track' => true %>
-
+      <%= javascript_include_tag 'seller', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
 </head>
@@ -63,28 +63,17 @@
     <script src="/altair/assets/js/uikit_custom.min.js"></script>
     <!-- altair common functions/helpers -->
     <script src="/altair/assets/js/altair_admin_common.min.js"></script>
-
-
-
-
-
-    <!-- orders page scripts start -->
-
+    <script src="/altair/bower_components/ionrangeslider/js/ion.rangeSlider.min.js"></script>
+    <script src="/altair/assets/js/uikit_htmleditor_custom.min.js"></script>
+    <script src="/altair/bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.min.js"></script>
+    <script src="/altair/assets/js/pages/forms_advanced.js"></script>
 
 
     <script src="/altair/bower_components/handlebars/handlebars.min.js"></script>
     <script src="/altair/assets/js/custom/handlebars_helpers.min.js"></script>
-
-    <!--  invoices functions -->
     <script src="/altair/assets/js/pages/page_invoices.min.js"></script>
-<script src="/altair/assets/js/pages/page_mailbox.min.js"></script>
+    <script src="/altair/assets/js/pages/page_mailbox.min.js"></script>
 
-
-
-
-    <!-- page specific plugins -->
-
-    <!--  mailbox functions -->
 
        <script>
         $(function() {

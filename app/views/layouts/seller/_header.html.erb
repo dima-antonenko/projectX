@@ -4,12 +4,13 @@
                 <div class="uk-navbar-flip" style="float:left;">
                     <ul class="uk-navbar-nav">
                         <li><a href="/sellers/products/">Товары</a></li>
-                        <li><a href="/sellers/questions/">Вопросы 
+                        <li><a href="/sellers/product_questions/">Вопросы 
                         <% if @unread_questions.count > 0 %>
                             <span class="uk-badge"><%= @unread_questions.count %></span>
                         <% end %>
                         </a></li>
                         <li><a href="/sellers/orders/">Заказы <span class="uk-badge">1</span></a></li>
+                        <li><a href="/sellers/orders/">Быстрые заказы <span class="uk-badge">1</span></a></li>
                         <li><a href="/sellers/adverts/">Объявления </a></li>
                         <li><a href="/sellers/seller_edit/">Профиль </a></li>
                         
