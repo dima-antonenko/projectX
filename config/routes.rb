@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   namespace :sellers do
     resources :products
     resources :orders
+    resources :product_questions
 
     resources :adverts do
       post 'set_active', on: :member

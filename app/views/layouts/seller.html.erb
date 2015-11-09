@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/altair/assets/css/main.min.css" media="all">
 
   <%= stylesheet_link_tag    'seller', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'seller', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 
 </head>
@@ -34,7 +34,8 @@
     <%= render '/layouts/seller/header' %>
     <%= yield %>
 
-    <script>
+  
+ <script>
         WebFontConfig = {
             google: {
                 families: [
@@ -53,7 +54,6 @@
             s.parentNode.insertBefore(wf, s);
         })();
     </script>
-
     <!-- momentJS date library -->
     <script src="/altair/bower_components/moment/min/moment.min.js"></script>
 
@@ -77,42 +77,21 @@
 
     <!--  invoices functions -->
     <script src="/altair/assets/js/pages/page_invoices.min.js"></script>
-    
-   
+<script src="/altair/assets/js/pages/page_mailbox.min.js"></script>
 
 
-   
 
-    <!-- google web fonts -->
-    <script>
-        WebFontConfig = {
-            google: {
-                families: [
-                    'Source+Code+Pro:400,700:latin',
-                    'Roboto:400,300,500,700,400italic:latin'
-                ]
-            }
-        };
-        (function() {
-            var wf = document.createElement('script');
-            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
 
-    
-     <!-- orders page scripts finish -->
+    <!-- page specific plugins -->
 
-    <!-- enable hires images -->
-    <script>
+    <!--  mailbox functions -->
+
+       <script>
         $(function() {
             altair_helpers.retina_images();
         });
     </script>
+
 
 </body>
 </html>

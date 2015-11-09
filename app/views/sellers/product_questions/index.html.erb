@@ -1,0 +1,72 @@
+<div id="top_bar">
+        <div class="md-top-bar">
+            <div class="uk-width-large-8-10 uk-container-center">
+                <div class="uk-clearfix">
+                    <div class="md-top-bar-actions-left">
+                        <div class="md-top-bar-checkbox">
+                            
+                        </div>
+                    </div>
+                    <div class="md-top-bar-actions-right">
+                        <div class="md-top-bar-icons">
+                            <i id="mailbox_list_split" class=" md-icon material-icons">&#xE8EE;</i>
+                            <i id="mailbox_list_combined" class="md-icon material-icons">&#xE8F2;</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page_content">
+        <div id="page_content_inner">
+
+            <div class="md-card-list-wrapper" id="mailbox">
+                <div class="uk-width-large-8-10 uk-container-center">
+                    <div class="md-card-list">
+
+                        <div class="md-card-list-header md-card-list-header-combined heading_list" style="display: none">All Messages</div>
+                        <ul class="hierarchical_slide">
+
+                        <% @product_questions.each do |product_question| %>
+                            <li>
+                                <div class="md-card-list-item-menu" data-uk-dropdown="{mode:'click'}">
+                              
+<!-- <a href="#" class="remove_product_question"><i class="material-icons">&#xE872;</i> Удалить</a> -->
+
+<%= link_to "<i class=\"material-icons md-24\">&#xE872;</i>".html_safe, sellers_product_question_path(product_question), class: "remove_product_question", method: :delete %>
+                                  
+                                </div>
+                                <span class="md-card-list-item-date"><%= product_question.created_at.to_date %></span>
+                                <div class="md-card-list-item-sender">
+                                    <span><%= link_to product_question.product.name, product_path(product_question.product.name) %></span>
+                                </div>
+                                <div class="md-card-list-item-sender">
+                                    <span><%= product_question.name %></span>
+                                </div>
+                                <div class="md-card-list-item-subject">
+                                    <div class="md-card-list-item-sender-small">
+                                        <span><%= product_question.name %></span>
+                                    </div>
+                                    <span><%= product_question.phone %></span>
+                                </div>
+                                <div class="md-card-list-item-content-wrapper">
+                                    <div class="md-card-list-item-content">
+                                    <%= product_question.question %>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+
+                            <% end %> 
+
+                          
+                      
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
