@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :product_questions
     resources :product_tags
+    resources :mini_carts
 
     resources :adverts do
       post 'set_active', on: :member

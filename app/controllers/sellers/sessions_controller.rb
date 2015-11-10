@@ -1,13 +1,14 @@
 class Sellers::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 
-layout 'adminstrator'
+    layout 'site'
+
 
   # GET /resource/sign_in
- # def new
-  #  super
+  def new
 
-#  end
+    super
+  end
 
   # POST /resource/sign_in
 #   def create
@@ -27,4 +28,10 @@ layout 'adminstrator'
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
   # end
+
+
+
+
+
+
 end

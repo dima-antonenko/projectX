@@ -6,6 +6,7 @@ class Seller < ActiveRecord::Base
 	has_many :products
 	has_many :adverts
 	has_many :seller_reviews
+	has_many :mini_carts
 
 	#mount_uploader :avatar, SellerAvatarUploader
 end

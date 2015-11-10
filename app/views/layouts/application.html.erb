@@ -1,1 +1,71 @@
-<%= yield %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ProjectX</title>
+
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/option.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/option2.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/option3.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/option4.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/option5.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/option6.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="/main/assets/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/lib/select2/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/lib/jquery.bxslider/jquery.bxslider.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/lib/owl.carousel/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/lib/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/lib/fancyBox/jquery.fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/responsive.css" />
+
+
+
+    <link rel="stylesheet" type="text/css" href="/main/assets/css/responsive.css" />
+
+    
+  <%= stylesheet_link_tag    'site', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'site', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= yield(:class) %>">
+<%= render '/layouts/main/header' %>
+<% if yield(:class) == "home option6" %>
+<%= render '/site/static/home/search_area.html.erb' %>
+<% end %>
+<div class="columns-container">
+    <div class="container" id="columns">
+        <!-- breadcrumb -->
+        <%= yield %>
+        <!-- ./row-->
+    </div>
+</div>
+
+<%= render '/layouts/main/footer' %>
+
+
+<script type="text/javascript" src="/main/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/main/assets/lib/select2/js/select2.min.js"></script>
+<script type="text/javascript" src="/main/assets/lib/jquery.bxslider/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="/main/assets/lib/owl.carousel/owl.carousel.min.js"></script>
+<!--<script type="text/javascript" src="/main/assets/lib/jquery.countdown/jquery.countdown.min.js"></script>-->
+<!-- COUNTDOWN -->
+<script type="text/javascript" src="/main/assets/lib/countdown/jquery.plugin.js"></script>
+<script type="text/javascript" src="/main/assets/lib/countdown/jquery.countdown.js"></script>
+<!-- ./COUNTDOWN -->
+<script type="text/javascript" src="/main/assets/js/jquery.actual.min.js"></script>
+<script type="text/javascript" src="/main/assets/js/theme-script.js"></script>
+
+<script type="text/javascript" src="/main/assets/lib/jquery.countdown/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="/main/assets/lib/jquery.elevatezoom.js"></script>
+
+<script type="text/javascript" src="/main/assets/lib/jquery-ui/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="/main/assets/lib/fancyBox/jquery.fancybox.js"></script>
+
+</body>
+</html>

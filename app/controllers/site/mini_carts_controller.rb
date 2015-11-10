@@ -8,7 +8,7 @@ class Site::MiniCartsController < SiteController
   
   def create
     @mini_cart = MiniCart.new(mini_cart_params)
-    @mini_cart.product_id = params[:product_id]
+    SiteCreateMiniCart.new(@mini_cart, params[:product_id]).create_cart
     respond_to do |format|
       if @mini_cart.save
         format.html { redirect_to :back, notice: 'Заказ оформлен' }
@@ -27,6 +27,6 @@ class Site::MiniCartsController < SiteController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mini_cart_params
-      params[:mini_cart].permit(:name, :email, :phone)
+      params[:mini_cart].permit(:name, :email, :phone, :address)
     end
 end

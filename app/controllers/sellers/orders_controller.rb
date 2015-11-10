@@ -1,4 +1,4 @@
-class Seller::OrdersController < SellerController
+class Sellers::OrdersController < SellersController
 
   before_action :set_order, only: [:edit, :update, :destroy, :delete]
 

@@ -20,4 +20,8 @@ class SellersController < ApplicationController
     @unread_questions = ProductQuestion.where(seller_id: current_seller.id, viewed: false)
   end
   
+  
+
+
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031091246) do
+ActiveRecord::Schema.define(version: 20151109185458) do
 
   create_table "advert_positions", force: :cascade do |t|
     t.integer  "advert_id"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20151031091246) do
     t.boolean  "agree_newsletter", default: true
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.integer  "seller_id"
   end
 
   add_index "mini_carts", ["address"], name: "index_mini_carts_on_address"
